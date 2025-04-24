@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>Projects</title>
+  
+  
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom styles -->
+  
+    
+      <link rel="stylesheet" href="/assets/css/custom-styles.css">
+    
+  
+  
+  <style>
+    /* Dark theme with blue accents */
+    :root {
+      --primary-color: #4f8cff;
+      --primary-hover: #3a7dff;
+      --dark-bg: #0d1117;
+      --dark-surface: #161b22;
+      --dark-border: #30363d;
+      --text-primary: #e6edf3;
+      --text-secondary: #8b949e;
+      --text-muted: #6e7681;
+    }
+    
+    body {
+      background-color: var(--dark-bg);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      padding-top: 56px !important;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    main {
+      flex: 1 0 auto;
+    }
+    
+    a {
+      color: var(--primary-color);
+      transition: color 0.2s ease;
+    }
+    
+    a:hover {
+      color: var(--primary-hover);
+      text-decoration: none;
+    }
+    
+    /* Consistent Navigation */
+    .navbar {
+      background-color: var(--dark-surface) !important;
+      border-bottom: 1px solid var(--dark-border);
+    }
+    
+    .navbar-brand {
+      color: var(--primary-color) !important;
+      font-weight: 600;
+    }
+    
+    .navbar-light .navbar-nav .nav-link {
+      color: var(--text-secondary) !important;
+      padding: 0.5rem 1rem;
+      transition: all 0.2s ease;
+    }
+    
+    .navbar-light .navbar-nav .nav-link:hover,
+    .navbar-light .navbar-nav .nav-link:focus {
+      color: var(--primary-color) !important;
+      background-color: rgba(79, 140, 255, 0.1);
+      border-radius: 4px;
+    }
+    
+    .navbar-light .navbar-toggler {
+      border-color: var(--dark-border);
+    }
+    
+    .navbar-light .navbar-toggler-icon {
+      filter: invert(0.8);
+    }
+    
+    /* Consistent Buttons */
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      transition: all 0.2s ease;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+      border-color: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-outline-primary {
+      color: var(--primary-color);
+      border-color: var(--primary-color);
+      transition: all 0.2s ease;
+    }
+    
+    .btn-outline-primary:hover {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Consistent Cards */
+    .card {
+      background-color: var(--dark-surface);
+      border: 1px solid var(--dark-border);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 2rem;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .card-title {
+      color: var(--text-primary);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    /* Standardized Headers */
+    .header-section {
+      padding: 3rem 0;
+      margin-bottom: 3rem;
+      text-align: center;
+      background-color: var(--dark-surface);
+      border-bottom: 1px solid var(--dark-border);
+    }
+    
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .page-subtitle {
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    
+    .divider {
+      width: 80px;
+      margin: 1rem auto;
+      border-top: 3px solid var(--primary-color);
+    }
+    
+    /* Consistent Footer */
+    footer {
+      background-color: var(--dark-surface);
+      color: var(--text-secondary);
+      padding: 2rem 0;
+      margin-top: 3rem;
+      border-top: 1px solid var(--dark-border);
+      flex-shrink: 0;
+    }
+    
+    footer .fa-stack-2x {
+      color: var(--dark-bg);
+    }
+    
+    footer .fa-stack-1x {
+      color: var(--text-primary);
+    }
+    
+    footer .fa-stack:hover .fa-stack-2x {
+      color: var(--primary-color);
+    }
+    
+    /* Consistent Container */
+    main.container {
+      margin-top: 2rem;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+    
+    /* Consistent Typography */
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--text-primary);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    h2 {
+      font-size: 1.8rem;
+      margin-top: 2rem;
+    }
+    
+    h3 {
+      font-size: 1.4rem;
+      color: var(--primary-color);
+    }
+    
+    p {
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+    
+    .lead {
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+    
+    hr {
+      border-color: var(--dark-border);
+    }
+    
+    /* Consistent Section Styling */
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--text-primary);
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      color: var(--primary-color);
+      margin-bottom: 3rem;
+    }
+    
+    /* Consistent Tags */
+    .tag {
+      display: inline-block;
+      background-color: rgba(79, 140, 255, 0.1);
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+      border-radius: 4px;
+      padding: 0.3rem 0.6rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <!-- Modern dark theme navigation header -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="https://jenovas.github.io">Rafael Skubisz</a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">Personal</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/cv/">Professional</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Standardized page header with title and subtitle -->
+
+<header class="header-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="page-title">Projects</h1>
+        
+          <p class="page-subtitle">My key projects and technical achievements</p>
+        
+        <hr class="divider">
+      </div>
+    </div>
+  </div>
+</header>
+ 
+  
+  <!-- Page Content -->
+  <main role="main" class="container">
+    <div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="container projects-container">
+  <div class="row mb-5">
+    <div class="col-lg-6 col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h3 class="card-title">Pulsate SDK</h3>
+          <p>An Android &amp; iOS SDK used by major Digital Banking Platforms in 500+ apps, serving over 10 million MAU. Provides secure authentication, communication, and engagement features.</p>
+          <div class="mt-3">
+            <span class="tag">Android</span>
+            <span class="tag">iOS</span>
+            <span class="tag">SDK</span>
+          </div>
+          <div class="mt-3">
+            <a href="https://github.com/Jenovas" target="_blank" class="btn btn-outline-primary btn-sm">
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-lg-6 col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h3 class="card-title">Cryptonomy</h3>
+          <p>A social network for crypto enthusiasts built with Android native technologies, featuring real-time market data, community discussions, and technical analysis tools.</p>
+          <div class="mt-3">
+            <span class="tag">Android</span>
+            <span class="tag">Kotlin</span>
+            <span class="tag">MVVM</span>
+          </div>
+          <div class="mt-3">
+            <a href="https://github.com/Jenovas" target="_blank" class="btn btn-outline-primary btn-sm">
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col-lg-6 col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h3 class="card-title">KMM Financial Dashboard</h3>
+          <p>A cross-platform financial dashboard built with Kotlin Multiplatform Mobile, providing a shared business logic layer with native UI for both Android and iOS platforms.</p>
+          <div class="mt-3">
+            <span class="tag">KMM</span>
+            <span class="tag">Kotlin</span>
+            <span class="tag">Coroutines</span>
+          </div>
+          <div class="mt-3">
+            <a href="https://github.com/Jenovas" target="_blank" class="btn btn-outline-primary btn-sm">
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-lg-6 col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h3 class="card-title">Mobile QA Automation</h3>
+          <p>A comprehensive testing framework for Android applications, featuring UI testing with Espresso, screenshot testing, and end-to-end integration testing for financial applications.</p>
+          <div class="mt-3">
+            <span class="tag">Espresso</span>
+            <span class="tag">JUnit</span>
+            <span class="tag">Bitrise</span>
+          </div>
+          <div class="mt-3">
+            <a href="https://github.com/Jenovas" target="_blank" class="btn btn-outline-primary btn-sm">
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-5">
+    <div class="card-body">
+      <h2 class="card-title">Areas of Interest</h2>
+      <p>I focus my development efforts and research in these key areas:</p>
+      <ul class="mt-3">
+        <li><strong>Android Development</strong>: Creating modern Android apps with Jetpack Compose and modern Kotlin practices</li>
+        <li><strong>Multiplatform Development</strong>: Exploring KMM (Kotlin Multiplatform Mobile) and other cross-platform solutions</li>
+        <li><strong>Backend Development</strong>: Building robust backend services with Ruby on Rails and Kotlin</li>
+        <li><strong>AI Tools &amp; Integration</strong>: Staying current with AI advancements and integrating them into mobile applications</li>
+        <li><strong>Financial Analysis</strong>: Technical analysis and building tools for financial market insights</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h3 class="card-title">Mobile</h3>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="fas fa-code mr-2 text-primary"></i> Android (Java/Kotlin)</li>
+            <li class="mb-2"><i class="fas fa-code mr-2 text-primary"></i> Jetpack Compose</li>
+            <li class="mb-2"><i class="fas fa-code mr-2 text-primary"></i> iOS (Swift/Objective-C)</li>
+            <li class="mb-2"><i class="fas fa-code mr-2 text-primary"></i> KMM (Kotlin Multiplatform)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h3 class="card-title">Backend</h3>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="fas fa-cogs mr-2 text-primary"></i> Ruby on Rails</li>
+            <li class="mb-2"><i class="fas fa-cogs mr-2 text-primary"></i> Java/Kotlin Backends</li>
+            <li class="mb-2"><i class="fas fa-cogs mr-2 text-primary"></i> Solidity</li>
+            <li class="mb-2"><i class="fas fa-cogs mr-2 text-primary"></i> API Development</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h3 class="card-title">Tools &amp; Practices</h3>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="fas fa-tools mr-2 text-primary"></i> CI/CD (Bitrise)</li>
+            <li class="mb-2"><i class="fas fa-tools mr-2 text-primary"></i> Test Automation</li>
+            <li class="mb-2"><i class="fas fa-tools mr-2 text-primary"></i> Git &amp; GitHub</li>
+            <li class="mb-2"><i class="fas fa-tools mr-2 text-primary"></i> Agile Development</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card feature-card mb-5">
+    <div class="card-body text-center">
+      <h2 class="card-title"><i class="fas fa-envelope text-primary mr-2"></i> Connect With Me</h2>
+      <p>I'm always interested in connecting with fellow developers, potential collaborators, or anyone interested in mobile development and technology.</p>
+      <p>Check out my other <a href="/blog/" class="link-highlight">blog posts</a> to see what I've been working on, or reach out directly if you'd like to chat!</p>
+      <div class="connect-buttons mt-4">
+        <a href="mailto:skubisz.rafael@gmail.com" class="btn btn-primary">
+          <i class="fas fa-envelope me-2"></i> Email Me
+        </a>
+        <a href="https://github.com/Jenovas" class="btn btn-outline-primary mx-2" target="_blank">
+          <i class="fab fa-github me-2"></i> GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/rafael-skubisz-210993b0/" class="btn btn-outline-primary" target="_blank">
+          <i class="fab fa-linkedin me-2"></i> LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .projects-container {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+  
+  .feature-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--dark-border);
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    border-color: var(--primary-color);
+  }
+  
+  .card-title {
+    display: flex;
+    align-items: center;
+  }
+  
+  .card-title i {
+    margin-right: 0.5rem;
+  }
+  
+  .link-highlight {
+    color: var(--primary-color);
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px dotted var(--primary-color);
+    transition: all 0.2s ease;
+  }
+  
+  .link-highlight:hover {
+    color: var(--primary-hover);
+    border-bottom: 1px solid var(--primary-hover);
+  }
+  
+  .connect-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  @media (max-width: 767px) {
+    .connect-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .connect-buttons .btn {
+      margin: 0.5rem 0;
+      width: 100%;
+    }
+  }
+</style>
+
+
+    </div>
+  </div>
+</div> 
+  </main>
+  
+  <!-- Footer -->
+  <!-- Modern dark theme footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:skubisz.rafael@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="https://github.com/Jenovas" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="https://linkedin.com/in/rafael-skubisz-210993b0" title="LinkedIn">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="https://twitter.com/RafaTheDevGuy" title="Twitter">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        
+        <p class="copyright text-center mt-4">
+          Rafael Skubisz &copy; 2025
+        </p>
+      </div>
+    </div>
+  </div>
+</footer> 
+  
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+  <!-- Custom scripts -->
+  
+    
+      <script src="/assets/js/custom-scripts.js"></script>
+    
+  
+</body>
+</html> 

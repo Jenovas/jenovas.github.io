@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jenovas.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jenovas.github.io/" rel="alternate" type="text/html" /><updated>2025-04-24T21:06:41+02:00</updated><id>https://jenovas.github.io/feed.xml</id><title type="html">Rafael Skubisz</title><subtitle>Developer, writer, open‑source enthusiast</subtitle><author><name>Rafael Skubisz</name></author><entry><title type="html">How to Manage State Effectively in Jetpack Compose</title><link href="https://jenovas.github.io/2025-04-22-clean-compose-setup/" rel="alternate" type="text/html" title="How to Manage State Effectively in Jetpack Compose" /><published>2025-04-22T23:52:00+02:00</published><updated>2025-04-22T23:52:00+02:00</updated><id>https://jenovas.github.io/clean-compose-setup</id><content type="html" xml:base="https://jenovas.github.io/2025-04-22-clean-compose-setup/"><![CDATA[<p>Managing state properly is one of the biggest challenges in any Android application, especially when using Jetpack Compose. In this article, I want to share a setup I’ve found very effective for keeping Compose apps clean, manageable, and easy to maintain.</p>
+
+<h2 id="why-good-state-management-is-important">Why Good State Management is Important</h2>
+
+<p>Jetpack Compose simplifies state management, but without a solid strategy, your composables can quickly get messy. Effective state management makes your app:</p>
+
+<ul>
+  <li>Easier to understand and maintain</li>
+  <li>Simpler to debug and test</li>
+  <li>More scalable as your app grows</li>
+</ul>
+
+<p>Here’s my preferred way of structuring state management in Compose apps.</p>
+
+<h2 id="recommended-state-management-practices">Recommended State Management Practices</h2>
+
+<h3 id="1-keep-viewmodels-at-the-top-level">1. Keep ViewModels at the Top Level</h3>
+
+<p>I recommend placing ViewModels only at the top-level composable for each screen. This centralizes your logic and keeps your UI clean. This also greatly helps with creating @Previews with simple fake states.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">screenModel</span> <span class="p">=</span> <span class="n">getScreenModel</span><span class="p">&lt;</span><span class="nc">CleanSetupScreenModel</span><span class="p">&gt;()</span>
+</code></pre></div></div>
+
+<h3 id="2-use-a-single-stateflow-for-screen-state">2. Use a Single StateFlow for Screen State</h3>
+
+<p>Instead of juggling multiple states, use one <code class="language-plaintext highlighter-rouge">StateFlow</code> that represents your entire screen state. You can use a sealed class to manage different UI states (Loading, Success, Error):</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">sealed</span> <span class="kd">class</span> <span class="nc">CleanSetupScreenState</span> <span class="p">{</span>
+    <span class="kd">object</span> <span class="nc">Loading</span> <span class="p">:</span> <span class="nc">CleanSetupScreenState</span><span class="p">()</span>
+
+    <span class="kd">data class</span> <span class="nc">Error</span><span class="p">(</span><span class="kd">val</span> <span class="py">error</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">:</span> <span class="nc">CleanSetupScreenState</span><span class="p">()</span>
+
+    <span class="kd">data class</span> <span class="nc">Success</span><span class="p">(</span>
+        <span class="kd">val</span> <span class="py">someIntValue</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span>
+        <span class="kd">val</span> <span class="py">someStringValue</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+        <span class="kd">val</span> <span class="py">cleanSetupDataClass</span><span class="p">:</span> <span class="nc">CleanSetupDataClass</span>
+    <span class="p">)</span> <span class="p">:</span> <span class="nc">CleanSetupScreenState</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This simplifies your UI code significantly. As your app grows you’ll quickly find that a single screen can require 10+ states and your composable gets “ugly” pretty quickly, using a single state fixes that.</p>
+
+<h3 id="3-handle-events-with-one-callback">3. Handle Events with One Callback</h3>
+
+<p>Keep your UI events organized by using a single callback method from the ViewModel. As your app grows you’ll quickly find that you’ll be passing sometimes 10+ on click / event callbacks to every single composable. This get’s hard to manage and understand what happens where and what callback does what.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">CleanSetupScreenContent</span><span class="p">(</span>
+    <span class="n">state</span><span class="p">,</span>
+    <span class="n">screenModel</span><span class="o">::</span><span class="n">handleEvent</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Use a sealed class for event handling as well:</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">sealed</span> <span class="kd">class</span> <span class="nc">CleanSetupScreenEvent</span> <span class="p">{</span>
+    <span class="kd">object</span> <span class="nc">Refresh</span> <span class="p">:</span> <span class="nc">CleanSetupScreenEvent</span><span class="p">()</span>
+    <span class="kd">data class</span> <span class="nc">ToggleFavourite</span><span class="p">(</span><span class="kd">val</span> <span class="py">clickedDataClass</span><span class="p">:</span> <span class="nc">CleanSetupDataClass</span><span class="p">)</span> <span class="p">:</span> <span class="nc">CleanSetupScreenEvent</span><span class="p">()</span>
+    <span class="kd">object</span> <span class="nc">NavigateBack</span> <span class="p">:</span> <span class="nc">CleanSetupScreenEvent</span><span class="p">()</span>
+    <span class="kd">object</span> <span class="nc">NavigateToSettings</span> <span class="p">:</span> <span class="nc">CleanSetupScreenEvent</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="4-channels-for-one-time-events">4. Channels for One-Time Events</h3>
+
+<p>To handle one-time actions like navigation or snackbar notifications, channels are ideal:</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="kd">val</span> <span class="py">_effects</span> <span class="p">=</span> <span class="nc">Channel</span><span class="p">&lt;</span><span class="nc">UiEffect</span><span class="p">&gt;()</span>
+<span class="kd">val</span> <span class="py">effects</span> <span class="p">=</span> <span class="n">_effects</span><span class="p">.</span><span class="nf">receiveAsFlow</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Collect these effects easily in your composable:</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">ObserveAsEvents</span><span class="p">(</span><span class="n">effects</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">when</span> <span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">is</span> <span class="nc">UiEffect</span><span class="p">.</span><span class="nc">NavigateBack</span> <span class="p">-&gt;</span> <span class="n">navigator</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+        <span class="k">is</span> <span class="nc">UiEffect</span><span class="p">.</span><span class="nc">NavigateToSettings</span> <span class="p">-&gt;</span> <span class="n">navigator</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nc">SettingsScreen</span><span class="p">())</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="5-lifecycle-aware-state-collection">5. Lifecycle-Aware State Collection</h3>
+
+<p>Use <code class="language-plaintext highlighter-rouge">collectAsStateWithLifecycle</code> to safely collect your state according to the composable lifecycle:</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">state</span> <span class="k">by</span> <span class="n">screenModel</span><span class="p">.</span><span class="n">state</span><span class="p">.</span><span class="nf">collectAsStateWithLifecycle</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>This prevents common lifecycle-related bugs and ensures efficient resource use.</p>
+
+<h2 id="example-of-a-clean-setup">Example of a Clean Setup</h2>
+
+<p>Here’s a concise example showing these practices in action:</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Composable</span>
+<span class="k">fun</span> <span class="nf">CleanSetupScreenContent</span><span class="p">(</span>
+    <span class="n">state</span><span class="p">:</span> <span class="nc">CleanSetupScreenState</span><span class="p">,</span>
+    <span class="n">event</span><span class="p">:</span> <span class="p">(</span><span class="nc">CleanSetupScreenEvent</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nc">Unit</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="nc">Scaffold</span><span class="p">(</span>
+        <span class="n">topBar</span> <span class="p">=</span> <span class="p">{</span> <span class="nc">CleanSetupTopBar</span><span class="p">()</span> <span class="p">},</span>
+        <span class="n">bottomBar</span> <span class="p">=</span> <span class="p">{</span> <span class="nc">CleanSetupBottomBar</span><span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="p">}</span>
+    <span class="p">)</span> <span class="p">{</span>
+        <span class="nc">Box</span><span class="p">(</span><span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">fillMaxSize</span><span class="p">().</span><span class="nf">padding</span><span class="p">(</span><span class="n">it</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">when</span> <span class="p">(</span><span class="n">state</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">is</span> <span class="nc">CleanSetupScreenState</span><span class="p">.</span><span class="nc">Loading</span> <span class="p">-&gt;</span> <span class="nc">CleanSetupLoadingIndicator</span><span class="p">(</span><span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">align</span><span class="p">(</span><span class="nc">Alignment</span><span class="p">.</span><span class="nc">Center</span><span class="p">))</span>
+                <span class="k">is</span> <span class="nc">CleanSetupScreenState</span><span class="p">.</span><span class="nc">Error</span> <span class="p">-&gt;</span> <span class="nc">CleanSetupError</span><span class="p">(</span><span class="n">state</span><span class="p">.</span><span class="n">error</span><span class="p">,</span> <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">align</span><span class="p">(</span><span class="nc">Alignment</span><span class="p">.</span><span class="nc">Center</span><span class="p">))</span>
+                <span class="k">is</span> <span class="nc">CleanSetupScreenState</span><span class="p">.</span><span class="nc">Success</span> <span class="p">-&gt;</span> <span class="nc">CleanSetupContent</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">event</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This clear separation keeps the UI easy to read and update.</p>
+
+<h2 id="why-this-method-works">Why This Method Works</h2>
+
+<p>I’ve found this method consistently helpful because it:</p>
+<ul>
+  <li>Makes debugging straightforward</li>
+  <li>Keeps UI code clean and focused</li>
+  <li>Simplifies testing significantly</li>
+  <li>Scales well as the project grows</li>
+</ul>
+
+<h2 id="final-thoughts">Final Thoughts</h2>
+
+<p>Good state management in Jetpack Compose doesn’t have to be complicated. By following these simple practices, you’ll find your Compose apps become easier and more enjoyable to develop.</p>
+
+<p>Give this method a try in your next project and see the difference it makes!</p>
+
+<h2 id="full-code">Full Code</h2>
+
+<p>Screen</p>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">algo.crafter.ui.screens.settings.SettingsScreen</span>
+<span class="k">import</span> <span class="nn">algo.crafter.ui.theme.AlgoCrafterSimpleTheme</span>
+<span class="k">import</span> <span class="nn">androidx.compose.foundation.clickable</span>
+<span class="k">import</span> <span class="nn">androidx.compose.foundation.layout.Box</span>
+<span class="k">import</span> <span class="nn">androidx.compose.foundation.layout.Column</span>
+<span class="k">import</span> <span class="nn">androidx.compose.foundation.layout.Spacer</span>
+<span class="k">import</span> <span class="nn">androidx.compose.foundation.layout.fillMaxSize</span>
+<span class="k">import</span> <span class="nn">androidx.compose.foundation.layout.fillMaxWidth</span>
+<span class="k">import</span> <span class="nn">androidx.compose.foundation.layout.height</span>
+<span class="k">import</span> <span class="nn">androidx.compose.foundation.layout.padding</span>
+<span class="k">import</span> <span class="nn">androidx.compose.foundation.layout.size</span>
+<span class="k">import</span> <span class="nn">androidx.compose.material.icons.Icons</span>
+<span class="k">import</span> <span class="nn">androidx.compose.material.icons.filled.Star</span>
+<span class="k">import</span> <span class="nn">androidx.compose.material3.Button</span>
+<span class="k">import</span> <span class="nn">androidx.compose.material3.CircularProgressIndicator</span>
+<span class="k">import</span> <span class="nn">androidx.compose.material3.ExperimentalMaterial3Api</span>
+<span class="k">import</span> <span class="nn">androidx.compose.material3.Icon</span>
+<span class="k">import</span> <span class="nn">androidx.compose.material3.LargeTopAppBar</span>
+<span class="k">import</span> <span class="nn">androidx.compose.material3.MaterialTheme</span>
+<span class="k">import</span> <span class="nn">androidx.compose.material3.Scaffold</span>
+<span class="k">import</span> <span class="nn">androidx.compose.material3.Text</span>
+<span class="k">import</span> <span class="nn">androidx.compose.material3.TopAppBarDefaults</span>
+<span class="k">import</span> <span class="nn">androidx.compose.runtime.Composable</span>
+<span class="k">import</span> <span class="nn">androidx.compose.runtime.LaunchedEffect</span>
+<span class="k">import</span> <span class="nn">androidx.compose.runtime.getValue</span>
+<span class="k">import</span> <span class="nn">androidx.compose.ui.Alignment</span>
+<span class="k">import</span> <span class="nn">androidx.compose.ui.Modifier</span>
+<span class="k">import</span> <span class="nn">androidx.compose.ui.tooling.preview.Preview</span>
+<span class="k">import</span> <span class="nn">androidx.compose.ui.unit.dp</span>
+<span class="k">import</span> <span class="nn">androidx.lifecycle.Lifecycle</span>
+<span class="k">import</span> <span class="nn">androidx.lifecycle.compose.LocalLifecycleOwner</span>
+<span class="k">import</span> <span class="nn">androidx.lifecycle.compose.collectAsStateWithLifecycle</span>
+<span class="k">import</span> <span class="nn">androidx.lifecycle.repeatOnLifecycle</span>
+<span class="k">import</span> <span class="nn">cafe.adriel.voyager.core.screen.Screen</span>
+<span class="k">import</span> <span class="nn">cafe.adriel.voyager.koin.getScreenModel</span>
+<span class="k">import</span> <span class="nn">cafe.adriel.voyager.navigator.LocalNavigator</span>
+<span class="k">import</span> <span class="nn">cafe.adriel.voyager.navigator.currentOrThrow</span>
+<span class="k">import</span> <span class="nn">kotlinx.coroutines.Dispatchers</span>
+<span class="k">import</span> <span class="nn">kotlinx.coroutines.flow.Flow</span>
+<span class="k">import</span> <span class="nn">kotlinx.coroutines.withContext</span>
+
+<span class="kd">class</span> <span class="nc">CleanSetupScreen</span> <span class="p">:</span> <span class="nc">Screen</span> <span class="p">{</span>
+    <span class="nd">@Composable</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">Content</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">val</span> <span class="py">navigator</span> <span class="p">=</span> <span class="nc">LocalNavigator</span><span class="p">.</span><span class="n">currentOrThrow</span>
+        <span class="kd">val</span> <span class="py">screenModel</span> <span class="p">=</span> <span class="n">getScreenModel</span><span class="p">&lt;</span><span class="nc">CleanSetupScreenModel</span><span class="p">&gt;()</span>
+        <span class="kd">val</span> <span class="py">state</span> <span class="k">by</span> <span class="n">screenModel</span><span class="p">.</span><span class="n">state</span><span class="p">.</span><span class="nf">collectAsStateWithLifecycle</span><span class="p">()</span>
+        <span class="kd">val</span> <span class="py">effects</span> <span class="p">=</span> <span class="n">screenModel</span><span class="p">.</span><span class="n">effects</span>
+
+        <span class="nc">ObserveAsEvents</span><span class="p">(</span><span class="n">effects</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">when</span> <span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">is</span> <span class="nc">UiEffect</span><span class="p">.</span><span class="nc">NavigateBack</span> <span class="p">-&gt;</span> <span class="n">navigator</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+                <span class="k">is</span> <span class="nc">UiEffect</span><span class="p">.</span><span class="nc">NavigateToSettings</span> <span class="p">-&gt;</span> <span class="n">navigator</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nc">SettingsScreen</span><span class="p">())</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="nc">CleanSetupScreenContent</span><span class="p">(</span>
+            <span class="n">state</span><span class="p">,</span>
+            <span class="n">screenModel</span><span class="o">::</span><span class="n">handleEvent</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Composable</span>
+    <span class="k">private</span> <span class="k">fun</span> <span class="nf">CleanSetupScreenContent</span><span class="p">(</span>
+        <span class="n">state</span><span class="p">:</span> <span class="nc">CleanSetupScreenState</span><span class="p">,</span>
+        <span class="n">event</span><span class="p">:</span> <span class="p">(</span><span class="nc">CleanSetupScreenEvent</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nc">Unit</span>
+    <span class="p">)</span> <span class="p">{</span>
+        <span class="nc">Scaffold</span><span class="p">(</span>
+            <span class="n">topBar</span> <span class="p">=</span> <span class="p">{</span>
+                <span class="nc">CleanSetupTopBar</span><span class="p">()</span>
+            <span class="p">},</span>
+            <span class="n">bottomBar</span> <span class="p">=</span> <span class="p">{</span>
+                <span class="nc">CleanSetupBottomBar</span><span class="p">(</span>
+                    <span class="n">event</span>
+                <span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">)</span> <span class="p">{</span>
+            <span class="nc">Box</span><span class="p">(</span>
+                <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span>
+                    <span class="p">.</span><span class="nf">fillMaxSize</span><span class="p">()</span>
+                    <span class="p">.</span><span class="nf">padding</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+            <span class="p">)</span> <span class="p">{</span>
+                <span class="k">when</span> <span class="p">(</span><span class="n">state</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">is</span> <span class="nc">CleanSetupScreenState</span><span class="p">.</span><span class="nc">Error</span> <span class="p">-&gt;</span> <span class="p">{</span>
+                        <span class="nc">CleanSetupError</span><span class="p">(</span>
+                            <span class="n">error</span> <span class="p">=</span> <span class="n">state</span><span class="p">.</span><span class="n">error</span><span class="p">,</span>
+                            <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">align</span><span class="p">(</span><span class="nc">Alignment</span><span class="p">.</span><span class="nc">Center</span><span class="p">)</span>
+                        <span class="p">)</span>
+                    <span class="p">}</span>
+
+                    <span class="k">is</span> <span class="nc">CleanSetupScreenState</span><span class="p">.</span><span class="nc">Loading</span> <span class="p">-&gt;</span> <span class="p">{</span>
+                        <span class="nc">CleanSetupLoadingIndicator</span><span class="p">(</span>
+                            <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">align</span><span class="p">(</span><span class="nc">Alignment</span><span class="p">.</span><span class="nc">Center</span><span class="p">)</span>
+                        <span class="p">)</span>
+                    <span class="p">}</span>
+
+                    <span class="k">is</span> <span class="nc">CleanSetupScreenState</span><span class="p">.</span><span class="nc">Success</span> <span class="p">-&gt;</span> <span class="p">{</span>
+                        <span class="nc">CleanSetupContent</span><span class="p">(</span>
+                            <span class="n">state</span><span class="p">,</span>
+                            <span class="n">event</span>
+                        <span class="p">)</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nd">@OptIn</span><span class="p">(</span><span class="nc">ExperimentalMaterial3Api</span><span class="o">::</span><span class="k">class</span><span class="p">)</span>
+    <span class="nd">@Composable</span>
+    <span class="k">private</span> <span class="k">fun</span> <span class="nf">CleanSetupContent</span><span class="p">(</span>
+        <span class="n">state</span><span class="p">:</span> <span class="nc">CleanSetupScreenState</span><span class="p">.</span><span class="nc">Success</span><span class="p">,</span>
+        <span class="n">event</span><span class="p">:</span> <span class="p">(</span><span class="nc">CleanSetupScreenEvent</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nc">Unit</span>
+    <span class="p">)</span> <span class="p">{</span>
+        <span class="nc">Column</span><span class="p">(</span>
+            <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span>
+                <span class="p">.</span><span class="nf">fillMaxSize</span><span class="p">(),</span>
+            <span class="n">horizontalAlignment</span> <span class="p">=</span> <span class="nc">Alignment</span><span class="p">.</span><span class="nc">CenterHorizontally</span>
+        <span class="p">)</span> <span class="p">{</span>
+            <span class="nc">Text</span><span class="p">(</span>
+                <span class="n">text</span> <span class="p">=</span> <span class="s">"${state.someIntValue}"</span><span class="p">,</span>
+                <span class="n">style</span> <span class="p">=</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">typography</span><span class="p">.</span><span class="n">headlineLarge</span><span class="p">,</span>
+                <span class="n">color</span> <span class="p">=</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">colorScheme</span><span class="p">.</span><span class="n">onSurface</span>
+            <span class="p">)</span>
+
+            <span class="nc">Spacer</span><span class="p">(</span><span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">height</span><span class="p">(</span><span class="mi">16</span><span class="p">.</span><span class="n">dp</span><span class="p">))</span>
+
+            <span class="nc">Text</span><span class="p">(</span>
+                <span class="n">text</span> <span class="p">=</span> <span class="n">state</span><span class="p">.</span><span class="n">someStringValue</span><span class="p">,</span>
+                <span class="n">style</span> <span class="p">=</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">typography</span><span class="p">.</span><span class="n">displaySmall</span><span class="p">,</span>
+                <span class="n">color</span> <span class="p">=</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">colorScheme</span><span class="p">.</span><span class="n">onSurface</span>
+            <span class="p">)</span>
+
+            <span class="nc">Spacer</span><span class="p">(</span><span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">height</span><span class="p">(</span><span class="mi">16</span><span class="p">.</span><span class="n">dp</span><span class="p">))</span>
+
+            <span class="nc">Text</span><span class="p">(</span>
+                <span class="n">text</span> <span class="p">=</span> <span class="s">"${state.cleanSetupDataClass.dataClassInt}"</span><span class="p">,</span>
+                <span class="n">style</span> <span class="p">=</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">typography</span><span class="p">.</span><span class="n">titleLarge</span><span class="p">,</span>
+                <span class="n">color</span> <span class="p">=</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">colorScheme</span><span class="p">.</span><span class="n">onSurface</span>
+            <span class="p">)</span>
+
+            <span class="nc">Spacer</span><span class="p">(</span><span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">height</span><span class="p">(</span><span class="mi">16</span><span class="p">.</span><span class="n">dp</span><span class="p">))</span>
+
+            <span class="nc">Text</span><span class="p">(</span>
+                <span class="n">text</span> <span class="p">=</span> <span class="n">state</span><span class="p">.</span><span class="n">cleanSetupDataClass</span><span class="p">.</span><span class="n">dataClassString</span><span class="p">,</span>
+                <span class="n">style</span> <span class="p">=</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">typography</span><span class="p">.</span><span class="n">titleLarge</span><span class="p">,</span>
+                <span class="n">color</span> <span class="p">=</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">colorScheme</span><span class="p">.</span><span class="n">onSurface</span>
+            <span class="p">)</span>
+
+            <span class="nc">Spacer</span><span class="p">(</span><span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">height</span><span class="p">(</span><span class="mi">16</span><span class="p">.</span><span class="n">dp</span><span class="p">))</span>
+
+            <span class="kd">val</span> <span class="py">tint</span> <span class="p">=</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">state</span><span class="p">.</span><span class="n">cleanSetupDataClass</span><span class="p">.</span><span class="n">isFavourite</span><span class="p">)</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">colorScheme</span><span class="p">.</span><span class="n">primary</span> <span class="k">else</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">colorScheme</span><span class="p">.</span><span class="n">onSurface</span>
+            <span class="nc">Icon</span><span class="p">(</span>
+                <span class="n">imageVector</span> <span class="p">=</span> <span class="nc">Icons</span><span class="p">.</span><span class="nc">Default</span><span class="p">.</span><span class="nc">Star</span><span class="p">,</span>
+                <span class="n">contentDescription</span> <span class="p">=</span> <span class="s">"Star"</span><span class="p">,</span>
+                <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span>
+                    <span class="p">.</span><span class="nf">size</span><span class="p">(</span><span class="mi">48</span><span class="p">.</span><span class="n">dp</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nf">padding</span><span class="p">(</span><span class="mi">16</span><span class="p">.</span><span class="n">dp</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nf">clickable</span> <span class="p">{</span>
+                        <span class="nf">event</span><span class="p">(</span>
+                            <span class="nc">CleanSetupScreenEvent</span><span class="p">.</span><span class="nc">ToggleFavourite</span><span class="p">(</span>
+                                <span class="n">state</span><span class="p">.</span><span class="n">cleanSetupDataClass</span>
+                            <span class="p">)</span>
+                        <span class="p">)</span>
+                    <span class="p">},</span>
+                <span class="n">tint</span> <span class="p">=</span> <span class="n">tint</span>
+            <span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Composable</span>
+    <span class="k">private</span> <span class="k">fun</span> <span class="nf">CleanSetupBottomBar</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="p">(</span><span class="nc">CleanSetupScreenEvent</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nc">Unit</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nc">Button</span><span class="p">(</span>
+            <span class="n">onClick</span> <span class="p">=</span> <span class="p">{</span> <span class="nf">event</span><span class="p">(</span><span class="nc">CleanSetupScreenEvent</span><span class="p">.</span><span class="nc">NavigateToSettings</span><span class="p">)</span> <span class="p">},</span>
+            <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span>
+                <span class="p">.</span><span class="nf">fillMaxWidth</span><span class="p">()</span>
+                <span class="p">.</span><span class="nf">padding</span><span class="p">(</span><span class="mi">16</span><span class="p">.</span><span class="n">dp</span><span class="p">)</span>
+        <span class="p">)</span> <span class="p">{</span>
+            <span class="nc">Text</span><span class="p">(</span>
+                <span class="n">text</span> <span class="p">=</span> <span class="s">"Continue"</span><span class="p">,</span>
+                <span class="n">style</span> <span class="p">=</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">typography</span><span class="p">.</span><span class="n">titleLarge</span><span class="p">,</span>
+                <span class="n">color</span> <span class="p">=</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">colorScheme</span><span class="p">.</span><span class="n">onPrimary</span>
+            <span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nd">@OptIn</span><span class="p">(</span><span class="nc">ExperimentalMaterial3Api</span><span class="o">::</span><span class="k">class</span><span class="p">)</span>
+    <span class="nd">@Composable</span>
+    <span class="k">private</span> <span class="k">fun</span> <span class="nf">CleanSetupTopBar</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nc">LargeTopAppBar</span><span class="p">(</span>
+            <span class="n">title</span> <span class="p">=</span> <span class="p">{</span> <span class="nc">Text</span><span class="p">(</span><span class="s">"Clean Setup"</span><span class="p">)</span> <span class="p">},</span>
+            <span class="n">colors</span> <span class="p">=</span> <span class="nc">TopAppBarDefaults</span><span class="p">.</span><span class="nf">topAppBarColors</span><span class="p">(</span>
+                <span class="n">containerColor</span> <span class="p">=</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">colorScheme</span><span class="p">.</span><span class="n">primary</span><span class="p">,</span>
+                <span class="n">titleContentColor</span> <span class="p">=</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">colorScheme</span><span class="p">.</span><span class="n">onPrimary</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Composable</span>
+    <span class="k">private</span> <span class="k">fun</span> <span class="nf">CleanSetupError</span><span class="p">(</span><span class="n">error</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">modifier</span><span class="p">:</span> <span class="nc">Modifier</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nc">Text</span><span class="p">(</span>
+            <span class="n">text</span> <span class="p">=</span> <span class="n">error</span><span class="p">,</span>
+            <span class="n">style</span> <span class="p">=</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">typography</span><span class="p">.</span><span class="n">bodyLarge</span><span class="p">,</span>
+            <span class="n">color</span> <span class="p">=</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">colorScheme</span><span class="p">.</span><span class="n">error</span><span class="p">,</span>
+            <span class="n">modifier</span> <span class="p">=</span> <span class="n">modifier</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Composable</span>
+    <span class="k">private</span> <span class="k">fun</span> <span class="nf">CleanSetupLoadingIndicator</span><span class="p">(</span><span class="n">modifier</span><span class="p">:</span> <span class="nc">Modifier</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nc">CircularProgressIndicator</span><span class="p">(</span>
+            <span class="n">modifier</span> <span class="p">=</span> <span class="n">modifier</span><span class="p">,</span>
+            <span class="n">color</span> <span class="p">=</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">colorScheme</span><span class="p">.</span><span class="n">primary</span><span class="p">,</span>
+            <span class="n">strokeWidth</span> <span class="p">=</span> <span class="mi">4</span><span class="p">.</span><span class="n">dp</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Preview</span><span class="p">()</span>
+    <span class="nd">@Composable</span>
+    <span class="k">fun</span> <span class="nf">CleanSetupScreenPreview</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nc">AlgoCrafterSimpleTheme</span> <span class="p">{</span>
+            <span class="nc">CleanSetupScreenContent</span><span class="p">(</span>
+                <span class="nc">CleanSetupScreenState</span><span class="p">.</span><span class="nc">Loading</span>
+            <span class="p">)</span> <span class="p">{}</span>
+            <span class="nc">CleanSetupScreenContent</span><span class="p">(</span>
+                <span class="nc">CleanSetupScreenState</span><span class="p">.</span><span class="nc">Error</span><span class="p">(</span><span class="s">"Error loading data"</span><span class="p">)</span>
+            <span class="p">)</span> <span class="p">{}</span>
+            <span class="nc">CleanSetupScreenContent</span><span class="p">(</span>
+                <span class="nc">CleanSetupScreenState</span><span class="p">.</span><span class="nc">Success</span><span class="p">(</span>
+                    <span class="mi">12345</span><span class="p">,</span>
+                    <span class="s">"RandomString"</span><span class="p">,</span>
+                    <span class="nc">CleanSetupDataClass</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="s">"ImportantString"</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="p">)</span> <span class="p">{}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nd">@Composable</span>
+<span class="k">private</span> <span class="k">fun</span> <span class="p">&lt;</span><span class="nc">T</span><span class="p">&gt;</span> <span class="nf">ObserveAsEvents</span><span class="p">(</span><span class="n">flow</span><span class="p">:</span> <span class="nc">Flow</span><span class="p">&lt;</span><span class="nc">T</span><span class="p">&gt;,</span> <span class="n">onEvent</span><span class="p">:</span> <span class="p">(</span><span class="nc">T</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nc">Unit</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="py">lifecycleOwner</span> <span class="p">=</span> <span class="nc">LocalLifecycleOwner</span><span class="p">.</span><span class="n">current</span>
+    <span class="nc">LaunchedEffect</span><span class="p">(</span><span class="n">flow</span><span class="p">,</span> <span class="n">lifecycleOwner</span><span class="p">.</span><span class="n">lifecycle</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">lifecycleOwner</span><span class="p">.</span><span class="nf">repeatOnLifecycle</span><span class="p">(</span><span class="nc">Lifecycle</span><span class="p">.</span><span class="nc">State</span><span class="p">.</span><span class="nc">STARTED</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nf">withContext</span><span class="p">(</span><span class="nc">Dispatchers</span><span class="p">.</span><span class="nc">Main</span><span class="p">.</span><span class="n">immediate</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">flow</span><span class="p">.</span><span class="nf">collect</span><span class="p">(</span><span class="n">onEvent</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>ViewModel</p>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">CleanSetupScreenModel</span><span class="p">()</span> <span class="p">:</span> <span class="nc">ScreenModel</span><span class="p">,</span> <span class="nc">KoinComponent</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">_state</span> <span class="p">=</span> <span class="nc">MutableStateFlow</span><span class="p">&lt;</span><span class="nc">CleanSetupScreenState</span><span class="p">&gt;(</span><span class="nc">CleanSetupScreenState</span><span class="p">.</span><span class="nc">Loading</span><span class="p">)</span>
+    <span class="kd">val</span> <span class="py">state</span><span class="p">:</span> <span class="nc">StateFlow</span><span class="p">&lt;</span><span class="nc">CleanSetupScreenState</span><span class="p">&gt;</span> <span class="p">=</span> <span class="n">_state</span><span class="p">.</span><span class="nf">asStateFlow</span><span class="p">()</span>
+
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">_effects</span> <span class="p">=</span> <span class="nc">Channel</span><span class="p">&lt;</span><span class="nc">UiEffect</span><span class="p">&gt;()</span>
+    <span class="kd">val</span> <span class="py">effects</span> <span class="p">=</span> <span class="n">_effects</span><span class="p">.</span><span class="nf">receiveAsFlow</span><span class="p">()</span>
+
+    <span class="nf">init</span> <span class="p">{</span>
+        <span class="nf">refreshData</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="k">fun</span> <span class="nf">handleEvent</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nc">CleanSetupScreenEvent</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">when</span> <span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">is</span> <span class="nc">CleanSetupScreenEvent</span><span class="p">.</span><span class="nc">Refresh</span> <span class="p">-&gt;</span> <span class="nf">refreshData</span><span class="p">()</span>
+            <span class="k">is</span> <span class="nc">CleanSetupScreenEvent</span><span class="p">.</span><span class="nc">ToggleFavourite</span> <span class="p">-&gt;</span> <span class="p">{</span>
+                <span class="nf">handeFavouriteEvent</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">clickedDataClass</span><span class="p">)</span>
+            <span class="p">}</span>
+
+            <span class="k">is</span> <span class="nc">CleanSetupScreenEvent</span><span class="p">.</span><span class="nc">NavigateBack</span> <span class="p">-&gt;</span> <span class="p">{</span>
+                <span class="n">screenModelScope</span><span class="p">.</span><span class="nf">launch</span> <span class="p">{</span> <span class="n">_effects</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="nc">UiEffect</span><span class="p">.</span><span class="nc">NavigateBack</span><span class="p">)</span> <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="k">is</span> <span class="nc">CleanSetupScreenEvent</span><span class="p">.</span><span class="nc">NavigateToSettings</span> <span class="p">-&gt;</span> <span class="p">{</span>
+                <span class="n">screenModelScope</span><span class="p">.</span><span class="nf">launch</span> <span class="p">{</span> <span class="n">_effects</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="nc">UiEffect</span><span class="p">.</span><span class="nc">NavigateToSettings</span><span class="p">)</span> <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">fun</span> <span class="nf">refreshData</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">screenModelScope</span><span class="p">.</span><span class="nf">launch</span> <span class="p">{</span>
+            <span class="c1">// Simulate loading data</span>
+            <span class="n">_state</span><span class="p">.</span><span class="n">value</span> <span class="p">=</span> <span class="nc">CleanSetupScreenState</span><span class="p">.</span><span class="nc">Loading</span>
+            <span class="k">try</span> <span class="p">{</span>
+                <span class="n">_state</span><span class="p">.</span><span class="n">value</span> <span class="p">=</span> <span class="nc">CleanSetupScreenState</span><span class="p">.</span><span class="nc">Success</span><span class="p">(</span>
+                    <span class="mi">12345</span><span class="p">,</span>
+                    <span class="s">"RandomString"</span><span class="p">,</span>
+                    <span class="nc">CleanSetupDataClass</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="s">"ImportantString"</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="nc">Exception</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">_state</span><span class="p">.</span><span class="n">value</span> <span class="p">=</span> <span class="nc">CleanSetupScreenState</span><span class="p">.</span><span class="nc">Error</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">message</span><span class="p">.</span><span class="nf">orEmpty</span><span class="p">())</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">fun</span> <span class="nf">handeFavouriteEvent</span><span class="p">(</span>
+        <span class="n">clickedDataClass</span><span class="p">:</span> <span class="nc">CleanSetupDataClass</span>
+    <span class="p">)</span> <span class="p">{</span>
+        <span class="kd">val</span> <span class="py">favouriteClass</span> <span class="p">=</span> <span class="n">clickedDataClass</span><span class="p">.</span><span class="nf">copy</span><span class="p">(</span><span class="n">isFavourite</span> <span class="p">=</span> <span class="k">true</span><span class="p">)</span>
+        <span class="kd">val</span> <span class="py">updatedState</span> <span class="p">=</span>
+            <span class="p">(</span><span class="n">_state</span><span class="p">.</span><span class="n">value</span> <span class="k">as</span><span class="p">?</span> <span class="nc">CleanSetupScreenState</span><span class="p">.</span><span class="nc">Success</span><span class="p">)</span><span class="o">?.</span><span class="nf">copy</span><span class="p">(</span><span class="n">cleanSetupDataClass</span> <span class="p">=</span> <span class="n">favouriteClass</span><span class="p">)</span>
+                <span class="o">?:</span> <span class="nc">CleanSetupScreenState</span><span class="p">.</span><span class="nc">Success</span><span class="p">(</span><span class="mi">12345</span><span class="p">,</span> <span class="s">"RandomString"</span><span class="p">,</span> <span class="n">favouriteClass</span><span class="p">)</span>
+
+        <span class="n">_state</span><span class="p">.</span><span class="n">value</span> <span class="p">=</span> <span class="n">updatedState</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">sealed</span> <span class="kd">class</span> <span class="nc">CleanSetupScreenState</span> <span class="p">{</span>
+    <span class="kd">object</span> <span class="nc">Loading</span> <span class="p">:</span> <span class="nc">CleanSetupScreenState</span><span class="p">()</span>
+
+    <span class="kd">data class</span> <span class="nc">Error</span><span class="p">(</span>
+        <span class="kd">val</span> <span class="py">error</span><span class="p">:</span> <span class="nc">String</span>
+    <span class="p">)</span> <span class="p">:</span> <span class="nc">CleanSetupScreenState</span><span class="p">()</span>
+
+    <span class="kd">data class</span> <span class="nc">Success</span><span class="p">(</span>
+        <span class="kd">val</span> <span class="py">someIntValue</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span>
+        <span class="kd">val</span> <span class="py">someStringValue</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+        <span class="kd">val</span> <span class="py">cleanSetupDataClass</span><span class="p">:</span> <span class="nc">CleanSetupDataClass</span>
+    <span class="p">)</span> <span class="p">:</span> <span class="nc">CleanSetupScreenState</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">data class</span> <span class="nc">CleanSetupDataClass</span><span class="p">(</span>
+    <span class="kd">val</span> <span class="py">dataClassInt</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">dataClassString</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">isFavourite</span><span class="p">:</span> <span class="nc">Boolean</span>
+<span class="p">)</span>
+
+<span class="k">sealed</span> <span class="kd">class</span> <span class="nc">CleanSetupScreenEvent</span> <span class="p">{</span>
+    <span class="kd">object</span> <span class="nc">Refresh</span> <span class="p">:</span> <span class="nc">CleanSetupScreenEvent</span><span class="p">()</span>
+    <span class="kd">data class</span> <span class="nc">ToggleFavourite</span><span class="p">(</span><span class="kd">val</span> <span class="py">clickedDataClass</span><span class="p">:</span> <span class="nc">CleanSetupDataClass</span><span class="p">)</span> <span class="p">:</span> <span class="nc">CleanSetupScreenEvent</span><span class="p">()</span>
+    <span class="kd">object</span> <span class="nc">NavigateBack</span> <span class="p">:</span> <span class="nc">CleanSetupScreenEvent</span><span class="p">()</span>
+    <span class="kd">object</span> <span class="nc">NavigateToSettings</span> <span class="p">:</span> <span class="nc">CleanSetupScreenEvent</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="k">sealed</span> <span class="kd">class</span> <span class="nc">UiEffect</span> <span class="p">{</span>
+    <span class="kd">object</span> <span class="nc">NavigateBack</span> <span class="p">:</span> <span class="nc">UiEffect</span><span class="p">()</span>
+    <span class="kd">object</span> <span class="nc">NavigateToSettings</span> <span class="p">:</span> <span class="nc">UiEffect</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div></div>]]></content><author><name>Rafael Skubisz</name></author><category term="tutorials" /><category term="android-development" /><category term="Android" /><category term="Kotlin" /><category term="Jetpack Compose" /><category term="State Management" /><summary type="html"><![CDATA[Managing state properly is one of the biggest challenges in any Android application, especially when using Jetpack Compose. In this article, I want to share a setup I’ve found very effective for keeping Compose apps clean, manageable, and easy to maintain.]]></summary></entry></feed>
