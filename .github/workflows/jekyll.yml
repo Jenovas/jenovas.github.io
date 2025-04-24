@@ -5,6 +5,11 @@ on:
     branches:
       - main
 
+# Sets permissions of the GITHUB_TOKEN
+permissions:
+  contents: write
+  pages: write
+
 jobs:
   jekyll:
     runs-on: ubuntu-latest
