@@ -1,0 +1,21 @@
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Remove any default theme navigation elements
+    var themeNavs = document.querySelectorAll('.navbar-custom, .navbar-custom-mobile, #header, #MobileCicleBtn, .NavigationBtn');
+    themeNavs.forEach(function(nav) {
+      if (nav) nav.style.display = 'none';
+    });
+    
+    // Remove any avatar containers
+    var avatars = document.querySelectorAll('.avatar-container, .avatar-img-border, .avatar-img');
+    avatars.forEach(function(avatar) {
+      if (avatar) avatar.style.display = 'none';
+    });
+    
+    // Fix any "My Portfolio" text that might be showing up
+    var portfolioText = document.querySelectorAll('a:contains("My Portfolio")');
+    portfolioText.forEach(function(text) {
+      if (text) text.style.display = 'none';
+    });
+  });
+</script> 

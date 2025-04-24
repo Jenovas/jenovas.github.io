@@ -1,0 +1,143 @@
+---
+layout: default
+---
+
+<div class="container post-container">
+  <div class="row">
+    <div class="col-lg-10 col-md-12 mx-auto">
+      <article class="post">
+        <header class="post-header mb-5">
+          <h1 class="post-title">{{ page.title }}</h1>
+          {% if page.subtitle %}
+            <p class="post-subtitle lead text-muted mt-3">{{ page.subtitle }}</p>
+          {% endif %}
+          <p class="post-meta text-muted">Posted on {{ page.date | date: site.date_format }}</p>
+          {% if page.tags.size > 0 %}
+          <div class="post-tags">
+            {% for tag in page.tags %}
+            <a href="{{ '/tags' | relative_url }}#{{ tag }}" class="badge post-tag">{{ tag }}</a>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </header>
+
+        <div class="post-content">
+          {{ content }}
+        </div>
+
+        <hr class="mt-5 mb-4">
+        
+        <div class="post-navigation d-flex justify-content-between mt-4">
+          <a href="/blog/" class="btn btn-outline-primary">← Back to Blog</a>
+          <a href="mailto:?subject={{ page.title | url_encode }}&body=Check out this post: {{ site.url }}{{ page.url }}" class="btn btn-outline-primary">Share</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+
+<style>
+  .post-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 2rem;
+  }
+  
+  .post-title {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 2.5rem;
+  }
+  
+  .post-subtitle {
+    color: var(--text-secondary);
+  }
+  
+  .post-meta {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .post-tags {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .post-tag {
+    background-color: var(--dark-surface);
+    color: var(--primary-color);
+    border: 1px solid var(--dark-border);
+    padding: 0.4rem 0.7rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  
+  .post-tag:hover {
+    background-color: var(--primary-color);
+    color: var(--dark-surface);
+    text-decoration: none;
+  }
+  
+  .post-content {
+    color: var(--text-primary);
+    line-height: 1.8;
+  }
+  
+  .post-content h1, 
+  .post-content h2, 
+  .post-content h3,
+  .post-content h4,
+  .post-content h5,
+  .post-content h6 {
+    color: var(--text-primary);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .post-content p {
+    margin-bottom: 1.5rem;
+  }
+  
+  .post-content pre {
+    background-color: var(--dark-surface);
+    border: 1px solid var(--dark-border);
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    overflow-x: auto;
+  }
+  
+  .post-content code {
+    background-color: var(--dark-surface);
+    color: var(--primary-color);
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+  }
+  
+  .post-content blockquote {
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1rem;
+    margin-left: 0;
+    color: var(--text-secondary);
+  }
+  
+  .post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin: 1.5rem 0;
+  }
+  
+  hr {
+    border-color: var(--dark-border);
+  }
+  
+  /* Hide the default header section since we're creating our own */
+  .header-section {
+    display: none;
+  }
+</style> 

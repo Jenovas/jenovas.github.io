@@ -1,0 +1,47 @@
+<!-- Modern dark theme navigation header -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="{{ site.url }}">Rafael Skubisz</a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">Personal</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/cv/">Professional</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Standardized page header with title and subtitle -->
+{% if page.title %}
+<header class="header-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="page-title">{{ page.title }}</h1>
+        {% if page.subtitle %}
+          <p class="page-subtitle">{{ page.subtitle }}</p>
+        {% endif %}
+        <hr class="divider">
+      </div>
+    </div>
+  </div>
+</header>
+{% endif %} 

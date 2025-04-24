@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+  
+  {% if page.description %}
+  <meta name="description" content="{{ page.description }}">
+  {% endif %}
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom styles -->
+  {% if site.site-css %}
+    {% for css in site.site-css %}
+      <link rel="stylesheet" href="{{ css }}">
+    {% endfor %}
+  {% endif %}
+  
+  <style>
+    /* Dark theme with blue accents */
+    :root {
+      --primary-color: #4f8cff;
+      --primary-hover: #3a7dff;
+      --dark-bg: #0d1117;
+      --dark-surface: #161b22;
+      --dark-border: #30363d;
+      --text-primary: #e6edf3;
+      --text-secondary: #8b949e;
+      --text-muted: #6e7681;
+    }
+    
+    body {
+      background-color: var(--dark-bg);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      padding-top: 56px !important;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    main {
+      flex: 1 0 auto;
+    }
+    
+    a {
+      color: var(--primary-color);
+      transition: color 0.2s ease;
+    }
+    
+    a:hover {
+      color: var(--primary-hover);
+      text-decoration: none;
+    }
+    
+    /* Consistent Navigation */
+    .navbar {
+      background-color: var(--dark-surface) !important;
+      border-bottom: 1px solid var(--dark-border);
+    }
+    
+    .navbar-brand {
+      color: var(--primary-color) !important;
+      font-weight: 600;
+    }
+    
+    .navbar-light .navbar-nav .nav-link {
+      color: var(--text-secondary) !important;
+      padding: 0.5rem 1rem;
+      transition: all 0.2s ease;
+    }
+    
+    .navbar-light .navbar-nav .nav-link:hover,
+    .navbar-light .navbar-nav .nav-link:focus {
+      color: var(--primary-color) !important;
+      background-color: rgba(79, 140, 255, 0.1);
+      border-radius: 4px;
+    }
+    
+    .navbar-light .navbar-toggler {
+      border-color: var(--dark-border);
+    }
+    
+    .navbar-light .navbar-toggler-icon {
+      filter: invert(0.8);
+    }
+    
+    /* Consistent Buttons */
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      transition: all 0.2s ease;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+      border-color: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-outline-primary {
+      color: var(--primary-color);
+      border-color: var(--primary-color);
+      transition: all 0.2s ease;
+    }
+    
+    .btn-outline-primary:hover {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Consistent Cards */
+    .card {
+      background-color: var(--dark-surface);
+      border: 1px solid var(--dark-border);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 2rem;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .card-title {
+      color: var(--text-primary);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    /* Standardized Headers */
+    .header-section {
+      padding: 3rem 0;
+      margin-bottom: 3rem;
+      text-align: center;
+      background-color: var(--dark-surface);
+      border-bottom: 1px solid var(--dark-border);
+    }
+    
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .page-subtitle {
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    
+    .divider {
+      width: 80px;
+      margin: 1rem auto;
+      border-top: 3px solid var(--primary-color);
+    }
+    
+    /* Consistent Footer */
+    footer {
+      background-color: var(--dark-surface);
+      color: var(--text-secondary);
+      padding: 2rem 0;
+      margin-top: 3rem;
+      border-top: 1px solid var(--dark-border);
+      flex-shrink: 0;
+    }
+    
+    footer .fa-stack-2x {
+      color: var(--dark-bg);
+    }
+    
+    footer .fa-stack-1x {
+      color: var(--text-primary);
+    }
+    
+    footer .fa-stack:hover .fa-stack-2x {
+      color: var(--primary-color);
+    }
+    
+    /* Consistent Container */
+    main.container {
+      margin-top: 2rem;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+    
+    /* Consistent Typography */
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--text-primary);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    h2 {
+      font-size: 1.8rem;
+      margin-top: 2rem;
+    }
+    
+    h3 {
+      font-size: 1.4rem;
+      color: var(--primary-color);
+    }
+    
+    p {
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+    
+    .lead {
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+    
+    hr {
+      border-color: var(--dark-border);
+    }
+    
+    /* Consistent Section Styling */
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--text-primary);
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      color: var(--primary-color);
+      margin-bottom: 3rem;
+    }
+    
+    /* Consistent Tags */
+    .tag {
+      display: inline-block;
+      background-color: rgba(79, 140, 255, 0.1);
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+      border-radius: 4px;
+      padding: 0.3rem 0.6rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  {% include header.html %}
+  
+  <!-- Page Content -->
+  <main role="main" class="container">
+    {{ content }}
+  </main>
+  
+  <!-- Footer -->
+  {% include footer.html %}
+  
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+  <!-- Custom scripts -->
+  {% if site.site-js %}
+    {% for js in site.site-js %}
+      <script src="{{ js }}"></script>
+    {% endfor %}
+  {% endif %}
+</body>
+</html> 

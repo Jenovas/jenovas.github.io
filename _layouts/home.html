@@ -1,0 +1,44 @@
+---
+layout: default
+---
+
+{{ content }}
+
+{% if site.paginate %}
+{% for post in paginator.posts %}
+<div class="post-preview card mb-4">
+  <div class="card-body">
+    <a href="{{ post.url | prepend: site.baseurl }}">
+      <h2 class="post-title">{{ post.title }}</h2>
+      {% if post.subtitle %}
+      <h3 class="post-subtitle text-muted">{{ post.subtitle }}</h3>
+      {% endif %}
+    </a>
+    <p class="post-meta text-muted">
+      Posted on {{ post.date | date: site.date_format }}
+    </p>
+    <div class="post-entry">
+      {{ post.excerpt | strip_html | truncatewords: site.excerpt_length }}
+      <a href="{{ post.url | prepend: site.baseurl }}" class="post-read-more">[Read More]</a>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+{% if paginator.total_pages > 1 %}
+<div class="pagination-container my-5">
+  <ul class="pagination justify-content-center">
+    {% if paginator.previous_page %}
+    <li class="page-item">
+      <a class="page-link" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer</a>
+    </li>
+    {% endif %}
+    {% if paginator.next_page %}
+    <li class="page-item">
+      <a class="page-link" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older &rarr;</a>
+    </li>
+    {% endif %}
+  </ul>
+</div>
+{% endif %}
+{% endif %} 
