@@ -3,7 +3,7 @@ layout: post
 title: "How to Manage State Effectively in Jetpack Compose"
 date: 2025-04-22 23:52:00 +0200
 categories: [tutorials, android-development]
-tags: ["Android", "Kotlin", "Jetpack Compose", "State Management"]
+tags: ["Android", "Kotlin", "Jetpack Compose", "State Management", "MVI"]
 ---
 
 Managing state properly is one of the biggest challenges in any Android application, especially when using Jetpack Compose. In this article, I want to share a setup I've found very effective for keeping Compose apps clean, manageable, and easy to maintain.

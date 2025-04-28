@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Professional
-subtitle: Mobile Lead Developer
+subtitle: Software Engineering Manager
 permalink: /cv/
 ---
 
@@ -10,7 +10,7 @@ permalink: /cv/
     <div class="row align-items-center">
       <div class="col-lg-7 col-md-7 ps-lg-4">
         <h1 class="display-4 text-gradient mb-2">Rafael Skubisz</h1>
-        <h2 class="professional-subtitle mb-4">Mobile Lead Developer with 12+ years experience</h2>
+        <h2 class="professional-subtitle mb-4">Software Engineering Manager with 12+ years experience</h2>
         
         <div class="professional-actions mb-3">
           <a href="/assets/files/RafaelSkubisz_CV.pdf" class="btn btn-primary me-3" download>
@@ -65,7 +65,7 @@ permalink: /cv/
         </div>
         
         <div class="card-content">
-          <p class="summary-text">Born in the U.S., now living in Poland. 12+ years of experience in Android development. Developed 10+ apps and created, maintained, and developed an Android and iOS SDK used by major U.S. digital banking platforms, serving hundreds of financial institutions with 10 million MAUs. Experienced with iOS, Java/Kotlin backends, Ruby on Rails backends, Solidity, and smart contracts on Ethereum. I embrace challenges and adapt quickly to new technologies.</p>
+          <p class="summary-text">Born in the U.S., now living in Poland. 12+ years of experience in mobile and software development. As a Software Engineering Manager, I lead a team of 5 engineers while maintaining hands-on technical contributions. I've developed an Android and iOS SDK used by major U.S. digital banking platforms, serving hundreds of financial institutions with 10 million MAUs. Experienced with iOS, Java/Kotlin backends, Ruby on Rails backends, Solidity, and smart contracts on Ethereum. I embrace challenges, adapt quickly to new technologies, and focus on mentoring and developing my team.</p>
         </div>
       </div>
     </div>
@@ -178,6 +178,34 @@ permalink: /cv/
           <div class="job-header">
             <div class="job-title-container">
               <div class="job-icon">
+                <i class="fas fa-users-cog"></i>
+              </div>
+              <div>
+                <h3>Software Engineering Manager</h3>
+                <div class="company">Pulsate</div>
+              </div>
+            </div>
+            <div class="job-meta">
+              <div class="job-date"><i class="far fa-calendar-alt me-2"></i>July 2023 - Present</div>
+              <div class="location"><i class="fas fa-map-marker-alt me-2"></i>Remote (Ireland Based Company)</div>
+            </div>
+          </div>
+          <div class="job-content">
+            <ul class="job-responsibilities">
+              <li>Lead and mentor a team of 5 engineers (2 backend, 1 mobile, 2 full stack) while maintaining hands-on development (30-50% of time)</li>
+              <li>Set architectural direction, lead design reviews, and uphold technical excellence across the stack</li>
+              <li>Champion AI tools and automation frameworks to improve developer efficiency and code quality</li>
+              <li>Serve as primary technical liaison for customer and partner-facing engagements</li>
+              <li>Define team OKRs and roadmap goals aligned with company priorities</li>
+              <li>Foster team growth through coaching, collaboration, and cross-functional influence</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job-item">
+          <div class="job-header">
+            <div class="job-title-container">
+              <div class="job-icon">
                 <i class="fas fa-laptop-code"></i>
               </div>
               <div>
@@ -186,7 +214,7 @@ permalink: /cv/
               </div>
             </div>
             <div class="job-meta">
-              <div class="job-date"><i class="far fa-calendar-alt me-2"></i>November 2014 - Present</div>
+              <div class="job-date"><i class="far fa-calendar-alt me-2"></i>November 2014 - July 2023</div>
               <div class="location"><i class="fas fa-map-marker-alt me-2"></i>Remote (Ireland Based Company)</div>
             </div>
           </div>

@@ -45,7 +45,7 @@ permalink: /about/
           <div class="card-content">
             <p>My fascination with technology began at an early age when I discovered I could create things that others could interact with. This led me down the path of software development, where I've spent more than a decade focused primarily on mobile applications.</p>
             <p>Having lived in both the United States and Poland, I bring a unique cultural perspective to my work. This background has helped me develop software with global appeal and understand the needs of diverse user bases.</p>
-            <p>Today, I focus on creating solutions in the financial technology sector, but I'm always exploring new technologies and approaches that can push the boundaries of what's possible in mobile development.</p>
+            <p>Today, I serve as a Software Engineering Manager at Pulsate, where I blend hands-on technical leadership with team management. I lead a team of 5 engineers while maintaining technical contributions, focusing on creating solutions in the financial technology sector. I'm passionate about leveraging AI tools and modern technologies to increase productivity and drive innovation, all while mentoring and developing the skills of my team members.</p>
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@
 
 layout: home
 title: Rafael Skubisz
-subtitle: Mobile Lead Developer with 12+ years of experience
+subtitle: Software Engineering Manager with 12+ years of experience
 ---
 
 <div class="container-fluid py-5 hero-section">
@@ -98,8 +98,8 @@ subtitle: Mobile Lead Developer with 12+ years of experience
       <div class="card h-100">
         <div class="card-body d-flex flex-column">
           <h2 class="section-title text-left mb-4">Professional Experience</h2>
-          <p>I currently lead mobile development at Alkami Technology, where I've developed an Android and iOS SDK used by major U.S. digital banking platforms, serving hundreds of financial institutions with 10 million monthly active users.</p>
-          <p>My expertise spans mobile app architecture, SDK development, and team leadership, with a focus on delivering secure, high-performance solutions.</p>
+          <p>I'm currently the Software Engineering Manager at Pulsate, where I lead a team of 5 engineers while also contributing hands-on development (~30-50% of my time). I've developed an Android and iOS SDK used by major U.S. digital banking platforms, serving hundreds of financial institutions with 10 million monthly active users.</p>
+          <p>My expertise spans mobile app architecture, SDK development, team leadership, and mentorship, with a focus on delivering secure, high-performance solutions while fostering growth in my team.</p>
           <div class="mt-auto">
             <a href="/cv/" class="btn btn-primary">
               <i class="fas fa-file-alt mr-2"></i> View My Professional CV
