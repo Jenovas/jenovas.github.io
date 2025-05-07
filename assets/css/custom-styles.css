@@ -292,6 +292,7 @@ li {
   align-items: center;
   justify-content: flex-start;
   width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .skill-card h3 {
@@ -1350,7 +1351,14 @@ pre code {
 /* Media query for hero-section and cta-section padding */
 @media (max-width: 767px) {
   .hero-section, .cta-section {
-    padding: 2.5rem 1rem;
+    padding: 2rem 1.5rem;
+  }
+  
+  .hero-section {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
   
   .welcome-message {
@@ -1363,8 +1371,19 @@ pre code {
   
   .skill-card {
     min-height: 0;
-    padding: 1rem;
+    padding: 1.25rem;
     margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .col-md-6.col-lg-3 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .container.my-5 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
   
   .skill-icon-container {
@@ -1476,4 +1495,99 @@ pre code {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   display: flex;
+}
+
+@media (max-width: 767px) {
+  .hero-section, .cta-section {
+    padding: 2rem 1.5rem;
+  }
+
+  .container-fluid.py-5.hero-section,
+  .container-fluid.py-5.cta-section {
+    margin: 1rem;
+    width: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .container.my-5 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .row.justify-content-center {
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+  }
+  
+  .welcome-message {
+    font-size: 1.75rem;
+  }
+  
+  .welcome-message:after {
+    width: 50px;
+  }
+  
+  .skill-card {
+    min-height: 0;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .col-md-6.col-lg-3 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .skill-icon-container {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .skill-icon {
+    font-size: 1.5rem;
+  }
+  
+  .skill-card h3 {
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .skill-card p {
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+  }
+  
+  #blog-section .card-title {
+    font-size: 1.2rem;
+  }
+  
+  .btn-primary, .btn-outline-primary {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  
+  .cta-section .d-flex {
+    flex-direction: column;
+  }
+  
+  .cta-section .btn {
+    margin: 0.5rem 0;
+  }
 } 
