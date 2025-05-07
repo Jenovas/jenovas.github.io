@@ -327,17 +327,17 @@
           
           <div class="post-tags">
             
-            <a href="/tags#Android" class="badge post-tag">Android</a>
+            <a href="/tags#Android" class="post-tag badge">Android</a>
             
-            <a href="/tags#Kotlin" class="badge post-tag">Kotlin</a>
+            <a href="/tags#Kotlin" class="post-tag badge">Kotlin</a>
             
-            <a href="/tags#Jetpack Compose" class="badge post-tag">Jetpack Compose</a>
+            <a href="/tags#Jetpack Compose" class="post-tag badge">Jetpack Compose</a>
             
-            <a href="/tags#State Management" class="badge post-tag">State Management</a>
+            <a href="/tags#State Management" class="post-tag badge">State Management</a>
             
-            <a href="/tags#MVVM" class="badge post-tag">MVVM</a>
+            <a href="/tags#MVVM" class="post-tag badge">MVVM</a>
             
-            <a href="/tags#MVI" class="badge post-tag">MVI</a>
+            <a href="/tags#MVI" class="post-tag badge">MVI</a>
             
           </div>
           
@@ -346,6 +346,8 @@
         <div class="post-content">
           <p>The battle between MVVM and MVI never ends! Can they not coexist? Like a quote I like “Make Lovecraft Not Warcraft” we’ll try today to do just that.
 If you’ve been using Jetpack Compose, you probably heard about MVVM and MVI. Both patterns help improve state management and testability, but they have different approaches when it comes to events and state changes. Today we’ll explore how each one works, show a simple example, and decide which one is the one true king of patterns! Or maybe both are?</p>
+
+<!--more-->
 
 <hr />
 
@@ -363,7 +365,7 @@ User action → Event/Intent → Business logic
 
 <h2 id="1-a-quick-look-at-mvvm">1. A Quick Look at MVVM</h2>
 
-<p>In MVVM (<code class="language-plaintext highlighter-rouge">Model–View–ViewModel</code>):</p>
+<p>In MVVM (<code class="language-plaintext highlighter-rouge">Model - View - ViewModel</code>):</p>
 
 <ol>
   <li>You keep UI states in a ViewModel (<code class="language-plaintext highlighter-rouge">LiveData</code> or <code class="language-plaintext highlighter-rouge">StateFlow</code>).</li>
@@ -373,10 +375,7 @@ User action → Event/Intent → Business logic
 </ol>
 
 <p>Here is an example:</p>
-
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// UI state</span>
- <span class="kd">data class</span> <span class="nc">CounterState</span><span class="p">(</span><span class="kd">val</span> <span class="py">count</span><span class="p">:</span> <span class="nc">Int</span> <span class="p">=</span> <span class="mi">0</span><span class="p">)</span>
-
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="c1">// ViewModel</span>
 <span class="kd">class</span> <span class="nc">CounterViewModel</span> <span class="p">:</span> <span class="nc">ViewModel</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">private</span> <span class="kd">val</span> <span class="py">_isLoading</span> <span class="p">=</span> <span class="nc">MutableStateFlow</span><span class="p">(</span><span class="k">false</span><span class="p">)</span>
@@ -417,6 +416,7 @@ User action → Event/Intent → Business logic
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
 </code></pre></div></div>
 
 <p><strong>Why MVVM?</strong></p>
@@ -430,14 +430,14 @@ User action → Event/Intent → Business logic
 
 <h2 id="2-stepping-through-mvi">2. Stepping Through MVI</h2>
 
-<p>In MVI (<code class="language-plaintext highlighter-rouge">Model–View–Intent</code>), every user interaction is an <strong>Intent</strong>, and you reduce that intent into a brand-new, immutable <strong>UiState</strong>. The flow looks like:</p>
+<p>In MVI (<code class="language-plaintext highlighter-rouge">Model - View - Intent</code>), every user interaction is an <strong>Intent</strong>, and you reduce that intent into a new, immutable <strong>UiState</strong>. The flow looks like:</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>User action → Intent → Reducer → UiState → UI
 </code></pre></div></div>
 
 <p>Here’s the same example as MVI:</p>
-
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Intents</span>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">// Intents</span>
 <span class="k">sealed</span> <span class="kd">class</span> <span class="nc">CounterIntent</span> <span class="p">{</span>
     <span class="kd">object</span> <span class="nc">Increment</span> <span class="p">:</span> <span class="nc">CounterIntent</span><span class="p">()</span>
     <span class="kd">object</span> <span class="nc">Decrement</span> <span class="p">:</span> <span class="nc">CounterIntent</span><span class="p">()</span>
@@ -483,6 +483,7 @@ User action → Event/Intent → Business logic
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
 </code></pre></div></div>
 
 <p><strong>Why MVI?</strong></p>
@@ -594,7 +595,7 @@ User action → Event/Intent → Business logic
 }
 </style>
 
-<p>Both patterns integrate seamlessly with Compose’s unidirectional rendering. You can even mix them—start with MVVM, then refactor to MVI as your screen’s complexity grows.</p>
+<p>Both patterns integrate seamlessly with Compose’s unidirectional rendering. You can even mix them - start with MVVM, then refactor to MVI as your screen’s complexity grows.</p>
 
 <hr />
 
@@ -650,19 +651,20 @@ User action → Event/Intent → Business logic
   }
   
   .post-tag {
-    background-color: var(--dark-surface);
+    background-color: var(--dark-bg);
     color: var(--primary-color);
-    border: 1px solid var(--dark-border);
+    border: 1px solid var(--primary-color);
     padding: 0.4rem 0.7rem;
     font-size: 0.8rem;
     font-weight: 400;
+    border-radius: 4px;
     text-decoration: none;
     transition: all 0.2s ease;
   }
   
   .post-tag:hover {
     background-color: var(--primary-color);
-    color: var(--dark-surface);
+    color: var(--dark-bg);
     text-decoration: none;
   }
   

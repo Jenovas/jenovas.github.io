@@ -324,21 +324,21 @@
       <div class="container blog-container">
   <div class="posts-list">
     
-    <article class="card mb-4">
+    <article class="card post-card mb-4">
       <div class="card-body">
         <a href="/2025-04-26-mvvm-vs-mvi/">
           <h3 class="card-title">MVVM vs MVI in Android Development: Finding the Right Fit for Your Compose App</h3>
           
         </a>
 
-        <p class="text-muted">
+        <p class="post-meta text-muted">
           Posted on April 26, 2025
         </p>
 
         <div class="post-entry-container">
           
           <div class="post-entry">
-            The battle between MVVM and MVI never ends! Can they not coexist? Like a quote I like “Make Lovecraft Not Warcraft” we’ll try today to do just that. If you’ve been using Jetpack Compose, you probably heard about MVVM and MVI. Both patterns help improve state management and testability, but they have different approaches when it comes to events and state changes. Today we’ll explore how each one works, show...
+            The battle between MVVM and MVI never ends! Can they not coexist? Like a quote I like “Make Lovecraft Not Warcraft” we’ll try today to do just that. If you’ve been using Jetpack Compose, you probably heard about MVVM and MVI. Both patterns help improve state management and testability, but...
             
             
               <a href="/2025-04-26-mvvm-vs-mvi/" class="post-read-more">[Read&nbsp;More]</a>
@@ -347,41 +347,44 @@
         </div>
 
         
-        <div class="mt-3">
+        <div class="post-tags mt-3">
           Tags:
           
-          <span class="tag">Android</span>
+          <span class="post-tag badge">Android</span>
           
-          <span class="tag">Kotlin</span>
+          <span class="post-tag badge">Kotlin</span>
           
-          <span class="tag">Jetpack Compose</span>
+          <span class="post-tag badge">Jetpack Compose</span>
           
-          <span class="tag">State Management</span>
+          <span class="post-tag badge">State Management</span>
           
-          <span class="tag">MVVM</span>
+          <span class="post-tag badge">MVVM</span>
           
-          <span class="tag">MVI</span>
+          <span class="post-tag badge">MVI</span>
           
         </div>
         
       </div>
     </article>
     
-    <article class="card mb-4">
+    <article class="card post-card mb-4">
       <div class="card-body">
         <a href="/2025-04-22-clean-compose-setup/">
           <h3 class="card-title">How to Manage State Effectively in Jetpack Compose</h3>
           
         </a>
 
-        <p class="text-muted">
+        <p class="post-meta text-muted">
           Posted on April 22, 2025
         </p>
 
         <div class="post-entry-container">
           
           <div class="post-entry">
-            Managing state properly is one of the biggest challenges in any Android application, especially when using Jetpack Compose. In this article, I want to share a setup I’ve found very effective for keeping Compose apps clean, manageable, and easy to maintain.
+            State Management Best Practices in Jetpack Compose
+
+Managing state properly is one of the biggest challenges in any Android application, especially when using Jetpack Compose. In this post, we’ll explore a setup that keeps your Compose apps clean, manageable, and easy to maintain.
+
 
             
             
@@ -391,18 +394,18 @@
         </div>
 
         
-        <div class="mt-3">
+        <div class="post-tags mt-3">
           Tags:
           
-          <span class="tag">Android</span>
+          <span class="post-tag badge">Android</span>
           
-          <span class="tag">Kotlin</span>
+          <span class="post-tag badge">Kotlin</span>
           
-          <span class="tag">Jetpack Compose</span>
+          <span class="post-tag badge">Jetpack Compose</span>
           
-          <span class="tag">State Management</span>
+          <span class="post-tag badge">State Management</span>
           
-          <span class="tag">MVI</span>
+          <span class="post-tag badge">MVI</span>
           
         </div>
         
@@ -439,9 +442,76 @@
     margin: 0 auto;
   }
   
+  .post-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--dark-border);
+    background-color: var(--dark-surface);
+    cursor: pointer;
+  }
+  
+  .post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    border-color: var(--primary-color);
+  }
+  
+  .post-card .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s ease;
+  }
+  
+  .post-card:hover .card-title {
+    color: var(--primary-color);
+  }
+  
+  .post-card a {
+    text-decoration: none;
+  }
+  
+  .card-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .post-meta {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .post-entry {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+  
   .post-read-more {
     display: inline-block;
     margin-top: 0.5rem;
+    color: var(--primary-color);
+    font-weight: 500;
+  }
+  
+  .post-read-more:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+  }
+  
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  
+  .post-tag {
+    background-color: var(--dark-bg);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 0.4rem 0.7rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    border-radius: 4px;
   }
   
   .page-link {
@@ -468,6 +538,11 @@
   }
   
   .card-title {
+    display: flex;
+    align-items: center;
+  }
+  
+  .feature-card .card-title {
     display: flex;
     align-items: center;
   }

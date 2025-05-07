@@ -327,111 +327,151 @@
           
           <div class="post-tags">
             
-            <a href="/tags#Android" class="badge post-tag">Android</a>
+            <a href="/tags#Android" class="post-tag badge">Android</a>
             
-            <a href="/tags#Kotlin" class="badge post-tag">Kotlin</a>
+            <a href="/tags#Kotlin" class="post-tag badge">Kotlin</a>
             
-            <a href="/tags#Jetpack Compose" class="badge post-tag">Jetpack Compose</a>
+            <a href="/tags#Jetpack Compose" class="post-tag badge">Jetpack Compose</a>
             
-            <a href="/tags#State Management" class="badge post-tag">State Management</a>
+            <a href="/tags#State Management" class="post-tag badge">State Management</a>
             
-            <a href="/tags#MVI" class="badge post-tag">MVI</a>
+            <a href="/tags#MVI" class="post-tag badge">MVI</a>
             
           </div>
           
         </header>
 
         <div class="post-content">
-          <p>Managing state properly is one of the biggest challenges in any Android application, especially when using Jetpack Compose. In this article, I want to share a setup I’ve found very effective for keeping Compose apps clean, manageable, and easy to maintain.</p>
+          <h1 id="state-management-best-practices-in-jetpack-compose">State Management Best Practices in Jetpack Compose</h1>
 
-<h2 id="why-good-state-management-is-important">Why Good State Management is Important</h2>
+<p>Managing state properly is one of the biggest challenges in any Android application, especially when using Jetpack Compose. In this post, we’ll explore a setup that keeps your Compose apps clean, manageable, and easy to maintain.</p>
 
-<p>Jetpack Compose simplifies state management, but without a solid strategy, your composables can quickly get messy. Effective state management makes your app:</p>
+<!--more-->
+
+<hr />
+
+<h2 id="why-good-state-management-matters">Why Good State Management Matters</h2>
+
+<p>Jetpack Compose makes UI development more straightforward, but without a solid strategy your composables can become messy and hard to follow. With effective state management, your app will be:</p>
 
 <ul>
-  <li>Easier to understand and maintain</li>
-  <li>Simpler to debug and test</li>
-  <li>More scalable as your app grows</li>
+  <li><strong>Easier to understand &amp; maintain</strong></li>
+  <li><strong>Simpler to debug &amp; test</strong></li>
+  <li><strong>More scalable</strong> as new features are added</li>
 </ul>
 
-<p>Here’s my preferred way of structuring state management in Compose apps.</p>
+<p>Below is a step-by-step guide to structuring state in your Compose screens.</p>
 
-<h2 id="recommended-state-management-practices">Recommended State Management Practices</h2>
+<hr />
+
+<h2 id="recommended-practices">Recommended Practices</h2>
 
 <h3 id="1-keep-viewmodels-at-the-top-level">1. Keep ViewModels at the Top Level</h3>
 
-<p>I recommend placing ViewModels only at the top-level composable for each screen. This centralizes your logic and keeps your UI clean. This also greatly helps with creating @Previews with simple fake states.</p>
+<p>Place your ViewModel only at the top-level composable for each screen. This centralizes business logic and keeps your UI code simple. It also makes it easy to create <code class="language-plaintext highlighter-rouge">@Preview</code> functions using fake states.</p>
 
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">screenModel</span> <span class="p">=</span> <span class="n">getScreenModel</span><span class="p">&lt;</span><span class="nc">CleanSetupScreenModel</span><span class="p">&gt;()</span>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Composable</span>
+<span class="k">fun</span> <span class="nf">MyScreen</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="py">screenModel</span> <span class="p">=</span> <span class="n">getScreenModel</span><span class="p">&lt;</span><span class="nc">CleanSetupScreenModel</span><span class="p">&gt;()</span>
+    <span class="nc">CleanSetupScreenContent</span><span class="p">(</span>
+        <span class="n">state</span> <span class="p">=</span> <span class="n">screenModel</span><span class="p">.</span><span class="n">state</span><span class="p">.</span><span class="nf">collectAsStateWithLifecycle</span><span class="p">().</span><span class="n">value</span><span class="p">,</span>
+        <span class="n">event</span> <span class="p">=</span> <span class="n">screenModel</span><span class="o">::</span><span class="n">handleEvent</span>
+    <span class="p">)</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
-<h3 id="2-use-a-single-stateflow-for-screen-state">2. Use a Single StateFlow for Screen State</h3>
+<h3 id="2-use-a-single-stateflow-for-screen-state">2. Use a Single <code class="language-plaintext highlighter-rouge">StateFlow</code> for Screen State</h3>
 
-<p>Instead of juggling multiple states, use one <code class="language-plaintext highlighter-rouge">StateFlow</code> that represents your entire screen state. You can use a sealed class to manage different UI states (Loading, Success, Error):</p>
+<p>Rather than juggling multiple state holders, expose <strong>one</strong> <code class="language-plaintext highlighter-rouge">StateFlow</code> that represents the entire screen’s UI state. A sealed class helps manage all possible states:</p>
 
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">sealed</span> <span class="kd">class</span> <span class="nc">CleanSetupScreenState</span> <span class="p">{</span>
     <span class="kd">object</span> <span class="nc">Loading</span> <span class="p">:</span> <span class="nc">CleanSetupScreenState</span><span class="p">()</span>
-
-    <span class="kd">data class</span> <span class="nc">Error</span><span class="p">(</span><span class="kd">val</span> <span class="py">error</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">:</span> <span class="nc">CleanSetupScreenState</span><span class="p">()</span>
-
+    <span class="kd">data class</span> <span class="nc">Error</span><span class="p">(</span><span class="kd">val</span> <span class="py">message</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">:</span> <span class="nc">CleanSetupScreenState</span><span class="p">()</span>
     <span class="kd">data class</span> <span class="nc">Success</span><span class="p">(</span>
         <span class="kd">val</span> <span class="py">someIntValue</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span>
         <span class="kd">val</span> <span class="py">someStringValue</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
-        <span class="kd">val</span> <span class="py">cleanSetupDataClass</span><span class="p">:</span> <span class="nc">CleanSetupDataClass</span>
+        <span class="kd">val</span> <span class="py">data</span><span class="p">:</span> <span class="nc">CleanSetupDataClass</span>
     <span class="p">)</span> <span class="p">:</span> <span class="nc">CleanSetupScreenState</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>This simplifies your UI code significantly. As your app grows you’ll quickly find that a single screen can require 10+ states and your composable gets “ugly” pretty quickly, using a single state fixes that.</p>
+<blockquote>
+  <p><strong>Benefit:</strong> Your composable only needs a single <code class="language-plaintext highlighter-rouge">when</code> block to render every state.</p>
+</blockquote>
 
 <h3 id="3-handle-events-with-one-callback">3. Handle Events with One Callback</h3>
 
-<p>Keep your UI events organized by using a single callback method from the ViewModel. As your app grows you’ll quickly find that you’ll be passing sometimes 10+ on click / event callbacks to every single composable. This get’s hard to manage and understand what happens where and what callback does what.</p>
-
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">CleanSetupScreenContent</span><span class="p">(</span>
-    <span class="n">state</span><span class="p">,</span>
-    <span class="n">screenModel</span><span class="o">::</span><span class="n">handleEvent</span>
-<span class="p">)</span>
-</code></pre></div></div>
-
-<p>Use a sealed class for event handling as well:</p>
+<p>Avoid passing dozens of lambdas into your UI. Instead, define a single event callback on your ViewModel:</p>
 
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">sealed</span> <span class="kd">class</span> <span class="nc">CleanSetupScreenEvent</span> <span class="p">{</span>
     <span class="kd">object</span> <span class="nc">Refresh</span> <span class="p">:</span> <span class="nc">CleanSetupScreenEvent</span><span class="p">()</span>
-    <span class="kd">data class</span> <span class="nc">ToggleFavourite</span><span class="p">(</span><span class="kd">val</span> <span class="py">clickedDataClass</span><span class="p">:</span> <span class="nc">CleanSetupDataClass</span><span class="p">)</span> <span class="p">:</span> <span class="nc">CleanSetupScreenEvent</span><span class="p">()</span>
+    <span class="kd">data class</span> <span class="nc">ToggleFavourite</span><span class="p">(</span><span class="kd">val</span> <span class="py">item</span><span class="p">:</span> <span class="nc">CleanSetupDataClass</span><span class="p">)</span> <span class="p">:</span> <span class="nc">CleanSetupScreenEvent</span><span class="p">()</span>
     <span class="kd">object</span> <span class="nc">NavigateBack</span> <span class="p">:</span> <span class="nc">CleanSetupScreenEvent</span><span class="p">()</span>
     <span class="kd">object</span> <span class="nc">NavigateToSettings</span> <span class="p">:</span> <span class="nc">CleanSetupScreenEvent</span><span class="p">()</span>
 <span class="p">}</span>
+
+<span class="nd">@Composable</span>
+<span class="k">fun</span> <span class="nf">CleanSetupScreenContent</span><span class="p">(</span>
+    <span class="n">state</span><span class="p">:</span> <span class="nc">CleanSetupScreenState</span><span class="p">,</span>
+    <span class="n">event</span><span class="p">:</span> <span class="p">(</span><span class="nc">CleanSetupScreenEvent</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nc">Unit</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// UI here...</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
-<h3 id="4-channels-for-one-time-events">4. Channels for One-Time Events</h3>
+<p>Call it like:</p>
 
-<p>To handle one-time actions like navigation or snackbar notifications, channels are ideal:</p>
-
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="kd">val</span> <span class="py">_effects</span> <span class="p">=</span> <span class="nc">Channel</span><span class="p">&lt;</span><span class="nc">UiEffect</span><span class="p">&gt;()</span>
-<span class="kd">val</span> <span class="py">effects</span> <span class="p">=</span> <span class="n">_effects</span><span class="p">.</span><span class="nf">receiveAsFlow</span><span class="p">()</span>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">CleanSetupScreenContent</span><span class="p">(</span>
+    <span class="n">state</span> <span class="p">=</span> <span class="n">state</span><span class="p">,</span>
+    <span class="n">event</span> <span class="p">=</span> <span class="n">screenModel</span><span class="o">::</span><span class="n">handleEvent</span>
+<span class="p">)</span>
 </code></pre></div></div>
 
-<p>Collect these effects easily in your composable:</p>
+<h3 id="4-use-channels-for-one-time-events">4. Use Channels for One-Time Events</h3>
 
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">ObserveAsEvents</span><span class="p">(</span><span class="n">effects</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">when</span> <span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">is</span> <span class="nc">UiEffect</span><span class="p">.</span><span class="nc">NavigateBack</span> <span class="p">-&gt;</span> <span class="n">navigator</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
-        <span class="k">is</span> <span class="nc">UiEffect</span><span class="p">.</span><span class="nc">NavigateToSettings</span> <span class="p">-&gt;</span> <span class="n">navigator</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nc">SettingsScreen</span><span class="p">())</span>
+<p>For navigation, snackbars, or other single-shot effects, channels are perfect:</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">CleanSetupViewModel</span> <span class="p">:</span> <span class="nc">ViewModel</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">_effects</span> <span class="p">=</span> <span class="nc">Channel</span><span class="p">&lt;</span><span class="nc">UiEffect</span><span class="p">&gt;()</span>
+    <span class="kd">val</span> <span class="py">effects</span> <span class="p">=</span> <span class="n">_effects</span><span class="p">.</span><span class="nf">receiveAsFlow</span><span class="p">()</span>
+
+    <span class="k">fun</span> <span class="nf">handleEvent</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nc">CleanSetupScreenEvent</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">when</span> <span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nc">CleanSetupScreenEvent</span><span class="p">.</span><span class="nc">NavigateBack</span> <span class="p">-&gt;</span>
+                <span class="n">viewModelScope</span><span class="p">.</span><span class="nf">launch</span> <span class="p">{</span> <span class="n">_effects</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="nc">UiEffect</span><span class="p">.</span><span class="nc">NavigateBack</span><span class="p">)</span> <span class="p">}</span>
+            <span class="c1">// …</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Collect and act on them in your composable:</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Composable</span>
+<span class="k">fun</span> <span class="nf">ObserveEffects</span><span class="p">(</span><span class="n">effects</span><span class="p">:</span> <span class="nc">Flow</span><span class="p">&lt;</span><span class="nc">UiEffect</span><span class="p">&gt;,</span> <span class="n">navigator</span><span class="p">:</span> <span class="nc">Navigator</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nc">LaunchedEffect</span><span class="p">(</span><span class="n">effects</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">effects</span><span class="p">.</span><span class="nf">collect</span> <span class="p">{</span> <span class="n">effect</span> <span class="p">-&gt;</span>
+            <span class="k">when</span> <span class="p">(</span><span class="n">effect</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">is</span> <span class="nc">UiEffect</span><span class="p">.</span><span class="nc">NavigateBack</span> <span class="p">-&gt;</span> <span class="n">navigator</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+                <span class="k">is</span> <span class="nc">UiEffect</span><span class="p">.</span><span class="nc">NavigateToSettings</span> <span class="p">-&gt;</span> <span class="n">navigator</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nc">SettingsScreen</span><span class="p">())</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
 <h3 id="5-lifecycle-aware-state-collection">5. Lifecycle-Aware State Collection</h3>
 
-<p>Use <code class="language-plaintext highlighter-rouge">collectAsStateWithLifecycle</code> to safely collect your state according to the composable lifecycle:</p>
+<p>Prevent leaks and avoid stale UI by using lifecycle–aware collection:</p>
 
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">state</span> <span class="k">by</span> <span class="n">screenModel</span><span class="p">.</span><span class="n">state</span><span class="p">.</span><span class="nf">collectAsStateWithLifecycle</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p>This prevents common lifecycle-related bugs and ensures efficient resource use.</p>
+<p>This automatically ties collection to the composable’s lifecycle.</p>
 
-<h2 id="example-of-a-clean-setup">Example of a Clean Setup</h2>
+<hr />
+
+<h2 id="putting-it-all-together">Putting It All Together</h2>
 
 <p>Here’s a concise example showing these practices in action:</p>
 
@@ -441,37 +481,59 @@
     <span class="n">event</span><span class="p">:</span> <span class="p">(</span><span class="nc">CleanSetupScreenEvent</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nc">Unit</span>
 <span class="p">)</span> <span class="p">{</span>
     <span class="nc">Scaffold</span><span class="p">(</span>
-        <span class="n">topBar</span> <span class="p">=</span> <span class="p">{</span> <span class="nc">CleanSetupTopBar</span><span class="p">()</span> <span class="p">},</span>
+        <span class="n">topBar</span>    <span class="p">=</span> <span class="p">{</span> <span class="nc">CleanSetupTopBar</span><span class="p">()</span> <span class="p">},</span>
         <span class="n">bottomBar</span> <span class="p">=</span> <span class="p">{</span> <span class="nc">CleanSetupBottomBar</span><span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="p">}</span>
-    <span class="p">)</span> <span class="p">{</span>
-        <span class="nc">Box</span><span class="p">(</span><span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">fillMaxSize</span><span class="p">().</span><span class="nf">padding</span><span class="p">(</span><span class="n">it</span><span class="p">))</span> <span class="p">{</span>
+    <span class="p">)</span> <span class="p">{</span> <span class="n">padding</span> <span class="p">-&gt;</span>
+        <span class="nc">Box</span><span class="p">(</span>
+            <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span>
+                <span class="p">.</span><span class="nf">fillMaxSize</span><span class="p">()</span>
+                <span class="p">.</span><span class="nf">padding</span><span class="p">(</span><span class="n">padding</span><span class="p">)</span>
+        <span class="p">)</span> <span class="p">{</span>
             <span class="k">when</span> <span class="p">(</span><span class="n">state</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">is</span> <span class="nc">CleanSetupScreenState</span><span class="p">.</span><span class="nc">Loading</span> <span class="p">-&gt;</span> <span class="nc">CleanSetupLoadingIndicator</span><span class="p">(</span><span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">align</span><span class="p">(</span><span class="nc">Alignment</span><span class="p">.</span><span class="nc">Center</span><span class="p">))</span>
-                <span class="k">is</span> <span class="nc">CleanSetupScreenState</span><span class="p">.</span><span class="nc">Error</span> <span class="p">-&gt;</span> <span class="nc">CleanSetupError</span><span class="p">(</span><span class="n">state</span><span class="p">.</span><span class="n">error</span><span class="p">,</span> <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">align</span><span class="p">(</span><span class="nc">Alignment</span><span class="p">.</span><span class="nc">Center</span><span class="p">))</span>
-                <span class="k">is</span> <span class="nc">CleanSetupScreenState</span><span class="p">.</span><span class="nc">Success</span> <span class="p">-&gt;</span> <span class="nc">CleanSetupContent</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">event</span><span class="p">)</span>
+                <span class="k">is</span> <span class="nc">CleanSetupScreenState</span><span class="p">.</span><span class="nc">Loading</span> <span class="p">-&gt;</span>
+                    <span class="nc">CleanSetupLoadingIndicator</span><span class="p">(</span><span class="nc">Modifier</span><span class="p">.</span><span class="nf">align</span><span class="p">(</span><span class="nc">Alignment</span><span class="p">.</span><span class="nc">Center</span><span class="p">))</span>
+
+                <span class="k">is</span> <span class="nc">CleanSetupScreenState</span><span class="p">.</span><span class="nc">Error</span> <span class="p">-&gt;</span>
+                    <span class="nc">CleanSetupError</span><span class="p">(</span><span class="n">state</span><span class="p">.</span><span class="n">message</span><span class="p">,</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">align</span><span class="p">(</span><span class="nc">Alignment</span><span class="p">.</span><span class="nc">Center</span><span class="p">))</span>
+
+                <span class="k">is</span> <span class="nc">CleanSetupScreenState</span><span class="p">.</span><span class="nc">Success</span> <span class="p">-&gt;</span>
+                    <span class="nc">CleanSetupContent</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">event</span><span class="p">)</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>This clear separation keeps the UI easy to read and update.</p>
+<hr />
 
-<h2 id="why-this-method-works">Why This Method Works</h2>
+<h2 id="why-this-works">Why This Works</h2>
 
-<p>I’ve found this method consistently helpful because it:</p>
 <ul>
-  <li>Makes debugging straightforward</li>
-  <li>Keeps UI code clean and focused</li>
-  <li>Simplifies testing significantly</li>
-  <li>Scales well as the project grows</li>
+  <li><strong>Debugging</strong> becomes straightforward</li>
+  <li><strong>UI code</strong> stays clean and focused</li>
+  <li><strong>Testing</strong> is much easier</li>
+  <li><strong>Scalability</strong>: you can add new states or events without rewriting every composable</li>
 </ul>
+
+<hr />
 
 <h2 id="final-thoughts">Final Thoughts</h2>
 
-<p>Good state management in Jetpack Compose doesn’t have to be complicated. By following these simple practices, you’ll find your Compose apps become easier and more enjoyable to develop.</p>
+<p>Good state management in Jetpack Compose doesn’t have to be complicated. By:</p>
 
-<p>Give this method a try in your next project and see the difference it makes!</p>
+<ol>
+  <li>Centralizing ViewModels</li>
+  <li>Using a single <code class="language-plaintext highlighter-rouge">StateFlow</code></li>
+  <li>Handling events via a sealed callback</li>
+  <li>Leveraging channels for one-time effects</li>
+  <li>Collecting state lifecycle-aware</li>
+</ol>
+
+<p>…you’ll find your Compose apps more robust, maintainable, and enjoyable to develop.</p>
+
+<blockquote>
+  <p>Give it a try in your next project and experience the difference!</p>
+</blockquote>
 
 <h2 id="full-code">Full Code</h2>
 
@@ -860,19 +922,20 @@
   }
   
   .post-tag {
-    background-color: var(--dark-surface);
+    background-color: var(--dark-bg);
     color: var(--primary-color);
-    border: 1px solid var(--dark-border);
+    border: 1px solid var(--primary-color);
     padding: 0.4rem 0.7rem;
     font-size: 0.8rem;
     font-weight: 400;
+    border-radius: 4px;
     text-decoration: none;
     transition: all 0.2s ease;
   }
   
   .post-tag:hover {
     background-color: var(--primary-color);
-    color: var(--dark-surface);
+    color: var(--dark-bg);
     text-decoration: none;
   }
   
