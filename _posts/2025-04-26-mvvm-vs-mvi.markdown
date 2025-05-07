@@ -9,6 +9,8 @@ tags: ["Android", "Kotlin", "Jetpack Compose", "State Management", "MVVM", "MVI"
 The battle between MVVM and MVI never ends! Can they not coexist? Like a quote I like "Make Lovecraft Not Warcraft" we'll try today to do just that.
 If you've been using Jetpack Compose, you probably heard about MVVM and MVI. Both patterns help improve state management and testability, but they have different approaches when it comes to events and state changes. Today we'll explore how each one works, show a simple example, and decide which one is the one true king of patterns! Or maybe both are?
 
+<!--more-->
+
 ---
 
 ## Why Architecture Matters
@@ -26,7 +28,7 @@ This ensures Compose always observes a single source of truth.
 
 ## 1. A Quick Look at MVVM
 
-In MVVM (`Model–View–ViewModel`):
+In MVVM (`Model - View - ViewModel`):
 
 1. You keep UI states in a ViewModel (`LiveData` or `StateFlow`).
 2. Composables collects or observes those states and recompose on changes.
@@ -34,10 +36,7 @@ In MVVM (`Model–View–ViewModel`):
 4. You have multiple states that are all exposed and collected by Composables.
 
 Here is an example:
-
 ```kotlin
-// UI state
- data class CounterState(val count: Int = 0)
 
 // ViewModel
 class CounterViewModel : ViewModel() {
@@ -79,6 +78,7 @@ fun CounterScreen(viewModel: CounterViewModel = viewModel()) {
         }
     }
 }
+
 ```
 
 **Why MVVM?**
@@ -90,15 +90,15 @@ fun CounterScreen(viewModel: CounterViewModel = viewModel()) {
 
 ## 2. Stepping Through MVI
 
-In MVI (`Model–View–Intent`), every user interaction is an **Intent**, and you reduce that intent into a brand-new, immutable **UiState**. The flow looks like:
+In MVI (`Model - View - Intent`), every user interaction is an **Intent**, and you reduce that intent into a new, immutable **UiState**. The flow looks like:
 
 ```text
 User action → Intent → Reducer → UiState → UI
 ```
 
 Here's the same example as MVI:
-
 ```kotlin
+
 // Intents
 sealed class CounterIntent {
     object Increment : CounterIntent()
@@ -145,6 +145,7 @@ fun CounterMviScreen(viewModel: CounterMviViewModel = viewModel()) {
         }
     }
 }
+
 ```
 
 **Why MVI?**
@@ -254,7 +255,7 @@ fun CounterMviScreen(viewModel: CounterMviViewModel = viewModel()) {
 }
 </style>
 
-Both patterns integrate seamlessly with Compose's unidirectional rendering. You can even mix them—start with MVVM, then refactor to MVI as your screen's complexity grows.
+Both patterns integrate seamlessly with Compose's unidirectional rendering. You can even mix them - start with MVVM, then refactor to MVI as your screen's complexity grows.
 
 ---
 

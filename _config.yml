@@ -63,13 +63,16 @@ share-links-active:
 url-pretty: "jenovas.github.io"
 
 # Excerpt word length - Truncate the excerpt of each post on the feed page to the specified number of words
-excerpt_length: 70
+excerpt_length: 50
 
 # Whether or not to show an excerpt for every blog post in the feed page
 feed_show_excerpt: true
 
 # Whether or not to show a list of tags below each post preview in the feed page
 feed_show_tags: true
+
+# Add excerpt separator to control where excerpts cut off
+excerpt_separator: <!--more-->
 
 # The keywords to associate with your website, for SEO purposes
 keywords: "portfolio, blog, cv, personal-website, developer, programmer, web-developer"

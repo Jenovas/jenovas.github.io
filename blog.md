@@ -8,16 +8,16 @@ permalink: /blog/
 <div class="container blog-container">
   <div class="posts-list">
     {% for post in site.posts %}
-    <article class="card mb-4">
+    <article class="card post-card mb-4">
       <div class="card-body">
         <a href="{{ post.url | relative_url }}">
           <h3 class="card-title">{{ post.title }}</h3>
           {% if post.subtitle %}
-            <h4 class="text-muted">{{ post.subtitle }}</h4>
+            <h4 class="card-subtitle text-muted">{{ post.subtitle }}</h4>
           {% endif %}
         </a>
 
-        <p class="text-muted">
+        <p class="post-meta text-muted">
           Posted on {{ post.date | date: site.date_format }}
         </p>
 
@@ -39,10 +39,10 @@ permalink: /blog/
         </div>
 
         {% if post.tags.size > 0 %}
-        <div class="mt-3">
+        <div class="post-tags mt-3">
           Tags:
           {% for tag in post.tags %}
-          <span class="tag">{{ tag }}</span>
+          <span class="post-tag badge">{{ tag }}</span>
           {% endfor %}
         </div>
         {% endif %}
@@ -94,9 +94,76 @@ permalink: /blog/
     margin: 0 auto;
   }
   
+  .post-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--dark-border);
+    background-color: var(--dark-surface);
+    cursor: pointer;
+  }
+  
+  .post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    border-color: var(--primary-color);
+  }
+  
+  .post-card .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s ease;
+  }
+  
+  .post-card:hover .card-title {
+    color: var(--primary-color);
+  }
+  
+  .post-card a {
+    text-decoration: none;
+  }
+  
+  .card-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .post-meta {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .post-entry {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+  
   .post-read-more {
     display: inline-block;
     margin-top: 0.5rem;
+    color: var(--primary-color);
+    font-weight: 500;
+  }
+  
+  .post-read-more:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+  }
+  
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  
+  .post-tag {
+    background-color: var(--dark-bg);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 0.4rem 0.7rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    border-radius: 4px;
   }
   
   .page-link {
@@ -123,6 +190,11 @@ permalink: /blog/
   }
   
   .card-title {
+    display: flex;
+    align-items: center;
+  }
+  
+  .feature-card .card-title {
     display: flex;
     align-items: center;
   }

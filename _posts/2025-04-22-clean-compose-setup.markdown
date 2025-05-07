@@ -6,101 +6,139 @@ categories: [tutorials, android-development]
 tags: ["Android", "Kotlin", "Jetpack Compose", "State Management", "MVI"]
 ---
 
-Managing state properly is one of the biggest challenges in any Android application, especially when using Jetpack Compose. In this article, I want to share a setup I've found very effective for keeping Compose apps clean, manageable, and easy to maintain.
+# State Management Best Practices in Jetpack Compose
 
-## Why Good State Management is Important
+Managing state properly is one of the biggest challenges in any Android application, especially when using Jetpack Compose. In this post, we'll explore a setup that keeps your Compose apps clean, manageable, and easy to maintain.
 
-Jetpack Compose simplifies state management, but without a solid strategy, your composables can quickly get messy. Effective state management makes your app:
+<!--more-->
 
-- Easier to understand and maintain
-- Simpler to debug and test
-- More scalable as your app grows
+---
 
-Here's my preferred way of structuring state management in Compose apps.
+## Why Good State Management Matters
 
-## Recommended State Management Practices
+Jetpack Compose makes UI development more straightforward, but without a solid strategy your composables can become messy and hard to follow. With effective state management, your app will be:
+
+- **Easier to understand & maintain**  
+- **Simpler to debug & test**  
+- **More scalable** as new features are added  
+
+Below is a step-by-step guide to structuring state in your Compose screens.
+
+---
+
+## Recommended Practices
 
 ### 1. Keep ViewModels at the Top Level
 
-I recommend placing ViewModels only at the top-level composable for each screen. This centralizes your logic and keeps your UI clean. This also greatly helps with creating @Previews with simple fake states.
+Place your ViewModel only at the top-level composable for each screen. This centralizes business logic and keeps your UI code simple. It also makes it easy to create `@Preview` functions using fake states.
 
 ```kotlin
-val screenModel = getScreenModel<CleanSetupScreenModel>()
+@Composable
+fun MyScreen() {
+    val screenModel = getScreenModel<CleanSetupScreenModel>()
+    CleanSetupScreenContent(
+        state = screenModel.state.collectAsStateWithLifecycle().value,
+        event = screenModel::handleEvent
+    )
+}
 ```
 
-### 2. Use a Single StateFlow for Screen State
+### 2. Use a Single `StateFlow` for Screen State
 
-Instead of juggling multiple states, use one `StateFlow` that represents your entire screen state. You can use a sealed class to manage different UI states (Loading, Success, Error):
+Rather than juggling multiple state holders, expose **one** `StateFlow` that represents the entire screen's UI state. A sealed class helps manage all possible states:
 
 ```kotlin
 sealed class CleanSetupScreenState {
     object Loading : CleanSetupScreenState()
-
-    data class Error(val error: String) : CleanSetupScreenState()
-
+    data class Error(val message: String) : CleanSetupScreenState()
     data class Success(
         val someIntValue: Int,
         val someStringValue: String,
-        val cleanSetupDataClass: CleanSetupDataClass
+        val data: CleanSetupDataClass
     ) : CleanSetupScreenState()
 }
 ```
 
-This simplifies your UI code significantly. As your app grows you'll quickly find that a single screen can require 10+ states and your composable gets "ugly" pretty quickly, using a single state fixes that.
+> **Benefit:** Your composable only needs a single `when` block to render every state.
 
 ### 3. Handle Events with One Callback
 
-Keep your UI events organized by using a single callback method from the ViewModel. As your app grows you'll quickly find that you'll be passing sometimes 10+ on click / event callbacks to every single composable. This get's hard to manage and understand what happens where and what callback does what.
-
-```kotlin
-CleanSetupScreenContent(
-    state,
-    screenModel::handleEvent
-)
-```
-
-Use a sealed class for event handling as well:
+Avoid passing dozens of lambdas into your UI. Instead, define a single event callback on your ViewModel:
 
 ```kotlin
 sealed class CleanSetupScreenEvent {
     object Refresh : CleanSetupScreenEvent()
-    data class ToggleFavourite(val clickedDataClass: CleanSetupDataClass) : CleanSetupScreenEvent()
+    data class ToggleFavourite(val item: CleanSetupDataClass) : CleanSetupScreenEvent()
     object NavigateBack : CleanSetupScreenEvent()
     object NavigateToSettings : CleanSetupScreenEvent()
 }
+
+@Composable
+fun CleanSetupScreenContent(
+    state: CleanSetupScreenState,
+    event: (CleanSetupScreenEvent) -> Unit
+) {
+    // UI here...
+}
 ```
 
-### 4. Channels for One-Time Events
-
-To handle one-time actions like navigation or snackbar notifications, channels are ideal:
+Call it like:
 
 ```kotlin
-private val _effects = Channel<UiEffect>()
-val effects = _effects.receiveAsFlow()
+CleanSetupScreenContent(
+    state = state,
+    event = screenModel::handleEvent
+)
 ```
 
-Collect these effects easily in your composable:
+### 4. Use Channels for One-Time Events
+
+For navigation, snackbars, or other single-shot effects, channels are perfect:
 
 ```kotlin
-ObserveAsEvents(effects) {
-    when (it) {
-        is UiEffect.NavigateBack -> navigator.pop()
-        is UiEffect.NavigateToSettings -> navigator.push(SettingsScreen())
+class CleanSetupViewModel : ViewModel() {
+    private val _effects = Channel<UiEffect>()
+    val effects = _effects.receiveAsFlow()
+
+    fun handleEvent(event: CleanSetupScreenEvent) {
+        when (event) {
+            CleanSetupScreenEvent.NavigateBack ->
+                viewModelScope.launch { _effects.send(UiEffect.NavigateBack) }
+            // …
+        }
+    }
+}
+```
+
+Collect and act on them in your composable:
+
+```kotlin
+@Composable
+fun ObserveEffects(effects: Flow<UiEffect>, navigator: Navigator) {
+    LaunchedEffect(effects) {
+        effects.collect { effect ->
+            when (effect) {
+                is UiEffect.NavigateBack -> navigator.pop()
+                is UiEffect.NavigateToSettings -> navigator.push(SettingsScreen())
+            }
+        }
     }
 }
 ```
 
 ### 5. Lifecycle-Aware State Collection
 
-Use `collectAsStateWithLifecycle` to safely collect your state according to the composable lifecycle:
+Prevent leaks and avoid stale UI by using lifecycle–aware collection:
 
 ```kotlin
 val state by screenModel.state.collectAsStateWithLifecycle()
 ```
 
-This prevents common lifecycle-related bugs and ensures efficient resource use.
+This automatically ties collection to the composable's lifecycle.
 
-## Example of a Clean Setup
+---
+
+## Putting It All Together
 
 Here's a concise example showing these practices in action:
 
@@ -111,35 +149,55 @@ fun CleanSetupScreenContent(
     event: (CleanSetupScreenEvent) -> Unit
 ) {
     Scaffold(
-        topBar = { CleanSetupTopBar() },
+        topBar    = { CleanSetupTopBar() },
         bottomBar = { CleanSetupBottomBar(event) }
-    ) {
-        Box(modifier = Modifier.fillMaxSize().padding(it)) {
+    ) { padding ->
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+        ) {
             when (state) {
-                is CleanSetupScreenState.Loading -> CleanSetupLoadingIndicator(modifier = Modifier.align(Alignment.Center))
-                is CleanSetupScreenState.Error -> CleanSetupError(state.error, modifier = Modifier.align(Alignment.Center))
-                is CleanSetupScreenState.Success -> CleanSetupContent(state, event)
+                is CleanSetupScreenState.Loading ->
+                    CleanSetupLoadingIndicator(Modifier.align(Alignment.Center))
+
+                is CleanSetupScreenState.Error ->
+                    CleanSetupError(state.message, Modifier.align(Alignment.Center))
+
+                is CleanSetupScreenState.Success ->
+                    CleanSetupContent(state, event)
             }
         }
     }
 }
 ```
 
-This clear separation keeps the UI easy to read and update.
+---
 
-## Why This Method Works
+## Why This Works
 
-I've found this method consistently helpful because it:
-- Makes debugging straightforward
-- Keeps UI code clean and focused
-- Simplifies testing significantly
-- Scales well as the project grows
+- **Debugging** becomes straightforward  
+- **UI code** stays clean and focused  
+- **Testing** is much easier  
+- **Scalability**: you can add new states or events without rewriting every composable  
+
+---
 
 ## Final Thoughts
 
-Good state management in Jetpack Compose doesn't have to be complicated. By following these simple practices, you'll find your Compose apps become easier and more enjoyable to develop.
+Good state management in Jetpack Compose doesn't have to be complicated. By:
 
-Give this method a try in your next project and see the difference it makes!
+1. Centralizing ViewModels  
+2. Using a single `StateFlow`  
+3. Handling events via a sealed callback  
+4. Leveraging channels for one-time effects  
+5. Collecting state lifecycle-aware  
+
+…you'll find your Compose apps more robust, maintainable, and enjoyable to develop.
+
+> Give it a try in your next project and experience the difference!
+
+
 
 ## Full Code
 
