@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>Jetpack Compose - Clean Architecture, How to manage state</title>
+  
+  
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom styles -->
+  
+    
+      <link rel="stylesheet" href="/assets/css/custom-styles.css">
+    
+  
+  
+  <style>
+    /* Dark theme with blue accents */
+    :root {
+      --primary-color: #4f8cff;
+      --primary-hover: #3a7dff;
+      --dark-bg: #0d1117;
+      --dark-surface: #161b22;
+      --dark-border: #30363d;
+      --text-primary: #e6edf3;
+      --text-secondary: #8b949e;
+      --text-muted: #6e7681;
+    }
+    
+    body {
+      background-color: var(--dark-bg);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      padding-top: 56px !important;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    main {
+      flex: 1 0 auto;
+    }
+    
+    a {
+      color: var(--primary-color);
+      transition: color 0.2s ease;
+    }
+    
+    a:hover {
+      color: var(--primary-hover);
+      text-decoration: none;
+    }
+    
+    /* Consistent Navigation */
+    .navbar {
+      background-color: var(--dark-surface) !important;
+      border-bottom: 1px solid var(--dark-border);
+    }
+    
+    .navbar-brand {
+      color: var(--primary-color) !important;
+      font-weight: 600;
+    }
+    
+    .navbar-light .navbar-nav .nav-link {
+      color: var(--text-secondary) !important;
+      padding: 0.5rem 1rem;
+      transition: all 0.2s ease;
+    }
+    
+    .navbar-light .navbar-nav .nav-link:hover,
+    .navbar-light .navbar-nav .nav-link:focus {
+      color: var(--primary-color) !important;
+      background-color: rgba(79, 140, 255, 0.1);
+      border-radius: 4px;
+    }
+    
+    .navbar-light .navbar-toggler {
+      border-color: var(--dark-border);
+    }
+    
+    .navbar-light .navbar-toggler-icon {
+      filter: invert(0.8);
+    }
+    
+    /* Consistent Buttons */
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      transition: all 0.2s ease;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+      border-color: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-outline-primary {
+      color: var(--primary-color);
+      border-color: var(--primary-color);
+      transition: all 0.2s ease;
+    }
+    
+    .btn-outline-primary:hover {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Consistent Cards */
+    .card {
+      background-color: var(--dark-surface);
+      border: 1px solid var(--dark-border);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 2rem;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .card-title {
+      color: var(--text-primary);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    /* Standardized Headers */
+    .header-section {
+      padding: 3rem 0;
+      margin-bottom: 3rem;
+      text-align: center;
+      background-color: var(--dark-surface);
+      border-bottom: 1px solid var(--dark-border);
+    }
+    
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .page-subtitle {
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    
+    .divider {
+      width: 80px;
+      margin: 1rem auto;
+      border-top: 3px solid var(--primary-color);
+    }
+    
+    /* Consistent Footer */
+    footer {
+      background-color: var(--dark-surface);
+      color: var(--text-secondary);
+      padding: 2rem 0;
+      margin-top: 3rem;
+      border-top: 1px solid var(--dark-border);
+      flex-shrink: 0;
+    }
+    
+    footer .fa-stack-2x {
+      color: var(--dark-bg);
+    }
+    
+    footer .fa-stack-1x {
+      color: var(--text-primary);
+    }
+    
+    footer .fa-stack:hover .fa-stack-2x {
+      color: var(--primary-color);
+    }
+    
+    /* Consistent Container */
+    main.container {
+      margin-top: 2rem;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+    
+    /* Consistent Typography */
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--text-primary);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    h2 {
+      font-size: 1.8rem;
+      margin-top: 2rem;
+    }
+    
+    h3 {
+      font-size: 1.4rem;
+      color: var(--primary-color);
+    }
+    
+    p {
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+    
+    .lead {
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+    
+    hr {
+      border-color: var(--dark-border);
+    }
+    
+    /* Consistent Section Styling */
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--text-primary);
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      color: var(--primary-color);
+      margin-bottom: 3rem;
+    }
+    
+    /* Consistent Tags */
+    .tag {
+      display: inline-block;
+      background-color: rgba(79, 140, 255, 0.1);
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+      border-radius: 4px;
+      padding: 0.3rem 0.6rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <!-- Modern dark theme navigation header -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="https://jenovas.github.io">Rafael Skubisz</a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">Personal</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/cv/">Professional</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Standardized page header with title and subtitle -->
+
+<header class="header-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="page-title">Jetpack Compose - Clean Architecture, How to manage state</h1>
+        
+        <hr class="divider">
+      </div>
+    </div>
+  </div>
+</header>
+ 
+  
+  <!-- Page Content -->
+  <main role="main" class="container">
+    <div class="container post-container">
+  <div class="row">
+    <div class="col-lg-10 col-md-12 mx-auto">
+      <article class="post">
+        <header class="post-header mb-5">
+          <h1 class="post-title">Jetpack Compose - Clean Architecture, How to manage state</h1>
+          
+          <p class="post-meta text-muted">Posted on January 20, 2025</p>
+          
+          <div class="post-tags">
+            
+            <a href="/tags#Android" class="post-tag badge">Android</a>
+            
+            <a href="/tags#Kotlin" class="post-tag badge">Kotlin</a>
+            
+            <a href="/tags#Jetpack Compose" class="post-tag badge">Jetpack Compose</a>
+            
+            <a href="/tags#Clean Architecture" class="post-tag badge">Clean Architecture</a>
+            
+            <a href="/tags#State Management" class="post-tag badge">State Management</a>
+            
+            <a href="/tags#MVI" class="post-tag badge">MVI</a>
+            
+          </div>
+          
+        </header>
+
+        <div class="post-content">
+          <h1 id="jetpack-compose-with-clean-architecture-a-practical-guide-to-state-management">Jetpack Compose with Clean Architecture: A Practical Guide to State Management</h1>
+
+<p>How do I manage state? How should I trigger navigation? How should I show a snackbar? State vs Single Events? How to keep it clean and scalable? What is the right way to do it? These are questions you probably ask yourself every single time you start working on a new screen, new app, new composable. In this guide I’ll share a few proven patterns for building scalable, testable, and maintainable Android applications using a few examples from my own trading strategy management app. Link to repo -</p>
+
+<!--more-->
+
+<hr />
+
+<h2 id="why-clean-architecture-matters-for-state-management">Why Clean Architecture Matters for State Management</h2>
+
+<p>Without proper architecture, your Compose app quickly becomes a tangled mess of UI logic, business rules, and data handling. Clean Architecture solves this by creating clear boundaries between layers, making your state management predictable and your code easier to test.</p>
+
+<hr />
+
+<h2 id="recommended-practices">Recommended Practices</h2>
+
+<h3 id="1-separate-domain-logic-from-ui-state">1. Separate Domain Logic from UI State</h3>
+
+<p>Keep your business entities pure and independent of UI concerns. Your domain models should contain business logic and validation.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Domain Entity - Pure business logic</span>
+<span class="kd">data class</span> <span class="nc">Strategy</span><span class="p">(</span>
+    <span class="kd">val</span> <span class="py">id</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">name</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">isActive</span><span class="p">:</span> <span class="nc">Boolean</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">createdAt</span><span class="p">:</span> <span class="nc">LocalDateTime</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">updatedAt</span><span class="p">:</span> <span class="nc">LocalDateTime</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="nf">init</span> <span class="p">{</span>
+        <span class="nf">require</span><span class="p">(</span><span class="n">id</span><span class="p">.</span><span class="nf">isNotBlank</span><span class="p">())</span> <span class="p">{</span> <span class="s">"Strategy ID cannot be blank"</span> <span class="p">}</span>
+        <span class="nf">require</span><span class="p">(</span><span class="n">name</span><span class="p">.</span><span class="nf">isNotBlank</span><span class="p">())</span> <span class="p">{</span> <span class="s">"Strategy name cannot be blank"</span> <span class="p">}</span>
+        <span class="nf">require</span><span class="p">(</span><span class="n">name</span><span class="p">.</span><span class="n">length</span> <span class="p">&lt;=</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span> <span class="s">"Strategy name cannot exceed 100 characters"</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">fun</span> <span class="nf">activate</span><span class="p">():</span> <span class="nc">Strategy</span> <span class="p">=</span> <span class="nf">copy</span><span class="p">(</span><span class="n">isActive</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span> <span class="n">updatedAt</span> <span class="p">=</span> <span class="nc">LocalDateTime</span><span class="p">.</span><span class="nf">now</span><span class="p">())</span>
+    <span class="k">fun</span> <span class="nf">deactivate</span><span class="p">():</span> <span class="nc">Strategy</span> <span class="p">=</span> <span class="nf">copy</span><span class="p">(</span><span class="n">isActive</span> <span class="p">=</span> <span class="k">false</span><span class="p">,</span> <span class="n">updatedAt</span> <span class="p">=</span> <span class="nc">LocalDateTime</span><span class="p">.</span><span class="nf">now</span><span class="p">())</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Why this matters</strong>: Your business logic stays framework-independent and fully testable without Android dependencies.</p>
+
+<h3 id="2-use-use-cases-for-business-operations">2. Use Use Cases for Business Operations</h3>
+
+<p>Encapsulate business operations in use cases that coordinate between repositories and apply business rules.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">GetStrategiesUseCase</span><span class="p">(</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">strategyRepository</span><span class="p">:</span> <span class="nc">StrategyRepository</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="k">operator</span> <span class="k">fun</span> <span class="nf">invoke</span><span class="p">():</span> <span class="nc">Flow</span><span class="p">&lt;</span><span class="nc">List</span><span class="p">&lt;</span><span class="nc">Strategy</span><span class="p">&gt;&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">strategyRepository</span><span class="p">.</span><span class="nf">getStrategies</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="k">fun</span> <span class="nf">getActiveStrategies</span><span class="p">():</span> <span class="nc">Flow</span><span class="p">&lt;</span><span class="nc">List</span><span class="p">&lt;</span><span class="nc">Strategy</span><span class="p">&gt;&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">strategyRepository</span><span class="p">.</span><span class="nf">getActiveStrategies</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Why this matters</strong>: Business logic is centralized, reusable, and easy to test in isolation.</p>
+
+<h3 id="3-implement-proper-mvi-with-stateflow-and-channel">3. Implement Proper MVI with StateFlow and Channel</h3>
+
+<p>Use a single StateFlow for screen state and Channel for one-time effects, following the MVI pattern.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">StrategiesViewModel</span><span class="p">(</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">getStrategiesUseCase</span><span class="p">:</span> <span class="nc">GetStrategiesUseCase</span><span class="p">,</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">saveStrategyUseCase</span><span class="p">:</span> <span class="nc">SaveStrategyUseCase</span>
+<span class="p">)</span> <span class="p">:</span> <span class="nc">ViewModel</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">_uiState</span> <span class="p">=</span> <span class="nc">MutableStateFlow</span><span class="p">(</span><span class="nc">StrategiesUiState</span><span class="p">())</span>
+    
+    <span class="kd">val</span> <span class="py">state</span><span class="p">:</span> <span class="nc">StateFlow</span><span class="p">&lt;</span><span class="nc">StrategiesUiState</span><span class="p">&gt;</span> <span class="p">=</span> <span class="nf">combine</span><span class="p">(</span>
+        <span class="nf">getStrategiesUseCase</span><span class="p">(),</span>
+        <span class="n">_uiState</span>
+    <span class="p">)</span> <span class="p">{</span> <span class="n">strategies</span><span class="p">,</span> <span class="n">currentState</span> <span class="p">-&gt;</span>
+        <span class="n">currentState</span><span class="p">.</span><span class="nf">copy</span><span class="p">(</span>
+            <span class="n">isLoading</span> <span class="p">=</span> <span class="k">false</span><span class="p">,</span>
+            <span class="n">strategies</span> <span class="p">=</span> <span class="n">strategies</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="nf">toStrategyItem</span><span class="p">()</span> <span class="p">}</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+    <span class="p">.</span><span class="k">catch</span> <span class="p">{</span> <span class="n">throwable</span> <span class="p">-&gt;</span>
+        <span class="nf">emit</span><span class="p">(</span><span class="n">_uiState</span><span class="p">.</span><span class="n">value</span><span class="p">.</span><span class="nf">copy</span><span class="p">(</span><span class="n">error</span> <span class="p">=</span> <span class="n">throwable</span><span class="p">.</span><span class="n">message</span><span class="p">))</span>
+    <span class="p">}</span>
+    <span class="p">.</span><span class="nf">stateIn</span><span class="p">(</span><span class="n">viewModelScope</span><span class="p">,</span> <span class="nc">SharingStarted</span><span class="p">.</span><span class="nc">WhileSubscribed</span><span class="p">(</span><span class="mi">5000L</span><span class="p">),</span> <span class="nc">StrategiesUiState</span><span class="p">(</span><span class="n">isLoading</span> <span class="p">=</span> <span class="k">true</span><span class="p">))</span>
+
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">_effects</span> <span class="p">=</span> <span class="nc">Channel</span><span class="p">&lt;</span><span class="nc">StrategiesEffect</span><span class="p">&gt;(</span><span class="n">capacity</span> <span class="p">=</span> <span class="nc">Channel</span><span class="p">.</span><span class="nc">BUFFERED</span><span class="p">)</span>
+    <span class="kd">val</span> <span class="py">effects</span> <span class="p">=</span> <span class="n">_effects</span><span class="p">.</span><span class="nf">receiveAsFlow</span><span class="p">()</span>
+
+    <span class="k">fun</span> <span class="nf">handleEvent</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nc">StrategiesEvent</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">when</span> <span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">is</span> <span class="nc">StrategiesEvent</span><span class="p">.</span><span class="nc">ToggleStrategyActive</span> <span class="p">-&gt;</span> <span class="nf">toggleStrategyActive</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">strategyId</span><span class="p">)</span>
+            <span class="k">is</span> <span class="nc">StrategiesEvent</span><span class="p">.</span><span class="nc">DeleteStrategy</span> <span class="p">-&gt;</span> <span class="nf">deleteStrategy</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">strategyId</span><span class="p">)</span>
+            <span class="c1">// ... other events</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Why this matters</strong>: Clear separation between ongoing state and one-time effects prevents UI bugs and makes testing easier.</p>
+
+<h3 id="4-define-comprehensive-state-models">4. Define Comprehensive State Models</h3>
+
+<p>Create rich state models that include computed properties and all UI-relevant information.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">data class</span> <span class="nc">StrategiesUiState</span><span class="p">(</span>
+    <span class="kd">val</span> <span class="py">isLoading</span><span class="p">:</span> <span class="nc">Boolean</span> <span class="p">=</span> <span class="k">false</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">strategies</span><span class="p">:</span> <span class="nc">List</span><span class="p">&lt;</span><span class="nc">StrategyItem</span><span class="p">&gt;</span> <span class="p">=</span> <span class="nf">emptyList</span><span class="p">(),</span>
+    <span class="kd">val</span> <span class="py">error</span><span class="p">:</span> <span class="nc">String</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">searchQuery</span><span class="p">:</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">""</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">showActiveOnly</span><span class="p">:</span> <span class="nc">Boolean</span> <span class="p">=</span> <span class="k">false</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="py">hasStrategies</span><span class="p">:</span> <span class="nc">Boolean</span> <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="n">strategies</span><span class="p">.</span><span class="nf">isNotEmpty</span><span class="p">()</span>
+    <span class="kd">val</span> <span class="py">activeStrategiesCount</span><span class="p">:</span> <span class="nc">Int</span> <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="n">strategies</span><span class="p">.</span><span class="nf">count</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="n">isActive</span> <span class="p">}</span>
+    <span class="kd">val</span> <span class="py">filteredStrategies</span><span class="p">:</span> <span class="nc">List</span><span class="p">&lt;</span><span class="nc">StrategyItem</span><span class="p">&gt;</span> <span class="k">get</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">strategies</span><span class="p">.</span><span class="nf">filter</span> <span class="p">{</span> <span class="n">strategy</span> <span class="p">-&gt;</span>
+            <span class="kd">val</span> <span class="py">matchesSearch</span> <span class="p">=</span> <span class="n">searchQuery</span><span class="p">.</span><span class="nf">isBlank</span><span class="p">()</span> <span class="p">||</span> 
+                <span class="n">strategy</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="nf">contains</span><span class="p">(</span><span class="n">searchQuery</span><span class="p">,</span> <span class="n">ignoreCase</span> <span class="p">=</span> <span class="k">true</span><span class="p">)</span>
+            <span class="kd">val</span> <span class="py">matchesActive</span> <span class="p">=</span> <span class="p">!</span><span class="n">showActiveOnly</span> <span class="p">||</span> <span class="n">strategy</span><span class="p">.</span><span class="n">isActive</span>
+            <span class="n">matchesSearch</span> <span class="p">&amp;&amp;</span> <span class="n">matchesActive</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Why this matters</strong>: Computed properties keep UI logic centralized and prevent duplicate filtering logic across composables.</p>
+
+<h3 id="5-use-sealed-interfaces-for-events-and-effects">5. Use Sealed Interfaces for Events and Effects</h3>
+
+<p>Define all possible user interactions and side effects using sealed interfaces.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">sealed</span> <span class="kd">interface</span> <span class="nc">StrategiesEvent</span> <span class="p">{</span>
+    <span class="kd">object</span> <span class="nc">LoadStrategies</span> <span class="p">:</span> <span class="nc">StrategiesEvent</span>
+    <span class="kd">object</span> <span class="nc">RefreshStrategies</span> <span class="p">:</span> <span class="nc">StrategiesEvent</span>
+    <span class="kd">data class</span> <span class="nc">ToggleStrategyActive</span><span class="p">(</span><span class="kd">val</span> <span class="py">strategyId</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">:</span> <span class="nc">StrategiesEvent</span>
+    <span class="kd">data class</span> <span class="nc">DeleteStrategy</span><span class="p">(</span><span class="kd">val</span> <span class="py">strategyId</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">:</span> <span class="nc">StrategiesEvent</span>
+    <span class="kd">data class</span> <span class="nc">SearchStrategies</span><span class="p">(</span><span class="kd">val</span> <span class="py">query</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">:</span> <span class="nc">StrategiesEvent</span>
+    <span class="kd">object</span> <span class="nc">DismissError</span> <span class="p">:</span> <span class="nc">StrategiesEvent</span>
+<span class="p">}</span>
+
+<span class="k">sealed</span> <span class="kd">interface</span> <span class="nc">StrategiesEffect</span> <span class="p">{</span>
+    <span class="kd">data class</span> <span class="nc">ShowMessage</span><span class="p">(</span><span class="kd">val</span> <span class="py">message</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">:</span> <span class="nc">StrategiesEffect</span>
+    <span class="kd">data class</span> <span class="nc">NavigateToDetail</span><span class="p">(</span><span class="kd">val</span> <span class="py">strategyId</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">:</span> <span class="nc">StrategiesEffect</span>
+    <span class="kd">object</span> <span class="nc">NavigateToCreate</span> <span class="p">:</span> <span class="nc">StrategiesEffect</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Why this matters</strong>: Exhaustive when statements ensure all events are handled and make adding new features safer.</p>
+
+<h3 id="6-implement-proper-dependency-injection">6. Implement Proper Dependency Injection</h3>
+
+<p>Use constructor injection for ViewModels and avoid service locator patterns inside ViewModels.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Koin DI Configuration</span>
+<span class="kd">val</span> <span class="py">domainModule</span> <span class="p">=</span> <span class="nf">module</span> <span class="p">{</span>
+    <span class="nf">singleOf</span><span class="p">(</span><span class="o">::</span><span class="nc">MockStrategyRepository</span><span class="p">)</span> <span class="n">bind</span> <span class="nc">StrategyRepository</span><span class="o">::</span><span class="k">class</span>
+    <span class="nf">factoryOf</span><span class="p">(</span><span class="o">::</span><span class="nc">GetStrategiesUseCase</span><span class="p">)</span>
+    <span class="nf">factoryOf</span><span class="p">(</span><span class="o">::</span><span class="nc">SaveStrategyUseCase</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">val</span> <span class="py">viewModelModule</span> <span class="p">=</span> <span class="nf">module</span> <span class="p">{</span>
+    <span class="nf">viewModel</span> <span class="p">{</span> <span class="nc">StrategiesViewModel</span><span class="p">(</span><span class="k">get</span><span class="p">(),</span> <span class="k">get</span><span class="p">(),</span> <span class="k">get</span><span class="p">(),</span> <span class="k">get</span><span class="p">())</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ViewModel with injected dependencies</span>
+<span class="kd">class</span> <span class="nc">StrategiesViewModel</span><span class="p">(</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">getStrategiesUseCase</span><span class="p">:</span> <span class="nc">GetStrategiesUseCase</span><span class="p">,</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">saveStrategyUseCase</span><span class="p">:</span> <span class="nc">SaveStrategyUseCase</span><span class="p">,</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">deleteStrategyUseCase</span><span class="p">:</span> <span class="nc">DeleteStrategyUseCase</span><span class="p">,</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">getStrategyByIdUseCase</span><span class="p">:</span> <span class="nc">GetStrategyByIdUseCase</span>
+<span class="p">)</span> <span class="p">:</span> <span class="nc">ViewModel</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><strong>Why this matters</strong>: Clear dependencies make testing easier and ensure ViewModels don’t violate the dependency inversion principle.</p>
+
+<h3 id="7-implement-clean-screen-structure">7. Implement Clean Screen Structure</h3>
+
+<p>Follow a consistent three-layer composable structure for all screens.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Composable</span>
+<span class="k">fun</span> <span class="nf">StrategiesScreen</span><span class="p">(</span>
+    <span class="n">navController</span><span class="p">:</span> <span class="nc">NavHostController</span><span class="p">,</span>
+    <span class="n">viewModel</span><span class="p">:</span> <span class="nc">StrategiesViewModel</span> <span class="p">=</span> <span class="nf">koinViewModel</span><span class="p">()</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="py">snackbarHostState</span> <span class="p">=</span> <span class="nf">remember</span> <span class="p">{</span> <span class="nc">SnackbarHostState</span><span class="p">()</span> <span class="p">}</span>
+    
+    <span class="c1">// Handle side effects</span>
+    <span class="nc">ObserveAsEvents</span><span class="p">(</span><span class="n">viewModel</span><span class="p">.</span><span class="n">effects</span><span class="p">)</span> <span class="p">{</span> <span class="n">effect</span> <span class="p">-&gt;</span>
+        <span class="k">when</span> <span class="p">(</span><span class="n">effect</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">is</span> <span class="nc">StrategiesEffect</span><span class="p">.</span><span class="nc">ShowMessage</span> <span class="p">-&gt;</span> <span class="p">{</span>
+                <span class="c1">// Show snackbar</span>
+            <span class="p">}</span>
+            <span class="k">is</span> <span class="nc">StrategiesEffect</span><span class="p">.</span><span class="nc">NavigateToDetail</span> <span class="p">-&gt;</span> <span class="p">{</span>
+                <span class="c1">// Navigate to detail screen</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">val</span> <span class="py">state</span> <span class="k">by</span> <span class="n">viewModel</span><span class="p">.</span><span class="n">state</span><span class="p">.</span><span class="nf">collectAsStateWithLifecycle</span><span class="p">()</span>
+    
+    <span class="nc">StrategiesScreenContent</span><span class="p">(</span>
+        <span class="n">state</span> <span class="p">=</span> <span class="n">state</span><span class="p">,</span>
+        <span class="n">onEvent</span> <span class="p">=</span> <span class="n">viewModel</span><span class="o">::</span><span class="n">handleEvent</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nd">@Composable</span>
+<span class="k">private</span> <span class="k">fun</span> <span class="nf">StrategiesScreenContent</span><span class="p">(</span>
+    <span class="n">state</span><span class="p">:</span> <span class="nc">StrategiesUiState</span><span class="p">,</span>
+    <span class="n">onEvent</span><span class="p">:</span> <span class="p">(</span><span class="nc">StrategiesEvent</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nc">Unit</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// UI implementation</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Why this matters</strong>: Consistent structure makes navigation and state management predictable across all screens.</p>
+
+<h3 id="8-handle-business-logic-in-use-cases-not-viewmodels">8. Handle Business Logic in Use Cases, Not ViewModels</h3>
+
+<p>Keep ViewModels focused on coordinating between UI and business logic.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Wrong: Business logic in ViewModel</span>
+<span class="k">private</span> <span class="k">fun</span> <span class="nf">toggleStrategyActive</span><span class="p">(</span><span class="n">strategyId</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">viewModelScope</span><span class="p">.</span><span class="nf">launch</span> <span class="p">{</span>
+        <span class="kd">val</span> <span class="py">strategy</span> <span class="p">=</span> <span class="n">repository</span><span class="p">.</span><span class="nf">getStrategy</span><span class="p">(</span><span class="n">strategyId</span><span class="p">)</span>
+        <span class="kd">val</span> <span class="py">updated</span> <span class="p">=</span> <span class="n">strategy</span><span class="p">.</span><span class="nf">copy</span><span class="p">(</span>
+            <span class="n">isActive</span> <span class="p">=</span> <span class="p">!</span><span class="n">strategy</span><span class="p">.</span><span class="n">isActive</span><span class="p">,</span>
+            <span class="n">updatedAt</span> <span class="p">=</span> <span class="nc">LocalDateTime</span><span class="p">.</span><span class="nf">now</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="n">repository</span><span class="p">.</span><span class="nf">saveStrategy</span><span class="p">(</span><span class="n">updated</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Right: Business logic in domain entities and use cases</span>
+<span class="k">private</span> <span class="k">fun</span> <span class="nf">toggleStrategyActive</span><span class="p">(</span><span class="n">strategyId</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">viewModelScope</span><span class="p">.</span><span class="nf">launch</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="kd">val</span> <span class="py">strategy</span> <span class="p">=</span> <span class="nf">getStrategyByIdUseCase</span><span class="p">(</span><span class="n">strategyId</span><span class="p">)</span>
+            <span class="kd">val</span> <span class="py">updatedStrategy</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span><span class="n">strategy</span><span class="p">.</span><span class="n">isActive</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">strategy</span><span class="p">.</span><span class="nf">deactivate</span><span class="p">()</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">strategy</span><span class="p">.</span><span class="nf">activate</span><span class="p">()</span>
+            <span class="p">}</span>
+            <span class="nf">saveStrategyUseCase</span><span class="p">(</span><span class="n">updatedStrategy</span><span class="p">)</span>
+            <span class="n">_effects</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="nc">StrategiesEffect</span><span class="p">.</span><span class="nc">ShowMessage</span><span class="p">(</span><span class="s">"Strategy updated"</span><span class="p">))</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="nc">Exception</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">_effects</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="nc">StrategiesEffect</span><span class="p">.</span><span class="nc">ShowMessage</span><span class="p">(</span><span class="s">"Failed: ${e.message}"</span><span class="p">))</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Why this matters</strong>: Business rules stay in the domain layer where they belong, making them reusable and testable.</p>
+
+<h3 id="9-map-domain-models-to-ui-models">9. Map Domain Models to UI Models</h3>
+
+<p>Transform domain entities to UI-specific models in the ViewModel.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="k">fun</span> <span class="nc">Strategy</span><span class="p">.</span><span class="nf">toStrategyItem</span><span class="p">():</span> <span class="nc">StrategyItem</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nc">StrategyItem</span><span class="p">(</span>
+        <span class="n">id</span> <span class="p">=</span> <span class="n">id</span><span class="p">,</span>
+        <span class="n">name</span> <span class="p">=</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">description</span> <span class="p">=</span> <span class="n">description</span><span class="p">,</span>
+        <span class="n">isActive</span> <span class="p">=</span> <span class="n">isActive</span><span class="p">,</span>
+        <span class="n">strategyType</span> <span class="p">=</span> <span class="n">strategyType</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
+        <span class="n">lastUpdated</span> <span class="p">=</span> <span class="n">updatedAt</span><span class="p">.</span><span class="nf">toString</span><span class="p">(),</span>
+        <span class="n">isRecentlyModified</span> <span class="p">=</span> <span class="nf">isRecentlyModified</span><span class="p">(),</span>
+        <span class="n">tags</span> <span class="p">=</span> <span class="n">tags</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Why this matters</strong>: UI models can be optimized for display purposes without affecting business logic.</p>
+
+<h3 id="10-use-lifecycle-aware-state-collection">10. Use Lifecycle-Aware State Collection</h3>
+
+<p>Prevent memory leaks and stale updates by using lifecycle-aware collection.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Composable</span>
+<span class="k">fun</span> <span class="nf">StrategiesScreen</span><span class="p">(</span><span class="n">viewModel</span><span class="p">:</span> <span class="nc">StrategiesViewModel</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="py">state</span> <span class="k">by</span> <span class="n">viewModel</span><span class="p">.</span><span class="n">state</span><span class="p">.</span><span class="nf">collectAsStateWithLifecycle</span><span class="p">()</span>
+    
+    <span class="nc">ObserveAsEvents</span><span class="p">(</span><span class="n">viewModel</span><span class="p">.</span><span class="n">effects</span><span class="p">)</span> <span class="p">{</span> <span class="n">effect</span> <span class="p">-&gt;</span>
+        <span class="c1">// Handle one-time effects</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Why this matters</strong>: Automatic lifecycle management prevents memory leaks and ensures UI updates stop when appropriate.</p>
+
+<hr />
+
+<h2 id="complete-implementation-example">Complete Implementation Example</h2>
+
+<p>Here’s how all these practices work together in a real screen:</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Composable</span>
+<span class="k">private</span> <span class="k">fun</span> <span class="nf">StrategiesScreenSharedScaffoldContent</span><span class="p">(</span>
+    <span class="n">state</span><span class="p">:</span> <span class="nc">StrategiesUiState</span><span class="p">,</span>
+    <span class="n">onEvent</span><span class="p">:</span> <span class="p">(</span><span class="nc">StrategiesEvent</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nc">Unit</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="nc">Column</span><span class="p">(</span><span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">fillMaxSize</span><span class="p">())</span> <span class="p">{</span>
+        <span class="c1">// Header with statistics</span>
+        <span class="nc">StrategiesHeaderCard</span><span class="p">(</span>
+            <span class="n">totalCount</span> <span class="p">=</span> <span class="n">state</span><span class="p">.</span><span class="n">strategies</span><span class="p">.</span><span class="n">size</span><span class="p">,</span>
+            <span class="n">activeCount</span> <span class="p">=</span> <span class="n">state</span><span class="p">.</span><span class="n">activeStrategiesCount</span><span class="p">,</span>
+            <span class="n">onCreateClick</span> <span class="p">=</span> <span class="p">{</span> <span class="nf">onEvent</span><span class="p">(</span><span class="nc">StrategiesEvent</span><span class="p">.</span><span class="nc">NavigateToCreateStrategy</span><span class="p">)</span> <span class="p">},</span>
+            <span class="n">onRefreshClick</span> <span class="p">=</span> <span class="p">{</span> <span class="nf">onEvent</span><span class="p">(</span><span class="nc">StrategiesEvent</span><span class="p">.</span><span class="nc">RefreshStrategies</span><span class="p">)</span> <span class="p">}</span>
+        <span class="p">)</span>
+        
+        <span class="c1">// Content based on state</span>
+        <span class="k">when</span> <span class="p">{</span>
+            <span class="n">state</span><span class="p">.</span><span class="n">isLoading</span> <span class="p">-&gt;</span> <span class="nc">LoadingContent</span><span class="p">()</span>
+            <span class="n">state</span><span class="p">.</span><span class="n">error</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">-&gt;</span> <span class="nc">ErrorContent</span><span class="p">(</span><span class="n">state</span><span class="p">.</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span> 
+                <span class="nf">onEvent</span><span class="p">(</span><span class="nc">StrategiesEvent</span><span class="p">.</span><span class="nc">DismissError</span><span class="p">)</span> 
+            <span class="p">}</span>
+            <span class="n">state</span><span class="p">.</span><span class="n">hasStrategies</span> <span class="p">-&gt;</span> <span class="p">{</span>
+                <span class="nc">StrategiesList</span><span class="p">(</span>
+                    <span class="n">strategies</span> <span class="p">=</span> <span class="n">state</span><span class="p">.</span><span class="n">filteredStrategies</span><span class="p">,</span>
+                    <span class="n">onToggleActive</span> <span class="p">=</span> <span class="p">{</span> <span class="nf">onEvent</span><span class="p">(</span><span class="nc">StrategiesEvent</span><span class="p">.</span><span class="nc">ToggleStrategyActive</span><span class="p">(</span><span class="n">it</span><span class="p">))</span> <span class="p">},</span>
+                    <span class="n">onDelete</span> <span class="p">=</span> <span class="p">{</span> <span class="nf">onEvent</span><span class="p">(</span><span class="nc">StrategiesEvent</span><span class="p">.</span><span class="nc">DeleteStrategy</span><span class="p">(</span><span class="n">it</span><span class="p">))</span> <span class="p">}</span>
+                <span class="p">)</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="p">-&gt;</span> <span class="nc">EmptyStrategiesContent</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="why-this-approach-works">Why This Approach Works</h2>
+
+<p><strong>Predictable State Flow</strong>: State flows in one direction from domain to UI, making bugs easier to track and fix.</p>
+
+<p><strong>Testable Architecture</strong>: Each layer can be tested independently with clear boundaries and mock dependencies.</p>
+
+<p><strong>Scalable Design</strong>: Adding new features follows established patterns without requiring architectural changes.</p>
+
+<p><strong>Maintainable Code</strong>: Clear separation of concerns makes code easier to understand and modify.</p>
+
+<p><strong>Reusable Components</strong>: Business logic in use cases can be shared across different UI components.</p>
+
+<hr />
+
+<h2 id="final-thoughts">Final Thoughts</h2>
+
+<p>Clean Architecture with proper state management isn’t just about following patterns—it’s about creating sustainable codebases that grow with your needs. By separating business logic from UI concerns, using reactive streams for state management, and maintaining clear boundaries between layers, you create applications that are both robust and enjoyable to work with.</p>
+
+<p>The key is starting with simple patterns and building complexity gradually. Focus on the dependency rule, keep your domain layer pure, and let your UI layer be a simple reflection of your business state. Your future self (and your team) will thank you.</p>
+
+<blockquote>
+  <p>Start with these patterns in your next Compose project and experience the difference that proper architecture makes.</p>
+</blockquote>
+
+        </div>
+
+        <hr class="mt-5 mb-4">
+        
+        <div class="post-navigation d-flex justify-content-between mt-4">
+          <a href="/blog/" class="btn btn-outline-primary">← Back to Blog</a>
+          <a href="mailto:?subject=Jetpack+Compose+-+Clean+Architecture%2C+How+to+manage+state&body=Check out this post: https://jenovas.github.io/2025-01-20-jetpack-compose-clean-architecture/" class="btn btn-outline-primary">Share</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+
+<style>
+  .post-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 2rem;
+  }
+  
+  .post-title {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 2.5rem;
+  }
+  
+  .post-subtitle {
+    color: var(--text-secondary);
+  }
+  
+  .post-meta {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .post-tags {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .post-tag {
+    background-color: var(--dark-bg);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 0.4rem 0.7rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  
+  .post-tag:hover {
+    background-color: var(--primary-color);
+    color: var(--dark-bg);
+    text-decoration: none;
+  }
+  
+  .post-content {
+    color: var(--text-primary);
+    line-height: 1.8;
+  }
+  
+  .post-content h1, 
+  .post-content h2, 
+  .post-content h3,
+  .post-content h4,
+  .post-content h5,
+  .post-content h6 {
+    color: var(--text-primary);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .post-content p {
+    margin-bottom: 1.5rem;
+  }
+  
+  .post-content pre {
+    background-color: var(--dark-surface);
+    border: 1px solid var(--dark-border);
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    overflow-x: auto;
+  }
+  
+  .post-content code {
+    background-color: var(--dark-surface);
+    color: var(--primary-color);
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+  }
+  
+  .post-content blockquote {
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1rem;
+    margin-left: 0;
+    color: var(--text-secondary);
+  }
+  
+  .post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin: 1.5rem 0;
+  }
+  
+  hr {
+    border-color: var(--dark-border);
+  }
+  
+  /* Hide the default header section since we're creating our own */
+  .header-section {
+    display: none;
+  }
+</style> 
+  </main>
+  
+  <!-- Footer -->
+  <!-- Modern dark theme footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:skubisz.rafael@gmail.com" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="https://github.com/Jenovas" title="GitHub">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="https://linkedin.com/in/rafael-skubisz-210993b0" title="LinkedIn">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="https://twitter.com/RafaTheDevGuy" title="Twitter">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        
+        <p class="copyright text-center mt-4">
+          Rafael Skubisz &copy; 2026
+        </p>
+      </div>
+    </div>
+  </div>
+</footer> 
+  
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+  <!-- Custom scripts -->
+  
+    
+      <script src="/assets/js/custom-scripts.js"></script>
+    
+  
+</body>
+</html> 

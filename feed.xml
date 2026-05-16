@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jenovas.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jenovas.github.io/" rel="alternate" type="text/html" /><updated>2025-05-07T21:23:55+02:00</updated><id>https://jenovas.github.io/feed.xml</id><title type="html">Rafael Skubisz</title><subtitle>Developer, writer, open‑source enthusiast</subtitle><author><name>Rafael Skubisz</name></author><entry><title type="html">MVVM vs MVI in Android Development: Finding the Right Fit for Your Compose App</title><link href="https://jenovas.github.io/2025-04-26-mvvm-vs-mvi/" rel="alternate" type="text/html" title="MVVM vs MVI in Android Development: Finding the Right Fit for Your Compose App" /><published>2025-04-26T22:07:00+02:00</published><updated>2025-04-26T22:07:00+02:00</updated><id>https://jenovas.github.io/mvvm-vs-mvi</id><content type="html" xml:base="https://jenovas.github.io/2025-04-26-mvvm-vs-mvi/"><![CDATA[<p>The battle between MVVM and MVI never ends! Can they not coexist? Like a quote I like “Make Lovecraft Not Warcraft” we’ll try today to do just that.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jenovas.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jenovas.github.io/" rel="alternate" type="text/html" /><updated>2026-05-16T19:17:42+02:00</updated><id>https://jenovas.github.io/feed.xml</id><title type="html">Rafael Skubisz</title><subtitle>Developer, writer, open‑source enthusiast</subtitle><author><name>Rafael Skubisz</name></author><entry><title type="html">MVVM vs MVI in Android Development: Finding the Right Fit for Your Compose App</title><link href="https://jenovas.github.io/2025-04-26-mvvm-vs-mvi/" rel="alternate" type="text/html" title="MVVM vs MVI in Android Development: Finding the Right Fit for Your Compose App" /><published>2025-04-26T22:07:00+02:00</published><updated>2025-04-26T22:07:00+02:00</updated><id>https://jenovas.github.io/mvvm-vs-mvi</id><content type="html" xml:base="https://jenovas.github.io/2025-04-26-mvvm-vs-mvi/"><![CDATA[<p>The battle between MVVM and MVI never ends! Can they not coexist? Like a quote I like “Make Lovecraft Not Warcraft” we’ll try today to do just that.
 If you’ve been using Jetpack Compose, you probably heard about MVVM and MVI. Both patterns help improve state management and testability, but they have different approaches when it comes to events and state changes. Today we’ll explore how each one works, show a simple example, and decide which one is the one true king of patterns! Or maybe both are?</p>
 
 <!--more-->
@@ -259,7 +259,7 @@ User action → Event/Intent → Business logic
 
 <h2 id="related-resources">Related Resources</h2>
 
-<p>If you’re interested in seeing MVI in action with a clean architecture setup for Jetpack Compose, check out my post on <a href="/2025-04-22-clean-compose-setup/">How to Manage State Effectively in Jetpack Compose</a>. It demonstrates practical examples of implementing MVI and proper state management in a real-world Android application.</p>]]></content><author><name>Rafael Skubisz</name></author><category term="tutorials" /><category term="android-development" /><category term="Android" /><category term="Kotlin" /><category term="Jetpack Compose" /><category term="State Management" /><category term="MVVM" /><category term="MVI" /><summary type="html"><![CDATA[The battle between MVVM and MVI never ends! Can they not coexist? Like a quote I like “Make Lovecraft Not Warcraft” we’ll try today to do just that. If you’ve been using Jetpack Compose, you probably heard about MVVM and MVI. Both patterns help improve state management and testability, but they have different approaches when it comes to events and state changes. Today we’ll explore how each one works, show a simple example, and decide which one is the one true king of patterns! Or maybe both are?]]></summary></entry><entry><title type="html">How to Manage State Effectively in Jetpack Compose</title><link href="https://jenovas.github.io/2025-04-22-clean-compose-setup/" rel="alternate" type="text/html" title="How to Manage State Effectively in Jetpack Compose" /><published>2025-04-22T23:52:00+02:00</published><updated>2025-04-22T23:52:00+02:00</updated><id>https://jenovas.github.io/clean-compose-setup</id><content type="html" xml:base="https://jenovas.github.io/2025-04-22-clean-compose-setup/"><![CDATA[<h1 id="state-management-best-practices-in-jetpack-compose">State Management Best Practices in Jetpack Compose</h1>
+<p>If you’re interested in seeing MVI in action with a clean architecture setup for Jetpack Compose, check out my post on <a href="/2025-04-22-clean-compose-setup/">How to Manage State Effectively in Jetpack Compose</a>. It demonstrates practical examples of implementing MVI and proper state management in a real-world Android application.</p>]]></content><author><name>Rafael Skubisz</name></author><category term="tutorials" /><category term="android-development" /><category term="Android" /><category term="Kotlin" /><category term="Jetpack Compose" /><category term="State Management" /><category term="MVVM" /><category term="MVI" /><summary type="html"><![CDATA[The battle between MVVM and MVI never ends! Can they not coexist? Like a quote I like “Make Lovecraft Not Warcraft” we’ll try today to do just that. If you’ve been using Jetpack Compose, you probably heard about MVVM and MVI. Both patterns help improve state management and testability, but they have different approaches when it comes to events and state changes. Today we’ll explore how each one works, show a simple example, and decide which one is the one true king of patterns! Or maybe both are?]]></summary></entry><entry><title type="html">Jetpack Compose - Clean Architecture, How to manage state</title><link href="https://jenovas.github.io/2025-04-22-clean-compose-setup/" rel="alternate" type="text/html" title="Jetpack Compose - Clean Architecture, How to manage state" /><published>2025-04-22T23:52:00+02:00</published><updated>2025-04-22T23:52:00+02:00</updated><id>https://jenovas.github.io/clean-compose-setup</id><content type="html" xml:base="https://jenovas.github.io/2025-04-22-clean-compose-setup/"><![CDATA[<h1 id="state-management-best-practices-in-jetpack-compose">State Management Best Practices in Jetpack Compose</h1>
 
 <p>Managing state properly is one of the biggest challenges in any Android application, especially when using Jetpack Compose. In this post, we’ll explore a setup that keeps your Compose apps clean, manageable, and easy to maintain.</p>
 
@@ -794,4 +794,356 @@ User action → Event/Intent → Business logic
     <span class="kd">object</span> <span class="nc">NavigateBack</span> <span class="p">:</span> <span class="nc">UiEffect</span><span class="p">()</span>
     <span class="kd">object</span> <span class="nc">NavigateToSettings</span> <span class="p">:</span> <span class="nc">UiEffect</span><span class="p">()</span>
 <span class="p">}</span>
-</code></pre></div></div>]]></content><author><name>Rafael Skubisz</name></author><category term="tutorials" /><category term="android-development" /><category term="Android" /><category term="Kotlin" /><category term="Jetpack Compose" /><category term="State Management" /><category term="MVI" /><summary type="html"><![CDATA[State Management Best Practices in Jetpack Compose Managing state properly is one of the biggest challenges in any Android application, especially when using Jetpack Compose. In this post, we’ll explore a setup that keeps your Compose apps clean, manageable, and easy to maintain.]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>Rafael Skubisz</name></author><category term="tutorials" /><category term="android-development" /><category term="Android" /><category term="Kotlin" /><category term="Jetpack Compose" /><category term="Clean Architecture" /><category term="State Management" /><category term="MVI" /><summary type="html"><![CDATA[State Management Best Practices in Jetpack Compose Managing state properly is one of the biggest challenges in any Android application, especially when using Jetpack Compose. In this post, we’ll explore a setup that keeps your Compose apps clean, manageable, and easy to maintain.]]></summary></entry><entry><title type="html">Jetpack Compose - Clean Architecture, How to manage state</title><link href="https://jenovas.github.io/2025-01-20-jetpack-compose-clean-architecture/" rel="alternate" type="text/html" title="Jetpack Compose - Clean Architecture, How to manage state" /><published>2025-01-20T09:00:00+01:00</published><updated>2025-01-20T09:00:00+01:00</updated><id>https://jenovas.github.io/jetpack-compose-clean-architecture</id><content type="html" xml:base="https://jenovas.github.io/2025-01-20-jetpack-compose-clean-architecture/"><![CDATA[<h1 id="jetpack-compose-with-clean-architecture-a-practical-guide-to-state-management">Jetpack Compose with Clean Architecture: A Practical Guide to State Management</h1>
+
+<p>How do I manage state? How should I trigger navigation? How should I show a snackbar? State vs Single Events? How to keep it clean and scalable? What is the right way to do it? These are questions you probably ask yourself every single time you start working on a new screen, new app, new composable. In this guide I’ll share a few proven patterns for building scalable, testable, and maintainable Android applications using a few examples from my own trading strategy management app. Link to repo -</p>
+
+<!--more-->
+
+<hr />
+
+<h2 id="why-clean-architecture-matters-for-state-management">Why Clean Architecture Matters for State Management</h2>
+
+<p>Without proper architecture, your Compose app quickly becomes a tangled mess of UI logic, business rules, and data handling. Clean Architecture solves this by creating clear boundaries between layers, making your state management predictable and your code easier to test.</p>
+
+<hr />
+
+<h2 id="recommended-practices">Recommended Practices</h2>
+
+<h3 id="1-separate-domain-logic-from-ui-state">1. Separate Domain Logic from UI State</h3>
+
+<p>Keep your business entities pure and independent of UI concerns. Your domain models should contain business logic and validation.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Domain Entity - Pure business logic</span>
+<span class="kd">data class</span> <span class="nc">Strategy</span><span class="p">(</span>
+    <span class="kd">val</span> <span class="py">id</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">name</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">isActive</span><span class="p">:</span> <span class="nc">Boolean</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">createdAt</span><span class="p">:</span> <span class="nc">LocalDateTime</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">updatedAt</span><span class="p">:</span> <span class="nc">LocalDateTime</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="nf">init</span> <span class="p">{</span>
+        <span class="nf">require</span><span class="p">(</span><span class="n">id</span><span class="p">.</span><span class="nf">isNotBlank</span><span class="p">())</span> <span class="p">{</span> <span class="s">"Strategy ID cannot be blank"</span> <span class="p">}</span>
+        <span class="nf">require</span><span class="p">(</span><span class="n">name</span><span class="p">.</span><span class="nf">isNotBlank</span><span class="p">())</span> <span class="p">{</span> <span class="s">"Strategy name cannot be blank"</span> <span class="p">}</span>
+        <span class="nf">require</span><span class="p">(</span><span class="n">name</span><span class="p">.</span><span class="n">length</span> <span class="p">&lt;=</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span> <span class="s">"Strategy name cannot exceed 100 characters"</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">fun</span> <span class="nf">activate</span><span class="p">():</span> <span class="nc">Strategy</span> <span class="p">=</span> <span class="nf">copy</span><span class="p">(</span><span class="n">isActive</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span> <span class="n">updatedAt</span> <span class="p">=</span> <span class="nc">LocalDateTime</span><span class="p">.</span><span class="nf">now</span><span class="p">())</span>
+    <span class="k">fun</span> <span class="nf">deactivate</span><span class="p">():</span> <span class="nc">Strategy</span> <span class="p">=</span> <span class="nf">copy</span><span class="p">(</span><span class="n">isActive</span> <span class="p">=</span> <span class="k">false</span><span class="p">,</span> <span class="n">updatedAt</span> <span class="p">=</span> <span class="nc">LocalDateTime</span><span class="p">.</span><span class="nf">now</span><span class="p">())</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Why this matters</strong>: Your business logic stays framework-independent and fully testable without Android dependencies.</p>
+
+<h3 id="2-use-use-cases-for-business-operations">2. Use Use Cases for Business Operations</h3>
+
+<p>Encapsulate business operations in use cases that coordinate between repositories and apply business rules.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">GetStrategiesUseCase</span><span class="p">(</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">strategyRepository</span><span class="p">:</span> <span class="nc">StrategyRepository</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="k">operator</span> <span class="k">fun</span> <span class="nf">invoke</span><span class="p">():</span> <span class="nc">Flow</span><span class="p">&lt;</span><span class="nc">List</span><span class="p">&lt;</span><span class="nc">Strategy</span><span class="p">&gt;&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">strategyRepository</span><span class="p">.</span><span class="nf">getStrategies</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="k">fun</span> <span class="nf">getActiveStrategies</span><span class="p">():</span> <span class="nc">Flow</span><span class="p">&lt;</span><span class="nc">List</span><span class="p">&lt;</span><span class="nc">Strategy</span><span class="p">&gt;&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">strategyRepository</span><span class="p">.</span><span class="nf">getActiveStrategies</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Why this matters</strong>: Business logic is centralized, reusable, and easy to test in isolation.</p>
+
+<h3 id="3-implement-proper-mvi-with-stateflow-and-channel">3. Implement Proper MVI with StateFlow and Channel</h3>
+
+<p>Use a single StateFlow for screen state and Channel for one-time effects, following the MVI pattern.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">StrategiesViewModel</span><span class="p">(</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">getStrategiesUseCase</span><span class="p">:</span> <span class="nc">GetStrategiesUseCase</span><span class="p">,</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">saveStrategyUseCase</span><span class="p">:</span> <span class="nc">SaveStrategyUseCase</span>
+<span class="p">)</span> <span class="p">:</span> <span class="nc">ViewModel</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">_uiState</span> <span class="p">=</span> <span class="nc">MutableStateFlow</span><span class="p">(</span><span class="nc">StrategiesUiState</span><span class="p">())</span>
+    
+    <span class="kd">val</span> <span class="py">state</span><span class="p">:</span> <span class="nc">StateFlow</span><span class="p">&lt;</span><span class="nc">StrategiesUiState</span><span class="p">&gt;</span> <span class="p">=</span> <span class="nf">combine</span><span class="p">(</span>
+        <span class="nf">getStrategiesUseCase</span><span class="p">(),</span>
+        <span class="n">_uiState</span>
+    <span class="p">)</span> <span class="p">{</span> <span class="n">strategies</span><span class="p">,</span> <span class="n">currentState</span> <span class="p">-&gt;</span>
+        <span class="n">currentState</span><span class="p">.</span><span class="nf">copy</span><span class="p">(</span>
+            <span class="n">isLoading</span> <span class="p">=</span> <span class="k">false</span><span class="p">,</span>
+            <span class="n">strategies</span> <span class="p">=</span> <span class="n">strategies</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="nf">toStrategyItem</span><span class="p">()</span> <span class="p">}</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+    <span class="p">.</span><span class="k">catch</span> <span class="p">{</span> <span class="n">throwable</span> <span class="p">-&gt;</span>
+        <span class="nf">emit</span><span class="p">(</span><span class="n">_uiState</span><span class="p">.</span><span class="n">value</span><span class="p">.</span><span class="nf">copy</span><span class="p">(</span><span class="n">error</span> <span class="p">=</span> <span class="n">throwable</span><span class="p">.</span><span class="n">message</span><span class="p">))</span>
+    <span class="p">}</span>
+    <span class="p">.</span><span class="nf">stateIn</span><span class="p">(</span><span class="n">viewModelScope</span><span class="p">,</span> <span class="nc">SharingStarted</span><span class="p">.</span><span class="nc">WhileSubscribed</span><span class="p">(</span><span class="mi">5000L</span><span class="p">),</span> <span class="nc">StrategiesUiState</span><span class="p">(</span><span class="n">isLoading</span> <span class="p">=</span> <span class="k">true</span><span class="p">))</span>
+
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">_effects</span> <span class="p">=</span> <span class="nc">Channel</span><span class="p">&lt;</span><span class="nc">StrategiesEffect</span><span class="p">&gt;(</span><span class="n">capacity</span> <span class="p">=</span> <span class="nc">Channel</span><span class="p">.</span><span class="nc">BUFFERED</span><span class="p">)</span>
+    <span class="kd">val</span> <span class="py">effects</span> <span class="p">=</span> <span class="n">_effects</span><span class="p">.</span><span class="nf">receiveAsFlow</span><span class="p">()</span>
+
+    <span class="k">fun</span> <span class="nf">handleEvent</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nc">StrategiesEvent</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">when</span> <span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">is</span> <span class="nc">StrategiesEvent</span><span class="p">.</span><span class="nc">ToggleStrategyActive</span> <span class="p">-&gt;</span> <span class="nf">toggleStrategyActive</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">strategyId</span><span class="p">)</span>
+            <span class="k">is</span> <span class="nc">StrategiesEvent</span><span class="p">.</span><span class="nc">DeleteStrategy</span> <span class="p">-&gt;</span> <span class="nf">deleteStrategy</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">strategyId</span><span class="p">)</span>
+            <span class="c1">// ... other events</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Why this matters</strong>: Clear separation between ongoing state and one-time effects prevents UI bugs and makes testing easier.</p>
+
+<h3 id="4-define-comprehensive-state-models">4. Define Comprehensive State Models</h3>
+
+<p>Create rich state models that include computed properties and all UI-relevant information.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">data class</span> <span class="nc">StrategiesUiState</span><span class="p">(</span>
+    <span class="kd">val</span> <span class="py">isLoading</span><span class="p">:</span> <span class="nc">Boolean</span> <span class="p">=</span> <span class="k">false</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">strategies</span><span class="p">:</span> <span class="nc">List</span><span class="p">&lt;</span><span class="nc">StrategyItem</span><span class="p">&gt;</span> <span class="p">=</span> <span class="nf">emptyList</span><span class="p">(),</span>
+    <span class="kd">val</span> <span class="py">error</span><span class="p">:</span> <span class="nc">String</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">searchQuery</span><span class="p">:</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">""</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">showActiveOnly</span><span class="p">:</span> <span class="nc">Boolean</span> <span class="p">=</span> <span class="k">false</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="py">hasStrategies</span><span class="p">:</span> <span class="nc">Boolean</span> <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="n">strategies</span><span class="p">.</span><span class="nf">isNotEmpty</span><span class="p">()</span>
+    <span class="kd">val</span> <span class="py">activeStrategiesCount</span><span class="p">:</span> <span class="nc">Int</span> <span class="k">get</span><span class="p">()</span> <span class="p">=</span> <span class="n">strategies</span><span class="p">.</span><span class="nf">count</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="n">isActive</span> <span class="p">}</span>
+    <span class="kd">val</span> <span class="py">filteredStrategies</span><span class="p">:</span> <span class="nc">List</span><span class="p">&lt;</span><span class="nc">StrategyItem</span><span class="p">&gt;</span> <span class="k">get</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">strategies</span><span class="p">.</span><span class="nf">filter</span> <span class="p">{</span> <span class="n">strategy</span> <span class="p">-&gt;</span>
+            <span class="kd">val</span> <span class="py">matchesSearch</span> <span class="p">=</span> <span class="n">searchQuery</span><span class="p">.</span><span class="nf">isBlank</span><span class="p">()</span> <span class="p">||</span> 
+                <span class="n">strategy</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="nf">contains</span><span class="p">(</span><span class="n">searchQuery</span><span class="p">,</span> <span class="n">ignoreCase</span> <span class="p">=</span> <span class="k">true</span><span class="p">)</span>
+            <span class="kd">val</span> <span class="py">matchesActive</span> <span class="p">=</span> <span class="p">!</span><span class="n">showActiveOnly</span> <span class="p">||</span> <span class="n">strategy</span><span class="p">.</span><span class="n">isActive</span>
+            <span class="n">matchesSearch</span> <span class="p">&amp;&amp;</span> <span class="n">matchesActive</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Why this matters</strong>: Computed properties keep UI logic centralized and prevent duplicate filtering logic across composables.</p>
+
+<h3 id="5-use-sealed-interfaces-for-events-and-effects">5. Use Sealed Interfaces for Events and Effects</h3>
+
+<p>Define all possible user interactions and side effects using sealed interfaces.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">sealed</span> <span class="kd">interface</span> <span class="nc">StrategiesEvent</span> <span class="p">{</span>
+    <span class="kd">object</span> <span class="nc">LoadStrategies</span> <span class="p">:</span> <span class="nc">StrategiesEvent</span>
+    <span class="kd">object</span> <span class="nc">RefreshStrategies</span> <span class="p">:</span> <span class="nc">StrategiesEvent</span>
+    <span class="kd">data class</span> <span class="nc">ToggleStrategyActive</span><span class="p">(</span><span class="kd">val</span> <span class="py">strategyId</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">:</span> <span class="nc">StrategiesEvent</span>
+    <span class="kd">data class</span> <span class="nc">DeleteStrategy</span><span class="p">(</span><span class="kd">val</span> <span class="py">strategyId</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">:</span> <span class="nc">StrategiesEvent</span>
+    <span class="kd">data class</span> <span class="nc">SearchStrategies</span><span class="p">(</span><span class="kd">val</span> <span class="py">query</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">:</span> <span class="nc">StrategiesEvent</span>
+    <span class="kd">object</span> <span class="nc">DismissError</span> <span class="p">:</span> <span class="nc">StrategiesEvent</span>
+<span class="p">}</span>
+
+<span class="k">sealed</span> <span class="kd">interface</span> <span class="nc">StrategiesEffect</span> <span class="p">{</span>
+    <span class="kd">data class</span> <span class="nc">ShowMessage</span><span class="p">(</span><span class="kd">val</span> <span class="py">message</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">:</span> <span class="nc">StrategiesEffect</span>
+    <span class="kd">data class</span> <span class="nc">NavigateToDetail</span><span class="p">(</span><span class="kd">val</span> <span class="py">strategyId</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">:</span> <span class="nc">StrategiesEffect</span>
+    <span class="kd">object</span> <span class="nc">NavigateToCreate</span> <span class="p">:</span> <span class="nc">StrategiesEffect</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Why this matters</strong>: Exhaustive when statements ensure all events are handled and make adding new features safer.</p>
+
+<h3 id="6-implement-proper-dependency-injection">6. Implement Proper Dependency Injection</h3>
+
+<p>Use constructor injection for ViewModels and avoid service locator patterns inside ViewModels.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Koin DI Configuration</span>
+<span class="kd">val</span> <span class="py">domainModule</span> <span class="p">=</span> <span class="nf">module</span> <span class="p">{</span>
+    <span class="nf">singleOf</span><span class="p">(</span><span class="o">::</span><span class="nc">MockStrategyRepository</span><span class="p">)</span> <span class="n">bind</span> <span class="nc">StrategyRepository</span><span class="o">::</span><span class="k">class</span>
+    <span class="nf">factoryOf</span><span class="p">(</span><span class="o">::</span><span class="nc">GetStrategiesUseCase</span><span class="p">)</span>
+    <span class="nf">factoryOf</span><span class="p">(</span><span class="o">::</span><span class="nc">SaveStrategyUseCase</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">val</span> <span class="py">viewModelModule</span> <span class="p">=</span> <span class="nf">module</span> <span class="p">{</span>
+    <span class="nf">viewModel</span> <span class="p">{</span> <span class="nc">StrategiesViewModel</span><span class="p">(</span><span class="k">get</span><span class="p">(),</span> <span class="k">get</span><span class="p">(),</span> <span class="k">get</span><span class="p">(),</span> <span class="k">get</span><span class="p">())</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ViewModel with injected dependencies</span>
+<span class="kd">class</span> <span class="nc">StrategiesViewModel</span><span class="p">(</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">getStrategiesUseCase</span><span class="p">:</span> <span class="nc">GetStrategiesUseCase</span><span class="p">,</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">saveStrategyUseCase</span><span class="p">:</span> <span class="nc">SaveStrategyUseCase</span><span class="p">,</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">deleteStrategyUseCase</span><span class="p">:</span> <span class="nc">DeleteStrategyUseCase</span><span class="p">,</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">getStrategyByIdUseCase</span><span class="p">:</span> <span class="nc">GetStrategyByIdUseCase</span>
+<span class="p">)</span> <span class="p">:</span> <span class="nc">ViewModel</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><strong>Why this matters</strong>: Clear dependencies make testing easier and ensure ViewModels don’t violate the dependency inversion principle.</p>
+
+<h3 id="7-implement-clean-screen-structure">7. Implement Clean Screen Structure</h3>
+
+<p>Follow a consistent three-layer composable structure for all screens.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Composable</span>
+<span class="k">fun</span> <span class="nf">StrategiesScreen</span><span class="p">(</span>
+    <span class="n">navController</span><span class="p">:</span> <span class="nc">NavHostController</span><span class="p">,</span>
+    <span class="n">viewModel</span><span class="p">:</span> <span class="nc">StrategiesViewModel</span> <span class="p">=</span> <span class="nf">koinViewModel</span><span class="p">()</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="py">snackbarHostState</span> <span class="p">=</span> <span class="nf">remember</span> <span class="p">{</span> <span class="nc">SnackbarHostState</span><span class="p">()</span> <span class="p">}</span>
+    
+    <span class="c1">// Handle side effects</span>
+    <span class="nc">ObserveAsEvents</span><span class="p">(</span><span class="n">viewModel</span><span class="p">.</span><span class="n">effects</span><span class="p">)</span> <span class="p">{</span> <span class="n">effect</span> <span class="p">-&gt;</span>
+        <span class="k">when</span> <span class="p">(</span><span class="n">effect</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">is</span> <span class="nc">StrategiesEffect</span><span class="p">.</span><span class="nc">ShowMessage</span> <span class="p">-&gt;</span> <span class="p">{</span>
+                <span class="c1">// Show snackbar</span>
+            <span class="p">}</span>
+            <span class="k">is</span> <span class="nc">StrategiesEffect</span><span class="p">.</span><span class="nc">NavigateToDetail</span> <span class="p">-&gt;</span> <span class="p">{</span>
+                <span class="c1">// Navigate to detail screen</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">val</span> <span class="py">state</span> <span class="k">by</span> <span class="n">viewModel</span><span class="p">.</span><span class="n">state</span><span class="p">.</span><span class="nf">collectAsStateWithLifecycle</span><span class="p">()</span>
+    
+    <span class="nc">StrategiesScreenContent</span><span class="p">(</span>
+        <span class="n">state</span> <span class="p">=</span> <span class="n">state</span><span class="p">,</span>
+        <span class="n">onEvent</span> <span class="p">=</span> <span class="n">viewModel</span><span class="o">::</span><span class="n">handleEvent</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nd">@Composable</span>
+<span class="k">private</span> <span class="k">fun</span> <span class="nf">StrategiesScreenContent</span><span class="p">(</span>
+    <span class="n">state</span><span class="p">:</span> <span class="nc">StrategiesUiState</span><span class="p">,</span>
+    <span class="n">onEvent</span><span class="p">:</span> <span class="p">(</span><span class="nc">StrategiesEvent</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nc">Unit</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// UI implementation</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Why this matters</strong>: Consistent structure makes navigation and state management predictable across all screens.</p>
+
+<h3 id="8-handle-business-logic-in-use-cases-not-viewmodels">8. Handle Business Logic in Use Cases, Not ViewModels</h3>
+
+<p>Keep ViewModels focused on coordinating between UI and business logic.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Wrong: Business logic in ViewModel</span>
+<span class="k">private</span> <span class="k">fun</span> <span class="nf">toggleStrategyActive</span><span class="p">(</span><span class="n">strategyId</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">viewModelScope</span><span class="p">.</span><span class="nf">launch</span> <span class="p">{</span>
+        <span class="kd">val</span> <span class="py">strategy</span> <span class="p">=</span> <span class="n">repository</span><span class="p">.</span><span class="nf">getStrategy</span><span class="p">(</span><span class="n">strategyId</span><span class="p">)</span>
+        <span class="kd">val</span> <span class="py">updated</span> <span class="p">=</span> <span class="n">strategy</span><span class="p">.</span><span class="nf">copy</span><span class="p">(</span>
+            <span class="n">isActive</span> <span class="p">=</span> <span class="p">!</span><span class="n">strategy</span><span class="p">.</span><span class="n">isActive</span><span class="p">,</span>
+            <span class="n">updatedAt</span> <span class="p">=</span> <span class="nc">LocalDateTime</span><span class="p">.</span><span class="nf">now</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="n">repository</span><span class="p">.</span><span class="nf">saveStrategy</span><span class="p">(</span><span class="n">updated</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Right: Business logic in domain entities and use cases</span>
+<span class="k">private</span> <span class="k">fun</span> <span class="nf">toggleStrategyActive</span><span class="p">(</span><span class="n">strategyId</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">viewModelScope</span><span class="p">.</span><span class="nf">launch</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="kd">val</span> <span class="py">strategy</span> <span class="p">=</span> <span class="nf">getStrategyByIdUseCase</span><span class="p">(</span><span class="n">strategyId</span><span class="p">)</span>
+            <span class="kd">val</span> <span class="py">updatedStrategy</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span><span class="n">strategy</span><span class="p">.</span><span class="n">isActive</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">strategy</span><span class="p">.</span><span class="nf">deactivate</span><span class="p">()</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">strategy</span><span class="p">.</span><span class="nf">activate</span><span class="p">()</span>
+            <span class="p">}</span>
+            <span class="nf">saveStrategyUseCase</span><span class="p">(</span><span class="n">updatedStrategy</span><span class="p">)</span>
+            <span class="n">_effects</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="nc">StrategiesEffect</span><span class="p">.</span><span class="nc">ShowMessage</span><span class="p">(</span><span class="s">"Strategy updated"</span><span class="p">))</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="nc">Exception</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">_effects</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="nc">StrategiesEffect</span><span class="p">.</span><span class="nc">ShowMessage</span><span class="p">(</span><span class="s">"Failed: ${e.message}"</span><span class="p">))</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Why this matters</strong>: Business rules stay in the domain layer where they belong, making them reusable and testable.</p>
+
+<h3 id="9-map-domain-models-to-ui-models">9. Map Domain Models to UI Models</h3>
+
+<p>Transform domain entities to UI-specific models in the ViewModel.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="k">fun</span> <span class="nc">Strategy</span><span class="p">.</span><span class="nf">toStrategyItem</span><span class="p">():</span> <span class="nc">StrategyItem</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nc">StrategyItem</span><span class="p">(</span>
+        <span class="n">id</span> <span class="p">=</span> <span class="n">id</span><span class="p">,</span>
+        <span class="n">name</span> <span class="p">=</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">description</span> <span class="p">=</span> <span class="n">description</span><span class="p">,</span>
+        <span class="n">isActive</span> <span class="p">=</span> <span class="n">isActive</span><span class="p">,</span>
+        <span class="n">strategyType</span> <span class="p">=</span> <span class="n">strategyType</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
+        <span class="n">lastUpdated</span> <span class="p">=</span> <span class="n">updatedAt</span><span class="p">.</span><span class="nf">toString</span><span class="p">(),</span>
+        <span class="n">isRecentlyModified</span> <span class="p">=</span> <span class="nf">isRecentlyModified</span><span class="p">(),</span>
+        <span class="n">tags</span> <span class="p">=</span> <span class="n">tags</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Why this matters</strong>: UI models can be optimized for display purposes without affecting business logic.</p>
+
+<h3 id="10-use-lifecycle-aware-state-collection">10. Use Lifecycle-Aware State Collection</h3>
+
+<p>Prevent memory leaks and stale updates by using lifecycle-aware collection.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Composable</span>
+<span class="k">fun</span> <span class="nf">StrategiesScreen</span><span class="p">(</span><span class="n">viewModel</span><span class="p">:</span> <span class="nc">StrategiesViewModel</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="py">state</span> <span class="k">by</span> <span class="n">viewModel</span><span class="p">.</span><span class="n">state</span><span class="p">.</span><span class="nf">collectAsStateWithLifecycle</span><span class="p">()</span>
+    
+    <span class="nc">ObserveAsEvents</span><span class="p">(</span><span class="n">viewModel</span><span class="p">.</span><span class="n">effects</span><span class="p">)</span> <span class="p">{</span> <span class="n">effect</span> <span class="p">-&gt;</span>
+        <span class="c1">// Handle one-time effects</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Why this matters</strong>: Automatic lifecycle management prevents memory leaks and ensures UI updates stop when appropriate.</p>
+
+<hr />
+
+<h2 id="complete-implementation-example">Complete Implementation Example</h2>
+
+<p>Here’s how all these practices work together in a real screen:</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Composable</span>
+<span class="k">private</span> <span class="k">fun</span> <span class="nf">StrategiesScreenSharedScaffoldContent</span><span class="p">(</span>
+    <span class="n">state</span><span class="p">:</span> <span class="nc">StrategiesUiState</span><span class="p">,</span>
+    <span class="n">onEvent</span><span class="p">:</span> <span class="p">(</span><span class="nc">StrategiesEvent</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nc">Unit</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="nc">Column</span><span class="p">(</span><span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">fillMaxSize</span><span class="p">())</span> <span class="p">{</span>
+        <span class="c1">// Header with statistics</span>
+        <span class="nc">StrategiesHeaderCard</span><span class="p">(</span>
+            <span class="n">totalCount</span> <span class="p">=</span> <span class="n">state</span><span class="p">.</span><span class="n">strategies</span><span class="p">.</span><span class="n">size</span><span class="p">,</span>
+            <span class="n">activeCount</span> <span class="p">=</span> <span class="n">state</span><span class="p">.</span><span class="n">activeStrategiesCount</span><span class="p">,</span>
+            <span class="n">onCreateClick</span> <span class="p">=</span> <span class="p">{</span> <span class="nf">onEvent</span><span class="p">(</span><span class="nc">StrategiesEvent</span><span class="p">.</span><span class="nc">NavigateToCreateStrategy</span><span class="p">)</span> <span class="p">},</span>
+            <span class="n">onRefreshClick</span> <span class="p">=</span> <span class="p">{</span> <span class="nf">onEvent</span><span class="p">(</span><span class="nc">StrategiesEvent</span><span class="p">.</span><span class="nc">RefreshStrategies</span><span class="p">)</span> <span class="p">}</span>
+        <span class="p">)</span>
+        
+        <span class="c1">// Content based on state</span>
+        <span class="k">when</span> <span class="p">{</span>
+            <span class="n">state</span><span class="p">.</span><span class="n">isLoading</span> <span class="p">-&gt;</span> <span class="nc">LoadingContent</span><span class="p">()</span>
+            <span class="n">state</span><span class="p">.</span><span class="n">error</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">-&gt;</span> <span class="nc">ErrorContent</span><span class="p">(</span><span class="n">state</span><span class="p">.</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span> 
+                <span class="nf">onEvent</span><span class="p">(</span><span class="nc">StrategiesEvent</span><span class="p">.</span><span class="nc">DismissError</span><span class="p">)</span> 
+            <span class="p">}</span>
+            <span class="n">state</span><span class="p">.</span><span class="n">hasStrategies</span> <span class="p">-&gt;</span> <span class="p">{</span>
+                <span class="nc">StrategiesList</span><span class="p">(</span>
+                    <span class="n">strategies</span> <span class="p">=</span> <span class="n">state</span><span class="p">.</span><span class="n">filteredStrategies</span><span class="p">,</span>
+                    <span class="n">onToggleActive</span> <span class="p">=</span> <span class="p">{</span> <span class="nf">onEvent</span><span class="p">(</span><span class="nc">StrategiesEvent</span><span class="p">.</span><span class="nc">ToggleStrategyActive</span><span class="p">(</span><span class="n">it</span><span class="p">))</span> <span class="p">},</span>
+                    <span class="n">onDelete</span> <span class="p">=</span> <span class="p">{</span> <span class="nf">onEvent</span><span class="p">(</span><span class="nc">StrategiesEvent</span><span class="p">.</span><span class="nc">DeleteStrategy</span><span class="p">(</span><span class="n">it</span><span class="p">))</span> <span class="p">}</span>
+                <span class="p">)</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="p">-&gt;</span> <span class="nc">EmptyStrategiesContent</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="why-this-approach-works">Why This Approach Works</h2>
+
+<p><strong>Predictable State Flow</strong>: State flows in one direction from domain to UI, making bugs easier to track and fix.</p>
+
+<p><strong>Testable Architecture</strong>: Each layer can be tested independently with clear boundaries and mock dependencies.</p>
+
+<p><strong>Scalable Design</strong>: Adding new features follows established patterns without requiring architectural changes.</p>
+
+<p><strong>Maintainable Code</strong>: Clear separation of concerns makes code easier to understand and modify.</p>
+
+<p><strong>Reusable Components</strong>: Business logic in use cases can be shared across different UI components.</p>
+
+<hr />
+
+<h2 id="final-thoughts">Final Thoughts</h2>
+
+<p>Clean Architecture with proper state management isn’t just about following patterns—it’s about creating sustainable codebases that grow with your needs. By separating business logic from UI concerns, using reactive streams for state management, and maintaining clear boundaries between layers, you create applications that are both robust and enjoyable to work with.</p>
+
+<p>The key is starting with simple patterns and building complexity gradually. Focus on the dependency rule, keep your domain layer pure, and let your UI layer be a simple reflection of your business state. Your future self (and your team) will thank you.</p>
+
+<blockquote>
+  <p>Start with these patterns in your next Compose project and experience the difference that proper architecture makes.</p>
+</blockquote>]]></content><author><name>Rafael Skubisz</name></author><category term="tutorials" /><category term="android-development" /><category term="Android" /><category term="Kotlin" /><category term="Jetpack Compose" /><category term="Clean Architecture" /><category term="State Management" /><category term="MVI" /><summary type="html"><![CDATA[Jetpack Compose with Clean Architecture: A Practical Guide to State Management How do I manage state? How should I trigger navigation? How should I show a snackbar? State vs Single Events? How to keep it clean and scalable? What is the right way to do it? These are questions you probably ask yourself every single time you start working on a new screen, new app, new composable. In this guide I’ll share a few proven patterns for building scalable, testable, and maintainable Android applications using a few examples from my own trading strategy management app. Link to repo -]]></summary></entry></feed>
