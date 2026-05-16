@@ -1937,14 +1937,6 @@ body:has(.post) .header-section {
   outline-offset: 3px;
   border-radius: var(--radius-sm);
 }
-a:focus-visible,
-button:focus-visible,
-.btn:focus-visible,
-.nav-link:focus-visible,
-.navbar-toggler:focus-visible {
-  outline: 2px solid var(--primary-ring);
-  outline-offset: 3px;
-}
 
 /* Skip-to-content link — visually hidden until focused. */
 .skip-to-content {
