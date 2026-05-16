@@ -2,36 +2,34 @@
 layout: default
 ---
 
-<div class="container post-container">
-  <div class="row">
-    <div class="col-lg-10 col-md-12 mx-auto">
-      <article class="post">
-        <header class="post-header mb-5">
-          <h1 class="post-title">{{ page.title }}</h1>
-          {% if page.subtitle %}
-            <p class="post-subtitle lead text-muted mt-3">{{ page.subtitle }}</p>
-          {% endif %}
-          <p class="post-meta text-muted">Posted on {{ page.date | date: site.date_format }}</p>
-          {% if page.tags.size > 0 %}
-          <div class="post-tags">
-            {% for tag in page.tags %}
-            <a href="{{ '/tags' | relative_url }}#{{ tag }}" class="post-tag badge">{{ tag }}</a>
-            {% endfor %}
-          </div>
-          {% endif %}
-        </header>
+<article class="post-page">
+  <header class="post-header container">
+    <div class="post-header__inner">
+      <span class="eyebrow"><a href="/blog/" style="color: inherit; text-decoration: none;">← Writing</a></span>
+      <h1 class="post-header__title">{{ page.title }}</h1>
+      {% if page.subtitle %}
+        <p class="post-header__subtitle">{{ page.subtitle }}</p>
+      {% endif %}
+      <p class="post-header__meta">{{ page.date | date: "%b %d %Y" | upcase }}{% if page.read_time %} &middot; {{ page.read_time }}{% endif %}</p>
+      {% if page.tags.size > 0 %}
+      <div class="post-header__tags">
+        {% for tag in page.tags %}<span class="tag tag--signal">{{ tag }}</span>{% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </header>
 
-        <div class="post-content">
-          {{ content }}
-        </div>
-
-        <hr class="mt-5 mb-4">
-        
-        <div class="post-navigation d-flex justify-content-between mt-4">
-          <a href="/blog/" class="btn btn-outline-primary">← Back to Blog</a>
-          <a href="mailto:?subject={{ page.title | url_encode }}&body=Check out this post: {{ site.url }}{{ page.url }}" class="btn btn-outline-primary">Share</a>
-        </div>
-      </article>
+  <div class="post-content container">
+    <div class="post-content__inner">
+      {{ content }}
     </div>
   </div>
-</div>
+
+  <footer class="post-footer container">
+    <hr>
+    <div class="post-footer__nav">
+      <a href="/blog/" class="btn btn-ghost">← back to writing</a>
+      <a href="mailto:?subject={{ page.title | url_encode }}&body=Check out this post: {{ site.url }}{{ page.url }}" class="btn btn-outline-primary">Share</a>
+    </div>
+  </footer>
+</article>
