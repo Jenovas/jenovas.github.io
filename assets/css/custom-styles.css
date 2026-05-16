@@ -433,76 +433,78 @@ a.card--linked:hover,
   }
 }
 
-/* Skill icon styling */
-.skill-icon-container {
-  animation: pulseGlow 3s infinite;
-  animation-delay: calc(0.5s * var(--animation-order, 1));
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 0.75rem;
-  background-color: rgba(79, 140, 255, 0.1);
-  border-radius: 50%;
+/* Skill card. Compact, square icon, no glow loops. */
+.skill-card,
+.compact-skill-card {
+  background-color: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-height: 0;
+  height: 100%;
+  transition: transform var(--duration-base) var(--ease-out),
+              border-color var(--duration-base) var(--ease-out),
+              box-shadow var(--duration-base) var(--ease-out);
+}
+.skill-card:hover,
+.compact-skill-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.skill-icon-container,
+.compact-skill-icon {
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(79, 140, 255, 0.2);
-  padding-top: 5px;
+  background-color: var(--primary-soft);
+  border: none;
+  border-radius: var(--radius-sm);
+  margin: 0;
+  animation: none !important;          /* kill pulseGlow loop */
+  box-shadow: none;
 }
-
-.skill-icon {
-  font-size: 2rem;
+.skill-icon,
+.compact-skill-icon i {
+  font-size: 1.125rem;
   color: var(--primary);
-  transition: all 0.3s ease;
+  transition: none;
 }
 
-.skill-card {
-  animation: fadeInUp 0.8s ease forwards;
-  animation-delay: calc(0.1s * var(--animation-order, 1));
-  opacity: 0;
-  background-color: var(--surface-1);
-  border: 1px solid var(--border-strong);
-  border-radius: 8px;
-  padding: 1.5rem 1.25rem 1.25rem;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-  height: 100%;
-  min-height: 200px;
-  margin-bottom: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.skill-card h3,
+.compact-skill-card h3,
+.compact-skill-name {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.0625rem;
+  color: var(--text-primary);
+  margin: var(--space-2) 0 var(--space-2);
+  text-align: left;
 }
-
-.skill-card h3 {
-  margin-top: 0.75rem;
-  margin-bottom: 0.5rem;
-  font-size: 1.25rem;
-}
-
 .skill-card p {
-  margin-bottom: 0;
-  font-size: 0.95rem;
-  line-height: 1.4;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0;
+  text-align: left;
 }
 
-.skill-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  background-color: var(--surface-2);
+/* Hover on the icon — once, with the card transition. No infinite glow. */
+.skill-card:hover .skill-icon-container,
+.compact-skill-card:hover .compact-skill-icon {
+  background-color: var(--primary);
 }
-
-.skill-card:hover .skill-icon-container {
-  transform: scale(1.05);
-  background-color: rgba(79, 140, 255, 0.15);
-  border-color: rgba(79, 140, 255, 0.3);
-}
-
-.skill-card:hover .skill-icon {
-  transform: scale(1.05);
+.skill-card:hover .skill-icon,
+.compact-skill-card:hover .compact-skill-icon i {
+  color: var(--text-on-primary);
 }
 
 /* Profile image styling */
@@ -1345,44 +1347,16 @@ pre code {
     width: 50px;
   }
   
-  .skill-card {
-    min-height: 0;
-    padding: 1.25rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  }
-  
   .col-md-6.col-lg-3 {
     padding-left: 1rem;
     padding-right: 1rem;
   }
-  
+
   .container.my-5 {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
-  
-  .skill-icon-container {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 0.5rem;
-  }
-  
-  .skill-icon {
-    font-size: 1.5rem;
-  }
-  
-  .skill-card h3 {
-    font-size: 1.1rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0.4rem;
-  }
-  
-  .skill-card p {
-    font-size: 0.9rem;
-    line-height: 1.3;
-  }
-  
+
   .section-title {
     font-size: 1.75rem;
   }
@@ -1413,18 +1387,6 @@ pre code {
     margin: 0.5rem 0;
   }
 }
-
-@media (min-width: 768px) and (max-width: 991px) {
-  .skill-card {
-    min-height: 230px;
-  }
-}
-
-/* Note: Several style definitions for .skill-card, .skill-icon-container, .skill-icon, 
-   .section-title.text-left and their responsive versions were already present in custom-styles.css.
-   I have commented out the redundant declarations from the moved block. 
-   These should be reviewed to ensure the intended styles are applied without duplication.
-*/
 
 #blog-section .card {
   animation: fadeInUp 0.8s ease forwards;
@@ -1801,70 +1763,7 @@ pre code {
   }
 }
 
-/* Compact Skills styling */
-.compact-skill-card {
-  background-color: var(--surface-1);
-  border: 1px solid var(--border-strong);
-  border-radius: 8px;
-  padding: 2rem 1rem 1rem;
-  height: 100%;
-  text-align: center;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  animation: fadeInUp 0.8s ease forwards;
-  opacity: 0;
-}
-
-.compact-skill-card:nth-child(1) { animation-delay: 0.1s; }
-.compact-skill-card:nth-child(2) { animation-delay: 0.2s; }
-.compact-skill-card:nth-child(3) { animation-delay: 0.3s; }
-.compact-skill-card:nth-child(4) { animation-delay: 0.4s; }
-.compact-skill-card:nth-child(5) { animation-delay: 0.5s; }
-.compact-skill-card:nth-child(6) { animation-delay: 0.6s; }
-.compact-skill-card:nth-child(7) { animation-delay: 0.7s; }
-.compact-skill-card:nth-child(8) { animation-delay: 0.8s; }
-
-.compact-skill-card:hover {
-  border-color: var(--primary);
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-  background-color: var(--surface-2);
-}
-
-.compact-skill-icon {
-  background-color: rgba(79, 140, 255, 0.1);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 0.75rem;
-  margin-top: 0.25rem;
-  color: var(--primary);
-  font-size: 1.3rem;
-  transition: all 0.3s ease;
-  animation: pulseGlow 2s infinite ease-in-out;
-  box-shadow: 0 0 15px rgba(79, 140, 255, 0.1);
-  border: 1px solid rgba(79, 140, 255, 0.2);
-  padding-top: 5px;
-}
-
-.compact-skill-card:hover .compact-skill-icon {
-  background-color: rgba(79, 140, 255, 0.2);
-  transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(79, 140, 255, 0.3);
-}
-
-.compact-skill-name {
-  color: var(--text-primary);
-  font-weight: 500;
-  font-size: 1rem;
-  margin-top: 0.5rem;
-}
+/* Compact Skills — unified with .skill-card above */
 
 /* Job and education styling */
 .job-item, .education-item {
