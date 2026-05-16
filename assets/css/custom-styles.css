@@ -1621,7 +1621,6 @@ pre code {
 }
 
 .personal-list li:hover {
-  transform: translateX(5px);
   background-color: rgba(79, 140, 255, 0.1);
 }
 
@@ -1639,7 +1638,6 @@ pre code {
 }
 
 .personal-list li:hover .icon-container {
-  transform: scale(1.1);
   background-color: rgba(79, 140, 255, 0.3);
 }
 
@@ -1652,7 +1650,6 @@ pre code {
 }
 
 .value-item:hover {
-  transform: translateX(5px);
   background-color: rgba(79, 140, 255, 0.1);
 }
 
@@ -1671,7 +1668,6 @@ pre code {
 }
 
 .value-item:hover .value-icon {
-  transform: scale(1.1);
   background-color: rgba(79, 140, 255, 0.3);
 }
 
@@ -2154,4 +2150,24 @@ footer {
   color: var(--text-muted);
   margin: 0 0 var(--space-2);
   text-transform: uppercase;
+}
+
+/* Profile image fallback — initials shown if /assets/img/profile.jpg fails to load. */
+.profile-image-container--fallback {
+  background: var(--surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: none;
+}
+.profile-image-fallback {
+  display: none;
+  font-family: var(--font-display);
+  font-size: 5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.04em;
+}
+.profile-image-container--fallback .profile-image-fallback {
+  display: block;
 }
