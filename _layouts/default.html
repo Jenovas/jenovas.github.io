@@ -32,6 +32,15 @@
 
 <body>
   <a class="skip-to-content" href="#main">Skip to content</a>
+  <div class="build-stamp" role="presentation" aria-hidden="true">
+    <div class="build-stamp__inner">
+      <span>v.{{ site.time | date: "%Y.%m" }}</span>
+      <span class="build-stamp__sep">·</span>
+      <span>KRAKÓW</span>
+      <span class="build-stamp__sep">·</span>
+      <span>RUNNING IN PROD</span>
+    </div>
+  </div>
   <!-- Navigation -->
   {% include header.html %}
 
