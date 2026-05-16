@@ -13,9 +13,8 @@ permalink: /cv/
   </span>
 </div>
 
-<!-- § 01 Professional Summary -->
+<!-- Professional Summary -->
 <section class="section-block container">
-  <span class="section-block__num">§ 01</span>
   <h2 class="section-block__title">Professional Summary</h2>
   <hr class="section-block__rule">
 
@@ -26,9 +25,8 @@ permalink: /cv/
   </div>
 </section>
 
-<!-- § 02 Key Skills -->
+<!-- Key Skills -->
 <section class="section-block container">
-  <span class="section-block__num">§ 02</span>
   <h2 class="section-block__title">Key Skills</h2>
   <hr class="section-block__rule">
 
@@ -100,9 +98,8 @@ permalink: /cv/
   </div>
 </section>
 
-<!-- § 03 Additional Technologies -->
+<!-- Additional Technologies -->
 <section class="section-block container">
-  <span class="section-block__num">§ 03</span>
   <h2 class="section-block__title">Additional Technologies</h2>
   <hr class="section-block__rule">
 
@@ -122,9 +119,8 @@ permalink: /cv/
   </div>
 </section>
 
-<!-- § 04 Professional Experience -->
+<!-- Professional Experience -->
 <section class="section-block container">
-  <span class="section-block__num">§ 04</span>
   <h2 class="section-block__title">Professional Experience</h2>
   <hr class="section-block__rule">
 
@@ -212,9 +208,8 @@ permalink: /cv/
   </div>
 </section>
 
-<!-- § 05 Education -->
+<!-- Education -->
 <section class="section-block container">
-  <span class="section-block__num">§ 05</span>
   <h2 class="section-block__title">Education</h2>
   <hr class="section-block__rule">
 

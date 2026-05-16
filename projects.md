@@ -7,7 +7,6 @@ eyebrow: "WORK"
 ---
 
 <section class="section-block container">
-  <span class="section-block__num">§ 01</span>
   <h2 class="section-block__title">Projects</h2>
   <p class="section-block__lede">Selected work — production code, shipped.</p>
   <hr class="section-block__rule">
@@ -76,7 +75,6 @@ eyebrow: "WORK"
 </section>
 
 <section class="section-block container">
-  <span class="section-block__num">§ 02</span>
   <h2 class="section-block__title">Personal Apps</h2>
   <p class="section-block__lede">Indie Android work — Compose, Material 3, on-device by default.</p>
   <hr class="section-block__rule">
@@ -160,7 +158,6 @@ eyebrow: "WORK"
 </section>
 
 <section class="section-block container">
-  <span class="section-block__num">§ 03</span>
   <h2 class="section-block__title">Areas of Interest</h2>
   <hr class="section-block__rule">
 

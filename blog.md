@@ -7,7 +7,6 @@ permalink: /blog/
 ---
 
 <section class="section-block container">
-  <span class="section-block__num">§ 01</span>
   <h2 class="section-block__title">Posts</h2>
   <hr class="section-block__rule">
 

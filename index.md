@@ -16,7 +16,6 @@ hero_cta:
 ---
 
 <section class="section-block container">
-  <span class="section-block__num">§ 01</span>
   <h2 class="section-block__title">Featured Skills</h2>
   <p class="section-block__lede">A small set of things I do well.</p>
   <hr class="section-block__rule">
@@ -62,7 +61,6 @@ hero_cta:
 </section>
 
 <section class="section-block container">
-  <span class="section-block__num">§ 02</span>
   <h2 class="section-block__title">About / Experience</h2>
   <p class="section-block__lede">Two stories that overlap.</p>
   <hr class="section-block__rule">
@@ -96,7 +94,6 @@ hero_cta:
 </section>
 
 <section class="section-block container" id="blog-section">
-  <span class="section-block__num">§ 03</span>
   <h2 class="section-block__title">Recent Posts</h2>
   <p class="section-block__lede">Latest thoughts and updates.</p>
   <hr class="section-block__rule">
@@ -130,7 +127,6 @@ hero_cta:
 </section>
 
 <section class="section-block container">
-  <span class="section-block__num">§ 04</span>
   <h2 class="section-block__title">Let's Connect</h2>
   <p class="section-block__lede">Interested in working together? Get in touch.</p>
   <hr class="section-block__rule">

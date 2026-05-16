@@ -42,8 +42,7 @@ permalink: /about/
 </div>
 
 <section class="section-block container">
-  <span class="section-block__num">§ 01</span>
-  <h2 class="section-block__title">My Story</h2>
+<h2 class="section-block__title">My Story</h2>
   <hr class="section-block__rule">
   <div class="card feature-card">
     <div class="card-body">
@@ -57,8 +56,7 @@ permalink: /about/
 </section>
 
 <section class="section-block container">
-  <span class="section-block__num">§ 02</span>
-  <h2 class="section-block__title">Beyond the Screen</h2>
+<h2 class="section-block__title">Beyond the Screen</h2>
   <hr class="section-block__rule">
   <div class="row">
     <div class="col-md-6 mb-4 mb-md-0">
@@ -145,8 +143,7 @@ permalink: /about/
 </section>
 
 <section class="section-block container">
-  <span class="section-block__num">§ 03</span>
-  <h2 class="section-block__title">Connect With Me</h2>
+<h2 class="section-block__title">Connect With Me</h2>
   <hr class="section-block__rule">
   <div class="card feature-card">
     <div class="card-body text-center">
