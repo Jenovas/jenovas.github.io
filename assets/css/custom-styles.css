@@ -1710,6 +1710,13 @@ footer {
   z-index: 2;
 }
 
+/* Breathing room between the page-hero and the first content block.
+   Pages whose first child has inline margin-top (e.g. CV's status pill)
+   override this naturally via specificity. */
+.page-hero + main > *:first-child {
+  margin-top: var(--space-7);
+}
+
 /* Section block — every named section uses this wrapper.
    The section number sits in the left margin on desktop, inline on mobile. */
 .section-block {
@@ -1775,7 +1782,7 @@ footer {
   position: relative;
   background-color: var(--surface-1);
   border-bottom: 1px solid var(--border-subtle);
-  padding: var(--space-9) 0 var(--space-8);
+  padding: var(--space-7) 0 var(--space-6);
   overflow: hidden;
 }
 .page-hero::before {
@@ -1803,18 +1810,18 @@ footer {
 .page-hero__title {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(2.75rem, 5vw + 1rem, 5.5rem);
-  line-height: 1.02;
-  letter-spacing: -0.03em;
+  font-size: clamp(2rem, 3vw + 0.75rem, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   color: var(--text-primary);
-  margin: 0 0 var(--space-4);
+  margin: 0 0 var(--space-3);
 }
 .page-hero__subtitle {
   font-family: var(--font-body);
-  font-size: 1.1875rem;
+  font-size: 1.0625rem;
   line-height: 1.5;
   color: var(--text-secondary);
-  margin: 0 0 var(--space-5);
+  margin: 0 0 var(--space-4);
   max-width: 56ch;
 }
 .page-hero__cta {
