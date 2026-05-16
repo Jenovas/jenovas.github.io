@@ -28,7 +28,7 @@ subtitle: Software Engineering Manager with 12+ years of experience
   
   <div class="row justify-content-center">
     <div class="col-md-6 col-lg-3 mb-4">
-      <div class="skill-card">
+      <div class="skill-card" style="--animation-order: 1;">
         <div class="skill-icon-container">
           <i class="fas fa-mobile-alt skill-icon"></i>
         </div>
@@ -38,7 +38,7 @@ subtitle: Software Engineering Manager with 12+ years of experience
     </div>
     
     <div class="col-md-6 col-lg-3 mb-4">
-      <div class="skill-card">
+      <div class="skill-card" style="--animation-order: 2;">
         <div class="skill-icon-container">
           <i class="fab fa-apple skill-icon"></i>
         </div>
@@ -48,7 +48,7 @@ subtitle: Software Engineering Manager with 12+ years of experience
     </div>
     
     <div class="col-md-6 col-lg-3 mb-4">
-      <div class="skill-card">
+      <div class="skill-card" style="--animation-order: 3;">
         <div class="skill-icon-container">
           <i class="fas fa-code skill-icon"></i>
         </div>
@@ -58,7 +58,7 @@ subtitle: Software Engineering Manager with 12+ years of experience
     </div>
     
     <div class="col-md-6 col-lg-3 mb-4">
-      <div class="skill-card">
+      <div class="skill-card" style="--animation-order: 4;">
         <div class="skill-icon-container">
           <i class="fas fa-server skill-icon"></i>
         </div>

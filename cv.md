@@ -24,17 +24,17 @@ permalink: /cv/
         <div class="contact-section">
           <div>
             <a href="mailto:skubisz.rafael@gmail.com" class="contact-link">
-              <i class="fas fa-envelope me-2"></i> skubisz.rafael@gmail.com
+              <i class="fas fa-envelope"></i> skubisz.rafael@gmail.com
             </a>
           </div>
           <div>
             <a href="https://github.com/Jenovas" target="_blank" class="contact-link">
-              <i class="fab fa-github me-2"></i> github.com/Jenovas
+              <i class="fab fa-github"></i> github.com/Jenovas
             </a>
           </div>
           <div>
             <a href="https://www.linkedin.com/in/rafael-skubisz-210993b0/" target="_blank" class="contact-link">
-              <i class="fab fa-linkedin me-2"></i> linkedin.com/in/rafael-skubisz-210993b0
+              <i class="fab fa-linkedin"></i> linkedin.com/in/rafael-skubisz-210993b0
             </a>
           </div>
         </div>
@@ -76,7 +76,7 @@ permalink: /cv/
   <div class="col-12">
     <div class="card feature-card">
       <div class="card-body">
-        <h2 class="card-title"><i class="fas fa-laptop-code text-primary mr-2"></i> Key Skills</h2>
+        <h2 class="card-title"><i class="fas fa-laptop-code"></i> Key Skills</h2>
         
         <div class="row mt-3">
           <div class="col-md-3 col-sm-6 mb-4">
@@ -162,7 +162,6 @@ permalink: /cv/
             <span class="skill-tag">Technical Writing</span>
           </div>
         </div>
-        
       </div>
     </div>
   </div>
@@ -172,7 +171,7 @@ permalink: /cv/
   <div class="col-12">
     <div class="card feature-card">
       <div class="card-body">
-        <h2 class="card-title"><i class="fas fa-briefcase text-primary mr-2"></i> Professional Experience</h2>
+        <h2 class="card-title"><i class="fas fa-briefcase"></i> Professional Experience</h2>
         
         <div class="job-item">
           <div class="job-header">
@@ -186,8 +185,8 @@ permalink: /cv/
               </div>
             </div>
             <div class="job-meta">
-              <div class="job-date"><i class="far fa-calendar-alt me-2"></i>July 2023 - Present</div>
-              <div class="location"><i class="fas fa-map-marker-alt me-2"></i>Remote (Ireland Based Company)</div>
+              <div class="job-date"><i class="far fa-calendar-alt"></i> July 2023 - Present</div>
+              <div class="location"><i class="fas fa-map-marker-alt"></i> Remote (Ireland Based Company)</div>
             </div>
           </div>
           <div class="job-content">
@@ -284,16 +283,45 @@ permalink: /cv/
             </ul>
           </div>
         </div>
+
+        <div class="job-item">
+          <div class="job-header">
+            <div class="job-title-container">
+              <div class="job-icon">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+              <div>
+                <h3>Technical Lead, Mobile</h3>
+                <div class="company">Alkami</div>
+              </div>
+            </div>
+            <div class="job-meta">
+              <div class="job-date"><i class="far fa-calendar-alt"></i> January 2019 - July 2023</div>
+              <div class="location"><i class="fas fa-map-marker-alt"></i> Remote (US-Based Company)</div>
+            </div>
+          </div>
+          <div class="job-content">
+            <ul class="job-responsibilities">
+              <li>Led development of an Android SDK used by major U.S. digital banking platforms serving 10 million+ monthly active users</li>
+              <li>Architected and implemented a mobile SDK supporting 60+ financial institutions with custom theming and features</li>
+              <li>Improved SDK performance by 40% through strategic optimizations and memory management</li>
+              <li>Guided migration from Java to Kotlin while maintaining backward compatibility</li>
+              <li>Collaborated with cross-functional teams to deliver features aligned with roadmap priorities</li>
+              <li>Mentored junior developers through code reviews, pair programming, and technical documentation</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
+<!-- Education Section -->
 <div class="row mb-5">
   <div class="col-12">
     <div class="card feature-card">
       <div class="card-body">
-        <h2 class="card-title"><i class="fas fa-graduation-cap text-primary mr-2"></i> Education</h2>
+        <h2 class="card-title"><i class="fas fa-graduation-cap"></i> Education</h2>
         
         <div class="education-item">
           <div class="education-header">
@@ -302,39 +330,40 @@ permalink: /cv/
                 <i class="fas fa-university"></i>
               </div>
               <div>
-                <h3>Computer Science</h3>
-                <div class="company">AGH University of Krakow</div>
+                <h3>Bachelor of Science in Computer Science</h3>
+                <div class="company">Arizona State University</div>
               </div>
             </div>
-            <div class="education-meta">
-              <div class="job-date"><i class="far fa-calendar-alt me-2"></i>2010 - 2012</div>
+            <div class="job-meta">
+              <div class="job-date"><i class="far fa-calendar-alt"></i> 2007 - 2011</div>
+              <div class="location"><i class="fas fa-map-marker-alt"></i> Tempe, Arizona</div>
             </div>
           </div>
-          <div class="education-content">
-            <p>Focus on Software Engineering and Mobile Computing</p>
+          <div class="job-content">
+            <p>Specialized in Software Engineering with a focus on Mobile and Web Development.</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-  
+
+<!-- Connect Section -->
 <div class="row mb-5">
   <div class="col-12">
     <div class="card feature-card">
       <div class="card-body text-center">
-        <h2 class="card-title"><i class="fas fa-envelope text-primary mr-2"></i> Connect With Me</h2>
-        <p>I'm always interested in connecting with fellow developers, potential collaborators, or anyone interested in mobile development and technology.</p>
-        <p>Check out my <a href="/projects/" class="link-highlight">projects</a> to see some of my work, or reach out directly if you'd like to chat!</p>
-        <div class="connect-buttons mt-4">
+        <h2 class="card-title text-center mb-4"><i class="fas fa-handshake"></i> Let's Connect</h2>
+        <p class="mb-4">I'm always interested in discussing new opportunities, sharing knowledge, or collaborating on interesting projects.</p>
+        <div class="connect-buttons">
           <a href="mailto:skubisz.rafael@gmail.com" class="btn btn-primary">
-            <i class="fas fa-envelope me-2"></i> Email Me
+            <i class="fas fa-envelope"></i> Email Me
           </a>
-          <a href="https://github.com/Jenovas" class="btn btn-outline-primary mx-2" target="_blank">
-            <i class="fab fa-github me-2"></i> GitHub
+          <a href="https://www.linkedin.com/in/rafael-skubisz-210993b0/" target="_blank" class="btn btn-outline-primary">
+            <i class="fab fa-linkedin"></i> Connect on LinkedIn
           </a>
-          <a href="https://www.linkedin.com/in/rafael-skubisz-210993b0/" class="btn btn-outline-primary" target="_blank">
-            <i class="fab fa-linkedin me-2"></i> LinkedIn
+          <a href="https://github.com/Jenovas" target="_blank" class="btn btn-outline-primary">
+            <i class="fab fa-github"></i> View GitHub
           </a>
         </div>
       </div>

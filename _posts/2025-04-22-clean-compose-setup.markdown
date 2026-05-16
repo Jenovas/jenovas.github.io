@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "How to Manage State Effectively in Jetpack Compose"
+title: "Jetpack Compose - Clean Architecture, How to manage state"
 date: 2025-04-22 23:52:00 +0200
 categories: [tutorials, android-development]
-tags: ["Android", "Kotlin", "Jetpack Compose", "State Management", "MVI"]
+tags: ["Android", "Kotlin", "Jetpack Compose", "Clean Architecture", "State Management", "MVI"]
 ---
 
 # State Management Best Practices in Jetpack Compose
