@@ -21,7 +21,7 @@ permalink: /cv/
 
   <div class="card card--accent">
     <div class="card-body">
-      <p class="summary-text">Born in the U.S., now living in Poland. 12+ years of experience in mobile and software development. As a Software Engineering Manager, I lead a team of 5 engineers while maintaining hands-on technical contributions. I've developed an Android and iOS SDK used by major U.S. digital banking platforms, serving hundreds of financial institutions with 10 million MAUs. Experienced with iOS, Java/Kotlin backends, Ruby on Rails backends, Solidity, and smart contracts on Ethereum. I embrace challenges, adapt quickly to new technologies, and focus on mentoring and developing my team.</p>
+      <p class="summary-text">Born in the U.S., now living in Poland. 12+ years of experience in mobile and software development. As a Software Engineering Manager, I lead a team of 5 engineers while maintaining hands-on technical contributions. I've developed an Android and iOS SDK used by major U.S. digital banking platforms, serving hundreds of financial institutions with 10 million MAUs. Android is my primary craft, and with AI in the loop I now work across the stack — mobile, backend in Ruby and Node, and frontend in React and JavaScript. Also experienced with Solidity and smart contracts on Ethereum. I embrace challenges, adapt quickly to new technologies, and focus on mentoring and developing my team.</p>
     </div>
   </div>
 </section>
@@ -171,27 +171,6 @@ permalink: /cv/
   </div>
 
   <div class="job-item">
-    <p class="job-meta">January 2019 — July 2023  ·  Remote (US-Based Company)</p>
-    <div class="job-title-container">
-      <div class="job-icon">
-        <i class="fas fa-mobile-alt"></i>
-      </div>
-      <div>
-        <h3 class="job-title">Technical Lead, Mobile</h3>
-        <p class="company">Alkami</p>
-      </div>
-    </div>
-    <ul class="job-responsibilities">
-      <li>Led development of an Android SDK used by major U.S. digital banking platforms serving 10 million+ monthly active users</li>
-      <li>Architected and implemented a mobile SDK supporting 60+ financial institutions with custom theming and features</li>
-      <li>Improved SDK performance by 40% through strategic optimizations and memory management</li>
-      <li>Guided migration from Java to Kotlin while maintaining backward compatibility</li>
-      <li>Collaborated with cross-functional teams to deliver features aligned with roadmap priorities</li>
-      <li>Mentored junior developers through code reviews, pair programming, and technical documentation</li>
-    </ul>
-  </div>
-
-  <div class="job-item">
     <p class="job-meta">August 2012 — October 2018  ·  Kraków, Poland</p>
     <div class="job-title-container">
       <div class="job-icon">
@@ -240,17 +219,16 @@ permalink: /cv/
   <hr class="section-block__rule">
 
   <div class="education-item">
-    <p class="job-meta">2007 — 2011  ·  Tempe, Arizona</p>
+    <p class="job-meta">2010 — 2012  ·  Kraków, Poland</p>
     <div class="job-title-container">
       <div class="job-icon">
         <i class="fas fa-university"></i>
       </div>
       <div>
-        <h3 class="job-title">Bachelor of Science in Computer Science</h3>
-        <p class="company">Arizona State University</p>
+        <h3 class="job-title">Informatyka</h3>
+        <p class="company">AGH University of Krakow</p>
       </div>
     </div>
-    <p>Specialized in Software Engineering with a focus on Mobile and Web Development.</p>
   </div>
 </section>
 
