@@ -17,7 +17,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400;9..144,600;9..144,900;9..144,400,100,0;9..144,600,100,0&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   
   <!-- Custom styles -->
   
@@ -26,247 +26,19 @@
     
   
   
-  <style>
-    /* Dark theme with blue accents */
-    :root {
-      --primary-color: #4f8cff;
-      --primary-hover: #3a7dff;
-      --dark-bg: #0d1117;
-      --dark-surface: #161b22;
-      --dark-border: #30363d;
-      --text-primary: #e6edf3;
-      --text-secondary: #8b949e;
-      --text-muted: #6e7681;
-    }
-    
-    body {
-      background-color: var(--dark-bg);
-      color: var(--text-primary);
-      font-family: 'Inter', sans-serif;
-      padding-top: 56px !important;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    main {
-      flex: 1 0 auto;
-    }
-    
-    a {
-      color: var(--primary-color);
-      transition: color 0.2s ease;
-    }
-    
-    a:hover {
-      color: var(--primary-hover);
-      text-decoration: none;
-    }
-    
-    /* Consistent Navigation */
-    .navbar {
-      background-color: var(--dark-surface) !important;
-      border-bottom: 1px solid var(--dark-border);
-    }
-    
-    .navbar-brand {
-      color: var(--primary-color) !important;
-      font-weight: 600;
-    }
-    
-    .navbar-light .navbar-nav .nav-link {
-      color: var(--text-secondary) !important;
-      padding: 0.5rem 1rem;
-      transition: all 0.2s ease;
-    }
-    
-    .navbar-light .navbar-nav .nav-link:hover,
-    .navbar-light .navbar-nav .nav-link:focus {
-      color: var(--primary-color) !important;
-      background-color: rgba(79, 140, 255, 0.1);
-      border-radius: 4px;
-    }
-    
-    .navbar-light .navbar-toggler {
-      border-color: var(--dark-border);
-    }
-    
-    .navbar-light .navbar-toggler-icon {
-      filter: invert(0.8);
-    }
-    
-    /* Consistent Buttons */
-    .btn-primary {
-      background-color: var(--primary-color);
-      border-color: var(--primary-color);
-      transition: all 0.2s ease;
-    }
-    
-    .btn-primary:hover {
-      background-color: var(--primary-hover);
-      border-color: var(--primary-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    
-    .btn-outline-primary {
-      color: var(--primary-color);
-      border-color: var(--primary-color);
-      transition: all 0.2s ease;
-    }
-    
-    .btn-outline-primary:hover {
-      background-color: var(--primary-color);
-      border-color: var(--primary-color);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    
-    /* Consistent Cards */
-    .card {
-      background-color: var(--dark-surface);
-      border: 1px solid var(--dark-border);
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      margin-bottom: 2rem;
-    }
-    
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    }
-    
-    .card-body {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-    
-    .card-title {
-      color: var(--text-primary);
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-    
-    /* Standardized Headers */
-    .header-section {
-      padding: 3rem 0;
-      margin-bottom: 3rem;
-      text-align: center;
-      background-color: var(--dark-surface);
-      border-bottom: 1px solid var(--dark-border);
-    }
-    
-    .page-title {
-      font-size: 2.5rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
-    }
-    
-    .page-subtitle {
-      font-size: 1.2rem;
-      color: var(--primary-color);
-      margin-bottom: 1rem;
-    }
-    
-    .divider {
-      width: 80px;
-      margin: 1rem auto;
-      border-top: 3px solid var(--primary-color);
-    }
-    
-    /* Consistent Footer */
-    footer {
-      background-color: var(--dark-surface);
-      color: var(--text-secondary);
-      padding: 2rem 0;
-      margin-top: 3rem;
-      border-top: 1px solid var(--dark-border);
-      flex-shrink: 0;
-    }
-    
-    footer .fa-stack-2x {
-      color: var(--dark-bg);
-    }
-    
-    footer .fa-stack-1x {
-      color: var(--text-primary);
-    }
-    
-    footer .fa-stack:hover .fa-stack-2x {
-      color: var(--primary-color);
-    }
-    
-    /* Consistent Container */
-    main.container {
-      margin-top: 2rem;
-      padding-right: 15px;
-      padding-left: 15px;
-      margin-right: auto;
-      margin-left: auto;
-    }
-    
-    /* Consistent Typography */
-    h1, h2, h3, h4, h5, h6 {
-      color: var(--text-primary);
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-    
-    h2 {
-      font-size: 1.8rem;
-      margin-top: 2rem;
-    }
-    
-    h3 {
-      font-size: 1.4rem;
-      color: var(--primary-color);
-    }
-    
-    p {
-      color: var(--text-primary);
-      margin-bottom: 1rem;
-    }
-    
-    .lead {
-      font-size: 1.2rem;
-      font-weight: 300;
-    }
-    
-    hr {
-      border-color: var(--dark-border);
-    }
-    
-    /* Consistent Section Styling */
-    .section-title {
-      text-align: center;
-      margin-bottom: 2rem;
-      color: var(--text-primary);
-    }
-    
-    .section-subtitle {
-      text-align: center;
-      color: var(--primary-color);
-      margin-bottom: 3rem;
-    }
-    
-    /* Consistent Tags */
-    .tag {
-      display: inline-block;
-      background-color: rgba(79, 140, 255, 0.1);
-      color: var(--primary-color);
-      border: 1px solid var(--primary-color);
-      border-radius: 4px;
-      padding: 0.3rem 0.6rem;
-      margin-right: 0.5rem;
-      margin-bottom: 0.5rem;
-      font-size: 0.8rem;
-    }
-  </style>
 </head>
 
 <body>
+  <a class="skip-to-content" href="#main">Skip to content</a>
+  <div class="build-stamp" aria-hidden="true">
+    <div class="build-stamp__inner">
+      <span>v.2026.05</span>
+      <span class="build-stamp__sep">·</span>
+      <span>KRAKÓW</span>
+      <span class="build-stamp__sep">·</span>
+      <span>RUNNING IN PROD</span>
+    </div>
+  </div>
   <!-- Navigation -->
   <!-- Modern dark theme navigation header -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
@@ -279,72 +51,113 @@
     
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about/">Personal</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/cv/">Professional</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/projects/">Projects</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/blog/">Blog</a>
-        </li>
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+               href="/"
+               >Home</a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+               href="/about/"
+               >Personal</a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+               href="/cv/"
+               >Professional</a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+               href="/projects/"
+               >Projects</a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+               href="/blog/"
+               >Blog</a>
+          </li>
+        
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- Standardized page header with title and subtitle -->
 
-<header class="header-section">
+
+<header class="page-hero">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h1 class="page-title">Jetpack Compose - Clean Architecture, How to manage state</h1>
-        
-        <hr class="divider">
-      </div>
+    <div class="page-hero__inner">
+      <span class="eyebrow page-hero__eyebrow">§ 00 &nbsp; JETPACK COMPOSE - CLEAN ARCHITECTURE, HOW TO MANAGE STATE</span>
+      <hr class="page-hero__rule">
+      <h1 class="page-hero__title">Jetpack Compose - Clean Architecture, How to manage state.</h1>
+      
+      
     </div>
   </div>
 </header>
- 
-  
-  <!-- Page Content -->
-  <main role="main" class="container">
-    <div class="container post-container">
-  <div class="row">
-    <div class="col-lg-10 col-md-12 mx-auto">
-      <article class="post">
-        <header class="post-header mb-5">
-          <h1 class="post-title">Jetpack Compose - Clean Architecture, How to manage state</h1>
-          
-          <p class="post-meta text-muted">Posted on April 22, 2025</p>
-          
-          <div class="post-tags">
-            
-            <a href="/tags#Android" class="post-tag badge">Android</a>
-            
-            <a href="/tags#Kotlin" class="post-tag badge">Kotlin</a>
-            
-            <a href="/tags#Jetpack Compose" class="post-tag badge">Jetpack Compose</a>
-            
-            <a href="/tags#Clean Architecture" class="post-tag badge">Clean Architecture</a>
-            
-            <a href="/tags#State Management" class="post-tag badge">State Management</a>
-            
-            <a href="/tags#MVI" class="post-tag badge">MVI</a>
-            
-          </div>
-          
-        </header>
 
-        <div class="post-content">
-          <h1 id="state-management-best-practices-in-jetpack-compose">State Management Best Practices in Jetpack Compose</h1>
+
+  <!-- Page Content -->
+  <main id="main" role="main" class="container">
+    <article class="post-page">
+  <header class="post-header container">
+    <div class="post-header__inner">
+      <span class="eyebrow"><a href="/blog/" style="color: inherit; text-decoration: none;">← Writing</a></span>
+      <h1 class="post-header__title">Jetpack Compose - Clean Architecture, How to manage state</h1>
+      
+      <p class="post-header__meta">APR 22 2025</p>
+      
+      <div class="post-header__tags">
+        <span class="tag tag--signal">Android</span><span class="tag tag--signal">Kotlin</span><span class="tag tag--signal">Jetpack Compose</span><span class="tag tag--signal">Clean Architecture</span><span class="tag tag--signal">State Management</span><span class="tag tag--signal">MVI</span>
+      </div>
+      
+    </div>
+  </header>
+
+  <div class="post-content container">
+    <div class="post-content__inner">
+      <h1 id="state-management-best-practices-in-jetpack-compose">State Management Best Practices in Jetpack Compose</h1>
 
 <p>Managing state properly is one of the biggest challenges in any Android application, especially when using Jetpack Compose. In this post, we’ll explore a setup that keeps your Compose apps clean, manageable, and easy to maintain.</p>
 
@@ -881,186 +694,59 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-        </div>
-
-        <hr class="mt-5 mb-4">
-        
-        <div class="post-navigation d-flex justify-content-between mt-4">
-          <a href="/blog/" class="btn btn-outline-primary">← Back to Blog</a>
-          <a href="mailto:?subject=Jetpack+Compose+-+Clean+Architecture%2C+How+to+manage+state&body=Check out this post: https://jenovas.github.io/2025-04-22-clean-compose-setup/" class="btn btn-outline-primary">Share</a>
-        </div>
-      </article>
     </div>
   </div>
-</div>
 
-<style>
-  .post-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding-top: 2rem;
-  }
-  
-  .post-title {
-    color: var(--text-primary);
-    font-weight: 600;
-    font-size: 2.5rem;
-  }
-  
-  .post-subtitle {
-    color: var(--text-secondary);
-  }
-  
-  .post-meta {
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .post-tags {
-    margin-top: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  
-  .post-tag {
-    background-color: var(--dark-bg);
-    color: var(--primary-color);
-    border: 1px solid var(--primary-color);
-    padding: 0.4rem 0.7rem;
-    font-size: 0.8rem;
-    font-weight: 400;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: all 0.2s ease;
-  }
-  
-  .post-tag:hover {
-    background-color: var(--primary-color);
-    color: var(--dark-bg);
-    text-decoration: none;
-  }
-  
-  .post-content {
-    color: var(--text-primary);
-    line-height: 1.8;
-  }
-  
-  .post-content h1, 
-  .post-content h2, 
-  .post-content h3,
-  .post-content h4,
-  .post-content h5,
-  .post-content h6 {
-    color: var(--text-primary);
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .post-content p {
-    margin-bottom: 1.5rem;
-  }
-  
-  .post-content pre {
-    background-color: var(--dark-surface);
-    border: 1px solid var(--dark-border);
-    border-radius: 5px;
-    padding: 1rem;
-    margin-bottom: 1.5rem;
-    overflow-x: auto;
-  }
-  
-  .post-content code {
-    background-color: var(--dark-surface);
-    color: var(--primary-color);
-    padding: 0.2rem 0.4rem;
-    border-radius: 3px;
-  }
-  
-  .post-content blockquote {
-    border-left: 4px solid var(--primary-color);
-    padding-left: 1rem;
-    margin-left: 0;
-    color: var(--text-secondary);
-  }
-  
-  .post-content img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    margin: 1.5rem 0;
-  }
-  
-  hr {
-    border-color: var(--dark-border);
-  }
-  
-  /* Hide the default header section since we're creating our own */
-  .header-section {
-    display: none;
-  }
-</style> 
+  <footer class="post-footer container">
+    <hr>
+    <div class="post-footer__nav">
+      <a href="/blog/" class="btn btn-ghost">← back to writing</a>
+      <a href="mailto:?subject=Jetpack+Compose+-+Clean+Architecture%2C+How+to+manage+state&body=Check out this post: https://jenovas.github.io/2025-04-22-clean-compose-setup/" class="btn btn-outline-primary">Share</a>
+    </div>
+  </footer>
+</article>
+
   </main>
   
   <!-- Footer -->
-  <!-- Modern dark theme footer -->
-<footer>
+  <footer class="site-footer">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <ul class="list-inline text-center">
-          
-          <li class="list-inline-item">
-            <a href="mailto:skubisz.rafael@gmail.com" title="Email me">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-          
-          
-          <li class="list-inline-item">
-            <a href="https://github.com/Jenovas" title="GitHub">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-          
-          
-          <li class="list-inline-item">
-            <a href="https://linkedin.com/in/rafael-skubisz-210993b0" title="LinkedIn">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-          
-          
-          <li class="list-inline-item">
-            <a href="https://twitter.com/RafaTheDevGuy" title="Twitter">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-        
-        <p class="copyright text-center mt-4">
-          Rafael Skubisz &copy; 2026
-        </p>
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <p class="site-footer__brand-title">Rafael Skubisz.</p>
+        <p class="site-footer__brand-tagline">Software Engineering Manager.<br>Twelve years building mobile.</p>
       </div>
+      <nav class="site-footer__nav" aria-label="Footer">
+        <p class="site-footer__heading">Pages</p>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about/">Personal</a></li>
+          <li><a href="/cv/">Professional</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/blog/">Writing</a></li>
+        </ul>
+      </nav>
+      <nav class="site-footer__nav" aria-label="Connect">
+        <p class="site-footer__heading">Connect</p>
+        <ul>
+          <li><a href="mailto:skubisz.rafael@gmail.com">Email</a></li>
+          <li><a href="https://github.com/Jenovas" rel="noopener" target="_blank">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/rafael-skubisz-210993b0" rel="noopener" target="_blank">LinkedIn</a></li>
+          <li><a href="https://twitter.com/RafaTheDevGuy" rel="noopener" target="_blank">Twitter</a></li>
+          <li><a href="/feed.xml">RSS</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="site-footer__stamp">
+      <span>© 2026 RAFAEL SKUBISZ.</span>
+      <span class="site-footer__sep">·</span>
+      <span>v.2026.05</span>
+      <span class="site-footer__sep">·</span>
+      <span>BUILT WITH JEKYLL</span>
     </div>
   </div>
-</footer> 
+</footer>
+
   
   <!-- Bootstrap core JavaScript -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

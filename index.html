@@ -17,7 +17,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400;9..144,600;9..144,900;9..144,400,100,0;9..144,600,100,0&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   
   <!-- Custom styles -->
   
@@ -26,247 +26,19 @@
     
   
   
-  <style>
-    /* Dark theme with blue accents */
-    :root {
-      --primary-color: #4f8cff;
-      --primary-hover: #3a7dff;
-      --dark-bg: #0d1117;
-      --dark-surface: #161b22;
-      --dark-border: #30363d;
-      --text-primary: #e6edf3;
-      --text-secondary: #8b949e;
-      --text-muted: #6e7681;
-    }
-    
-    body {
-      background-color: var(--dark-bg);
-      color: var(--text-primary);
-      font-family: 'Inter', sans-serif;
-      padding-top: 56px !important;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    main {
-      flex: 1 0 auto;
-    }
-    
-    a {
-      color: var(--primary-color);
-      transition: color 0.2s ease;
-    }
-    
-    a:hover {
-      color: var(--primary-hover);
-      text-decoration: none;
-    }
-    
-    /* Consistent Navigation */
-    .navbar {
-      background-color: var(--dark-surface) !important;
-      border-bottom: 1px solid var(--dark-border);
-    }
-    
-    .navbar-brand {
-      color: var(--primary-color) !important;
-      font-weight: 600;
-    }
-    
-    .navbar-light .navbar-nav .nav-link {
-      color: var(--text-secondary) !important;
-      padding: 0.5rem 1rem;
-      transition: all 0.2s ease;
-    }
-    
-    .navbar-light .navbar-nav .nav-link:hover,
-    .navbar-light .navbar-nav .nav-link:focus {
-      color: var(--primary-color) !important;
-      background-color: rgba(79, 140, 255, 0.1);
-      border-radius: 4px;
-    }
-    
-    .navbar-light .navbar-toggler {
-      border-color: var(--dark-border);
-    }
-    
-    .navbar-light .navbar-toggler-icon {
-      filter: invert(0.8);
-    }
-    
-    /* Consistent Buttons */
-    .btn-primary {
-      background-color: var(--primary-color);
-      border-color: var(--primary-color);
-      transition: all 0.2s ease;
-    }
-    
-    .btn-primary:hover {
-      background-color: var(--primary-hover);
-      border-color: var(--primary-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    
-    .btn-outline-primary {
-      color: var(--primary-color);
-      border-color: var(--primary-color);
-      transition: all 0.2s ease;
-    }
-    
-    .btn-outline-primary:hover {
-      background-color: var(--primary-color);
-      border-color: var(--primary-color);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    
-    /* Consistent Cards */
-    .card {
-      background-color: var(--dark-surface);
-      border: 1px solid var(--dark-border);
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      margin-bottom: 2rem;
-    }
-    
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    }
-    
-    .card-body {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-    
-    .card-title {
-      color: var(--text-primary);
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-    
-    /* Standardized Headers */
-    .header-section {
-      padding: 3rem 0;
-      margin-bottom: 3rem;
-      text-align: center;
-      background-color: var(--dark-surface);
-      border-bottom: 1px solid var(--dark-border);
-    }
-    
-    .page-title {
-      font-size: 2.5rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
-    }
-    
-    .page-subtitle {
-      font-size: 1.2rem;
-      color: var(--primary-color);
-      margin-bottom: 1rem;
-    }
-    
-    .divider {
-      width: 80px;
-      margin: 1rem auto;
-      border-top: 3px solid var(--primary-color);
-    }
-    
-    /* Consistent Footer */
-    footer {
-      background-color: var(--dark-surface);
-      color: var(--text-secondary);
-      padding: 2rem 0;
-      margin-top: 3rem;
-      border-top: 1px solid var(--dark-border);
-      flex-shrink: 0;
-    }
-    
-    footer .fa-stack-2x {
-      color: var(--dark-bg);
-    }
-    
-    footer .fa-stack-1x {
-      color: var(--text-primary);
-    }
-    
-    footer .fa-stack:hover .fa-stack-2x {
-      color: var(--primary-color);
-    }
-    
-    /* Consistent Container */
-    main.container {
-      margin-top: 2rem;
-      padding-right: 15px;
-      padding-left: 15px;
-      margin-right: auto;
-      margin-left: auto;
-    }
-    
-    /* Consistent Typography */
-    h1, h2, h3, h4, h5, h6 {
-      color: var(--text-primary);
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-    
-    h2 {
-      font-size: 1.8rem;
-      margin-top: 2rem;
-    }
-    
-    h3 {
-      font-size: 1.4rem;
-      color: var(--primary-color);
-    }
-    
-    p {
-      color: var(--text-primary);
-      margin-bottom: 1rem;
-    }
-    
-    .lead {
-      font-size: 1.2rem;
-      font-weight: 300;
-    }
-    
-    hr {
-      border-color: var(--dark-border);
-    }
-    
-    /* Consistent Section Styling */
-    .section-title {
-      text-align: center;
-      margin-bottom: 2rem;
-      color: var(--text-primary);
-    }
-    
-    .section-subtitle {
-      text-align: center;
-      color: var(--primary-color);
-      margin-bottom: 3rem;
-    }
-    
-    /* Consistent Tags */
-    .tag {
-      display: inline-block;
-      background-color: rgba(79, 140, 255, 0.1);
-      color: var(--primary-color);
-      border: 1px solid var(--primary-color);
-      border-radius: 4px;
-      padding: 0.3rem 0.6rem;
-      margin-right: 0.5rem;
-      margin-bottom: 0.5rem;
-      font-size: 0.8rem;
-    }
-  </style>
 </head>
 
 <body>
+  <a class="skip-to-content" href="#main">Skip to content</a>
+  <div class="build-stamp" aria-hidden="true">
+    <div class="build-stamp__inner">
+      <span>v.2026.05</span>
+      <span class="build-stamp__sep">·</span>
+      <span>KRAKÓW</span>
+      <span class="build-stamp__sep">·</span>
+      <span>RUNNING IN PROD</span>
+    </div>
+  </div>
   <!-- Navigation -->
   <!-- Modern dark theme navigation header -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
@@ -279,67 +51,114 @@
     
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about/">Personal</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/cv/">Professional</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/projects/">Projects</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/blog/">Blog</a>
-        </li>
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link is-active"
+               href="/"
+               aria-current="page">Home</a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+               href="/about/"
+               >Personal</a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+               href="/cv/"
+               >Professional</a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+               href="/projects/"
+               >Projects</a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+               href="/blog/"
+               >Blog</a>
+          </li>
+        
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- Standardized page header with title and subtitle -->
 
-<header class="header-section">
+
+<header class="page-hero">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h1 class="page-title">Rafael Skubisz</h1>
-        
-          <p class="page-subtitle">Software Engineering Manager with 12+ years of experience</p>
-        
-        <hr class="divider">
-      </div>
+    <div class="page-hero__inner">
+      <span class="eyebrow page-hero__eyebrow">§ 00 &nbsp; § 00 &NBSP; PORTFOLIO</span>
+      <hr class="page-hero__rule">
+      <h1 class="page-hero__title">Rafael Skubisz.</h1>
+      
+        <p class="page-hero__subtitle">Software Engineering Manager with 12+ years of experience</p>
+      
+      
+        <div class="page-hero__cta">
+          
+            <a class="btn btn-primary" href="/cv/">Read the CV →</a>
+          
+            <a class="btn btn-outline-primary" href="mailto:skubisz.rafael@gmail.com">Contact</a>
+          
+        </div>
+      
     </div>
   </div>
 </header>
- 
-  
-  <!-- Page Content -->
-  <main role="main" class="container">
-    <div class="container-fluid py-5 hero-section">
-  <div class="row">
-    <div class="col-lg-10 col-md-11 mx-auto text-center">
-      <h2 class="welcome-message mb-4">Welcome to my professional portfolio</h2>
-      <p class="lead mb-0">I specialize in mobile app development and SDKs with a focus on creating robust, 
-      user-friendly solutions for complex problems. With 12+ years of experience across Android, iOS, 
-      and backend technologies, I've delivered solutions used by millions of users worldwide.</p>
-    </div>
-  </div>
-</div>
 
-<div class="container my-5 pt-3">
-  <div class="row">
-    <div class="col-12 text-center mb-5">
-      <h2 class="section-title">Featured Skills</h2>
-      <p class="section-subtitle">Specializing in mobile development and beyond</p>
-    </div>
-  </div>
-  
+
+  <!-- Page Content -->
+  <main id="main" role="main" class="container">
+    <section class="section-block container">
+  <span class="section-block__num">§ 01</span>
+  <h2 class="section-block__title">Featured Skills</h2>
+  <p class="section-block__lede">A small set of things I do well.</p>
+  <hr class="section-block__rule" />
+
   <div class="row justify-content-center">
     <div class="col-md-6 col-lg-3 mb-4">
-      <div class="skill-card" style="--animation-order: 1;">
+      <div class="skill-card">
         <div class="skill-icon-container">
           <i class="fas fa-mobile-alt skill-icon"></i>
         </div>
@@ -347,9 +166,8 @@
         <p>Java / Kotlin expertise with Jetpack Compose and modern Android development practices</p>
       </div>
     </div>
-    
     <div class="col-md-6 col-lg-3 mb-4">
-      <div class="skill-card" style="--animation-order: 2;">
+      <div class="skill-card">
         <div class="skill-icon-container">
           <i class="fab fa-apple skill-icon"></i>
         </div>
@@ -357,9 +175,8 @@
         <p>Swift and Objective-C experience developing native iOS applications</p>
       </div>
     </div>
-    
     <div class="col-md-6 col-lg-3 mb-4">
-      <div class="skill-card" style="--animation-order: 3;">
+      <div class="skill-card">
         <div class="skill-icon-container">
           <i class="fas fa-code skill-icon"></i>
         </div>
@@ -367,9 +184,8 @@
         <p>Creating cross-platform SDKs used by major financial institutions</p>
       </div>
     </div>
-    
     <div class="col-md-6 col-lg-3 mb-4">
-      <div class="skill-card" style="--animation-order: 4;">
+      <div class="skill-card">
         <div class="skill-icon-container">
           <i class="fas fa-server skill-icon"></i>
         </div>
@@ -378,109 +194,106 @@
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="container my-5 py-3">
+<section class="section-block container">
+  <span class="section-block__num">§ 02</span>
+  <h2 class="section-block__title">About / Experience</h2>
+  <p class="section-block__lede">Two stories that overlap.</p>
+  <hr class="section-block__rule" />
+
   <div class="row">
     <div class="col-lg-6 mb-4">
-      <div class="card h-100">
-        <div class="card-body d-flex flex-column">
-          <h2 class="section-title text-left mb-4">About Me</h2>
+      <div class="card card--hero h-100">
+        <div class="card-body">
+          <h3 class="card-title">About Me</h3>
           <p>I'm a mobile lead developer with a passion for creating technology that improves people's lives. With over a decade of experience in Android, iOS, and backend development, I've built solutions used by millions of users worldwide.</p>
           <p>Born in the U.S. and now living in Poland, I bring a unique perspective to my work and embrace challenges that push the boundaries of what's possible in mobile development.</p>
           <div class="mt-auto">
-            <a href="/about/" class="btn btn-primary">
-              <i class="fas fa-user mr-2"></i> Learn More About Me
-            </a>
+            <a href="/about/" class="btn btn-outline-primary">Learn More About Me</a>
           </div>
         </div>
       </div>
     </div>
-    
     <div class="col-lg-6 mb-4">
-      <div class="card h-100">
-        <div class="card-body d-flex flex-column">
-          <h2 class="section-title text-left mb-4">Professional Experience</h2>
+      <div class="card card--hero h-100">
+        <div class="card-body">
+          <h3 class="card-title">Professional Experience</h3>
           <p>I'm currently the Software Engineering Manager at Pulsate, where I lead a team of 5 engineers while also contributing hands-on development (~30-50% of my time). I've developed an Android and iOS SDK used by major U.S. digital banking platforms, serving hundreds of financial institutions with 10 million monthly active users.</p>
           <p>My expertise spans mobile app architecture, SDK development, team leadership, and mentorship, with a focus on delivering secure, high-performance solutions while fostering growth in my team.</p>
           <div class="mt-auto">
-            <a href="/cv/" class="btn btn-primary">
-              <i class="fas fa-file-alt mr-2"></i> View My Professional CV
-            </a>
+            <a href="/cv/" class="btn btn-outline-primary">View My Professional CV</a>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<div id="blog-section" class="container my-5 py-3">
-  <h2 class="section-title">Recent Posts</h2>
-  <p class="section-subtitle">Latest thoughts and updates</p>
+<section class="section-block container" id="blog-section">
+  <span class="section-block__num">§ 03</span>
+  <h2 class="section-block__title">Recent Posts</h2>
+  <p class="section-block__lede">Latest thoughts and updates.</p>
+  <hr class="section-block__rule" />
 
   <div class="row">
     
     
     <div class="col-lg-4 mb-4">
-      <div class="card h-100">
+      <a class="card card--linked h-100" href="/2025-04-26-mvvm-vs-mvi/">
         <div class="card-body">
-          <span class="tag">April 26, 2025</span>
+          <p class="post-card__meta">APR 26 2025</p>
           <h3 class="card-title">MVVM vs MVI in Android Development: Finding the Right Fit for Your Compose App</h3>
           <p class="card-text">The battle between MVVM and MVI never ends! Can they not coexist? Like a quote I like “Make Lovecraft Not Warcraft” we’ll try today to...</p>
-          <a href="/2025-04-26-mvvm-vs-mvi/" class="btn btn-outline-primary btn-sm mt-auto">Read More</a>
+          <span class="btn-link-arrow mt-auto">Read more <span class="arrow">→</span></span>
         </div>
-      </div>
+      </a>
     </div>
     
     <div class="col-lg-4 mb-4">
-      <div class="card h-100">
+      <a class="card card--linked h-100" href="/2025-04-22-clean-compose-setup/">
         <div class="card-body">
-          <span class="tag">April 22, 2025</span>
+          <p class="post-card__meta">APR 22 2025</p>
           <h3 class="card-title">Jetpack Compose - Clean Architecture, How to manage state</h3>
           <p class="card-text">State Management Best Practices in Jetpack Compose Managing state properly is one of the biggest challenges in any Android application, especially when using Jetpack Compose....</p>
-          <a href="/2025-04-22-clean-compose-setup/" class="btn btn-outline-primary btn-sm mt-auto">Read More</a>
+          <span class="btn-link-arrow mt-auto">Read more <span class="arrow">→</span></span>
         </div>
-      </div>
+      </a>
     </div>
     
     <div class="col-lg-4 mb-4">
-      <div class="card h-100">
+      <a class="card card--linked h-100" href="/2025-01-20-jetpack-compose-clean-architecture/">
         <div class="card-body">
-          <span class="tag">January 20, 2025</span>
+          <p class="post-card__meta">JAN 20 2025</p>
           <h3 class="card-title">Jetpack Compose - Clean Architecture, How to manage state</h3>
           <p class="card-text">Jetpack Compose with Clean Architecture: A Practical Guide to State Management How do I manage state? How should I trigger navigation? How should I show...</p>
-          <a href="/2025-01-20-jetpack-compose-clean-architecture/" class="btn btn-outline-primary btn-sm mt-auto">Read More</a>
+          <span class="btn-link-arrow mt-auto">Read more <span class="arrow">→</span></span>
         </div>
-      </div>
+      </a>
     </div>
     
     
-    
   </div>
-  
-  
-</div>
 
-<div class="container-fluid py-5 cta-section">
-  <div class="row">
-    <div class="col-lg-8 mx-auto text-center">
-      <h2 class="mb-4">Let's Connect</h2>
-      <p class="lead mb-4">Interested in working together? Feel free to get in touch!</p>
-      <div class="d-flex justify-content-center flex-wrap">
-        <a href="mailto:skubisz.rafael@gmail.com" class="btn btn-primary m-2 px-4">
-          <i class="fas fa-envelope mr-2"></i> Contact Me
-        </a>
-        <a href="https://github.com/Jenovas" target="_blank" class="btn btn-outline-primary m-2 px-4">
-          <i class="fab fa-github mr-2"></i> GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/rafael-skubisz-210993b0/" target="_blank" class="btn btn-outline-primary m-2 px-4">
-          <i class="fab fa-linkedin mr-2"></i> LinkedIn
-        </a>
+  
+</section>
+
+<section class="section-block container">
+  <span class="section-block__num">§ 04</span>
+  <h2 class="section-block__title">Let's Connect</h2>
+  <p class="section-block__lede">Interested in working together? Get in touch.</p>
+  <hr class="section-block__rule" />
+
+  <div class="card card--hero card--accent">
+    <div class="card-body">
+      <div class="d-flex flex-wrap" style="gap: var(--space-3);">
+        <a href="mailto:skubisz.rafael@gmail.com" class="btn btn-primary">Contact Me</a>
+        <a href="https://github.com/Jenovas" target="_blank" rel="noopener" class="btn btn-outline-primary">GitHub</a>
+        <a href="https://www.linkedin.com/in/rafael-skubisz-210993b0/" target="_blank" rel="noopener" class="btn btn-outline-primary">LinkedIn</a>
       </div>
     </div>
   </div>
-</div>
-
+</section>
 
 
 
@@ -491,64 +304,44 @@
   </main>
   
   <!-- Footer -->
-  <!-- Modern dark theme footer -->
-<footer>
+  <footer class="site-footer">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <ul class="list-inline text-center">
-          
-          <li class="list-inline-item">
-            <a href="mailto:skubisz.rafael@gmail.com" title="Email me">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-          
-          
-          <li class="list-inline-item">
-            <a href="https://github.com/Jenovas" title="GitHub">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-          
-          
-          <li class="list-inline-item">
-            <a href="https://linkedin.com/in/rafael-skubisz-210993b0" title="LinkedIn">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-          
-          
-          <li class="list-inline-item">
-            <a href="https://twitter.com/RafaTheDevGuy" title="Twitter">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-        
-        <p class="copyright text-center mt-4">
-          Rafael Skubisz &copy; 2026
-        </p>
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <p class="site-footer__brand-title">Rafael Skubisz.</p>
+        <p class="site-footer__brand-tagline">Software Engineering Manager.<br>Twelve years building mobile.</p>
       </div>
+      <nav class="site-footer__nav" aria-label="Footer">
+        <p class="site-footer__heading">Pages</p>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about/">Personal</a></li>
+          <li><a href="/cv/">Professional</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/blog/">Writing</a></li>
+        </ul>
+      </nav>
+      <nav class="site-footer__nav" aria-label="Connect">
+        <p class="site-footer__heading">Connect</p>
+        <ul>
+          <li><a href="mailto:skubisz.rafael@gmail.com">Email</a></li>
+          <li><a href="https://github.com/Jenovas" rel="noopener" target="_blank">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/rafael-skubisz-210993b0" rel="noopener" target="_blank">LinkedIn</a></li>
+          <li><a href="https://twitter.com/RafaTheDevGuy" rel="noopener" target="_blank">Twitter</a></li>
+          <li><a href="/feed.xml">RSS</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="site-footer__stamp">
+      <span>© 2026 RAFAEL SKUBISZ.</span>
+      <span class="site-footer__sep">·</span>
+      <span>v.2026.05</span>
+      <span class="site-footer__sep">·</span>
+      <span>BUILT WITH JEKYLL</span>
     </div>
   </div>
-</footer> 
+</footer>
+
   
   <!-- Bootstrap core JavaScript -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

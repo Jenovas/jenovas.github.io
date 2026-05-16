@@ -17,7 +17,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400;9..144,600;9..144,900;9..144,400,100,0;9..144,600,100,0&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   
   <!-- Custom styles -->
   
@@ -26,247 +26,19 @@
     
   
   
-  <style>
-    /* Dark theme with blue accents */
-    :root {
-      --primary-color: #4f8cff;
-      --primary-hover: #3a7dff;
-      --dark-bg: #0d1117;
-      --dark-surface: #161b22;
-      --dark-border: #30363d;
-      --text-primary: #e6edf3;
-      --text-secondary: #8b949e;
-      --text-muted: #6e7681;
-    }
-    
-    body {
-      background-color: var(--dark-bg);
-      color: var(--text-primary);
-      font-family: 'Inter', sans-serif;
-      padding-top: 56px !important;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    main {
-      flex: 1 0 auto;
-    }
-    
-    a {
-      color: var(--primary-color);
-      transition: color 0.2s ease;
-    }
-    
-    a:hover {
-      color: var(--primary-hover);
-      text-decoration: none;
-    }
-    
-    /* Consistent Navigation */
-    .navbar {
-      background-color: var(--dark-surface) !important;
-      border-bottom: 1px solid var(--dark-border);
-    }
-    
-    .navbar-brand {
-      color: var(--primary-color) !important;
-      font-weight: 600;
-    }
-    
-    .navbar-light .navbar-nav .nav-link {
-      color: var(--text-secondary) !important;
-      padding: 0.5rem 1rem;
-      transition: all 0.2s ease;
-    }
-    
-    .navbar-light .navbar-nav .nav-link:hover,
-    .navbar-light .navbar-nav .nav-link:focus {
-      color: var(--primary-color) !important;
-      background-color: rgba(79, 140, 255, 0.1);
-      border-radius: 4px;
-    }
-    
-    .navbar-light .navbar-toggler {
-      border-color: var(--dark-border);
-    }
-    
-    .navbar-light .navbar-toggler-icon {
-      filter: invert(0.8);
-    }
-    
-    /* Consistent Buttons */
-    .btn-primary {
-      background-color: var(--primary-color);
-      border-color: var(--primary-color);
-      transition: all 0.2s ease;
-    }
-    
-    .btn-primary:hover {
-      background-color: var(--primary-hover);
-      border-color: var(--primary-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    
-    .btn-outline-primary {
-      color: var(--primary-color);
-      border-color: var(--primary-color);
-      transition: all 0.2s ease;
-    }
-    
-    .btn-outline-primary:hover {
-      background-color: var(--primary-color);
-      border-color: var(--primary-color);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    
-    /* Consistent Cards */
-    .card {
-      background-color: var(--dark-surface);
-      border: 1px solid var(--dark-border);
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      margin-bottom: 2rem;
-    }
-    
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    }
-    
-    .card-body {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-    
-    .card-title {
-      color: var(--text-primary);
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-    
-    /* Standardized Headers */
-    .header-section {
-      padding: 3rem 0;
-      margin-bottom: 3rem;
-      text-align: center;
-      background-color: var(--dark-surface);
-      border-bottom: 1px solid var(--dark-border);
-    }
-    
-    .page-title {
-      font-size: 2.5rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
-    }
-    
-    .page-subtitle {
-      font-size: 1.2rem;
-      color: var(--primary-color);
-      margin-bottom: 1rem;
-    }
-    
-    .divider {
-      width: 80px;
-      margin: 1rem auto;
-      border-top: 3px solid var(--primary-color);
-    }
-    
-    /* Consistent Footer */
-    footer {
-      background-color: var(--dark-surface);
-      color: var(--text-secondary);
-      padding: 2rem 0;
-      margin-top: 3rem;
-      border-top: 1px solid var(--dark-border);
-      flex-shrink: 0;
-    }
-    
-    footer .fa-stack-2x {
-      color: var(--dark-bg);
-    }
-    
-    footer .fa-stack-1x {
-      color: var(--text-primary);
-    }
-    
-    footer .fa-stack:hover .fa-stack-2x {
-      color: var(--primary-color);
-    }
-    
-    /* Consistent Container */
-    main.container {
-      margin-top: 2rem;
-      padding-right: 15px;
-      padding-left: 15px;
-      margin-right: auto;
-      margin-left: auto;
-    }
-    
-    /* Consistent Typography */
-    h1, h2, h3, h4, h5, h6 {
-      color: var(--text-primary);
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-    
-    h2 {
-      font-size: 1.8rem;
-      margin-top: 2rem;
-    }
-    
-    h3 {
-      font-size: 1.4rem;
-      color: var(--primary-color);
-    }
-    
-    p {
-      color: var(--text-primary);
-      margin-bottom: 1rem;
-    }
-    
-    .lead {
-      font-size: 1.2rem;
-      font-weight: 300;
-    }
-    
-    hr {
-      border-color: var(--dark-border);
-    }
-    
-    /* Consistent Section Styling */
-    .section-title {
-      text-align: center;
-      margin-bottom: 2rem;
-      color: var(--text-primary);
-    }
-    
-    .section-subtitle {
-      text-align: center;
-      color: var(--primary-color);
-      margin-bottom: 3rem;
-    }
-    
-    /* Consistent Tags */
-    .tag {
-      display: inline-block;
-      background-color: rgba(79, 140, 255, 0.1);
-      color: var(--primary-color);
-      border: 1px solid var(--primary-color);
-      border-radius: 4px;
-      padding: 0.3rem 0.6rem;
-      margin-right: 0.5rem;
-      margin-bottom: 0.5rem;
-      font-size: 0.8rem;
-    }
-  </style>
 </head>
 
 <body>
+  <a class="skip-to-content" href="#main">Skip to content</a>
+  <div class="build-stamp" aria-hidden="true">
+    <div class="build-stamp__inner">
+      <span>v.2026.05</span>
+      <span class="build-stamp__sep">·</span>
+      <span>KRAKÓW</span>
+      <span class="build-stamp__sep">·</span>
+      <span>RUNNING IN PROD</span>
+    </div>
+  </div>
   <!-- Navigation -->
   <!-- Modern dark theme navigation header -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
@@ -279,54 +51,107 @@
     
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about/">Personal</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/cv/">Professional</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/projects/">Projects</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/blog/">Blog</a>
-        </li>
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+               href="/"
+               >Home</a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link is-active"
+               href="/about/"
+               aria-current="page">Personal</a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+               href="/cv/"
+               >Professional</a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+               href="/projects/"
+               >Projects</a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+               href="/blog/"
+               >Blog</a>
+          </li>
+        
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- Standardized page header with title and subtitle -->
 
-<header class="header-section">
+
+<header class="page-hero">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h1 class="page-title">Personal</h1>
-        
-          <p class="page-subtitle">Father, Developer, Enthusiast</p>
-        
-        <hr class="divider">
-      </div>
+    <div class="page-hero__inner">
+      <span class="eyebrow page-hero__eyebrow">§ 00 &nbsp; § 00 &NBSP; PERSONAL</span>
+      <hr class="page-hero__rule">
+      <h1 class="page-hero__title">Personal.</h1>
+      
+        <p class="page-hero__subtitle">Father, Developer, Enthusiast</p>
+      
+      
     </div>
   </div>
 </header>
- 
-  
+
+
   <!-- Page Content -->
-  <main role="main" class="container">
+  <main id="main" role="main" class="container">
     <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <div class="container my-5 about-container">
-  <div class="personal-header mb-5">
+      <div class="personal-header mb-5">
+  <div class="container">
     <div class="row align-items-center">
       <div class="col-lg-4 text-center mb-4 mb-lg-0">
         <div class="profile-image-container">
-          <img src="/assets/img/profile.jpg" alt="Rafael Skubisz" class="img-fluid rounded-circle profile-image" />
+          <img src="/assets/img/profile.jpg" alt="Rafael Skubisz, mobile developer based in Kraków" class="profile-image" onerror="this.style.display='none'; this.parentNode.classList.add('profile-image-container--fallback');" />
+          <span class="profile-image-fallback" aria-hidden="true">RS</span>
         </div>
         <div class="social-links mt-3">
           <a href="https://github.com/Jenovas" target="_blank" class="btn btn-outline-primary btn-sm mr-2">
@@ -339,7 +164,6 @@
       </div>
       <div class="col-lg-8">
         <div class="personal-intro">
-          <h1 class="greeting">Hello, I'm Rafael!</h1>
           <p class="lead mb-3">A mobile developer born in the U.S. and now living in Poland, with a passion for creating technology that improves people's lives.</p>
           <p>I believe in building software that's not just functional, but also intuitive and enjoyable to use. My journey in technology has always been driven by curiosity and a desire to solve real-world problems through elegant code.</p>
           <div class="mt-4">
@@ -351,27 +175,32 @@
       </div>
     </div>
   </div>
+</div>
 
-  <div class="row mb-5">
-    <div class="col-12">
-      <div class="card feature-card">
-        <div class="card-body">
-          <h2 class="section-title text-left mb-4"><i class="fas fa-book-open text-primary mr-2"></i> My Story</h2>
-          <div class="card-content">
-            <p>My fascination with technology began at an early age when I discovered I could create things that others could interact with. This led me down the path of software development, where I've spent more than a decade focused primarily on mobile applications.</p>
-            <p>Having lived in both the United States and Poland, I bring a unique cultural perspective to my work. This background has helped me develop software with global appeal and understand the needs of diverse user bases.</p>
-            <p>Today, I serve as a Software Engineering Manager at Pulsate, where I blend hands-on technical leadership with team management. I lead a team of 5 engineers while maintaining technical contributions, focusing on creating solutions in the financial technology sector. I'm passionate about leveraging AI tools and modern technologies to increase productivity and drive innovation, all while mentoring and developing the skills of my team members.</p>
-          </div>
-        </div>
+<section class="section-block container">
+  <span class="section-block__num">§ 01</span>
+  <h2 class="section-block__title">My Story</h2>
+  <hr class="section-block__rule" />
+  <div class="card feature-card">
+    <div class="card-body">
+      <div class="card-content">
+        <p>My fascination with technology began at an early age when I discovered I could create things that others could interact with. This led me down the path of software development, where I've spent more than a decade focused primarily on mobile applications.</p>
+        <p>Having lived in both the United States and Poland, I bring a unique cultural perspective to my work. This background has helped me develop software with global appeal and understand the needs of diverse user bases.</p>
+        <p>Today, I serve as a Software Engineering Manager at Pulsate, where I blend hands-on technical leadership with team management. I lead a team of 5 engineers while maintaining technical contributions, focusing on creating solutions in the financial technology sector. I'm passionate about leveraging AI tools and modern technologies to increase productivity and drive innovation, all while mentoring and developing the skills of my team members.</p>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="row mb-5">
+<section class="section-block container">
+  <span class="section-block__num">§ 02</span>
+  <h2 class="section-block__title">Beyond the Screen</h2>
+  <hr class="section-block__rule" />
+  <div class="row">
     <div class="col-md-6 mb-4 mb-md-0">
       <div class="card feature-card h-100">
         <div class="card-body">
-          <h2 class="card-title"><i class="fas fa-laptop-code text-primary mr-2"></i> Beyond Coding</h2>
+          <h3 class="card-title"><i class="fas fa-laptop-code text-primary mr-2"></i> Beyond Coding</h3>
           <p>When I'm not immersed in code, you'll find me:</p>
           <ul class="personal-list">
             <li>
@@ -417,74 +246,62 @@
     <div class="col-md-6">
       <div class="card feature-card h-100">
         <div class="card-body">
-          <h2 class="card-title"><i class="fas fa-lightbulb text-primary mr-2"></i> What Drives Me</h2>
+          <h3 class="card-title"><i class="fas fa-lightbulb text-primary mr-2"></i> What Drives Me</h3>
           <p>I'm passionate about:</p>
-          <div class="values-list">
-            <div class="value-item">
-              <div class="value-icon">
+          <ul class="personal-list">
+            <li>
+              <div class="icon-container">
                 <i class="fas fa-laptop-code"></i>
               </div>
-              <div class="value-content">
-                <h5>Elegant Solutions</h5>
-                <p>Finding the simplest, most effective way to solve complex problems.</p>
-              </div>
-            </div>
-            <div class="value-item">
-              <div class="value-icon">
+              <span>Finding the simplest, most effective way to solve complex problems</span>
+            </li>
+            <li>
+              <div class="icon-container">
                 <i class="fas fa-users"></i>
               </div>
-              <div class="value-content">
-                <h5>User-Centered Design</h5>
-                <p>Creating technology that feels intuitive and enhances people's lives.</p>
-              </div>
-            </div>
-            <div class="value-item">
-              <div class="value-icon">
+              <span>Creating technology that feels intuitive and enhances people's lives</span>
+            </li>
+            <li>
+              <div class="icon-container">
                 <i class="fas fa-lightbulb"></i>
               </div>
-              <div class="value-content">
-                <h5>Continuous Learning</h5>
-                <p>Always expanding my knowledge and exploring new technologies.</p>
-              </div>
-            </div>
-            <div class="value-item">
-              <div class="value-icon">
+              <span>Always expanding my knowledge and exploring new technologies</span>
+            </li>
+            <li>
+              <div class="icon-container">
                 <i class="fas fa-hands-helping"></i>
               </div>
-              <div class="value-content">
-                <h5>Mentorship</h5>
-                <p>Sharing knowledge and helping others grow in their technical careers.</p>
-              </div>
-            </div>
-          </div>
+              <span>Sharing knowledge and helping others grow in their technical careers</span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="row mb-5">
-    <div class="col-12">
-      <div class="card feature-card">
-        <div class="card-body text-center">
-          <h2 class="section-title mb-4"><i class="fas fa-envelope text-primary mr-2"></i> Connect With Me</h2>
-          <p>I'm always interested in connecting with fellow developers, potential collaborators, or anyone interested in mobile development and technology.</p>
-          <p>Check out my <a href="/projects/" class="link-highlight">projects</a> to see some of my work, or reach out directly if you'd like to chat!</p>
-          <div class="connect-buttons mt-4">
-            <a href="mailto:skubisz.rafael@gmail.com" class="btn btn-primary m-2 px-4">
-              <i class="fas fa-envelope me-2"></i> Email Me
-            </a>
-            <a href="https://github.com/Jenovas" class="btn btn-outline-primary m-2 px-4" target="_blank">
-              <i class="fab fa-github me-2"></i> GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/rafael-skubisz-210993b0/" class="btn btn-outline-primary m-2 px-4" target="_blank">
-              <i class="fab fa-linkedin me-2"></i> LinkedIn
-            </a>
-          </div>
-        </div>
+<section class="section-block container">
+  <span class="section-block__num">§ 03</span>
+  <h2 class="section-block__title">Connect With Me</h2>
+  <hr class="section-block__rule" />
+  <div class="card feature-card">
+    <div class="card-body text-center">
+      <p>I'm always interested in connecting with fellow developers, potential collaborators, or anyone interested in mobile development and technology.</p>
+      <p>Check out my <a href="/projects/" class="link-highlight">projects</a> to see some of my work, or reach out directly if you'd like to chat!</p>
+      <div class="connect-buttons mt-4">
+        <a href="mailto:skubisz.rafael@gmail.com" class="btn btn-primary m-2 px-4">
+          <i class="fas fa-envelope me-2"></i> Email Me
+        </a>
+        <a href="https://github.com/Jenovas" class="btn btn-outline-primary m-2 px-4" target="_blank">
+          <i class="fab fa-github me-2"></i> GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/rafael-skubisz-210993b0/" class="btn btn-outline-primary m-2 px-4" target="_blank">
+          <i class="fab fa-linkedin me-2"></i> LinkedIn
+        </a>
       </div>
     </div>
   </div>
-</div>
+</section>
 
     </div>
   </div>
@@ -492,64 +309,44 @@
   </main>
   
   <!-- Footer -->
-  <!-- Modern dark theme footer -->
-<footer>
+  <footer class="site-footer">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <ul class="list-inline text-center">
-          
-          <li class="list-inline-item">
-            <a href="mailto:skubisz.rafael@gmail.com" title="Email me">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-          
-          
-          <li class="list-inline-item">
-            <a href="https://github.com/Jenovas" title="GitHub">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-          
-          
-          <li class="list-inline-item">
-            <a href="https://linkedin.com/in/rafael-skubisz-210993b0" title="LinkedIn">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-          
-          
-          <li class="list-inline-item">
-            <a href="https://twitter.com/RafaTheDevGuy" title="Twitter">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-        
-        <p class="copyright text-center mt-4">
-          Rafael Skubisz &copy; 2026
-        </p>
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <p class="site-footer__brand-title">Rafael Skubisz.</p>
+        <p class="site-footer__brand-tagline">Software Engineering Manager.<br>Twelve years building mobile.</p>
       </div>
+      <nav class="site-footer__nav" aria-label="Footer">
+        <p class="site-footer__heading">Pages</p>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about/">Personal</a></li>
+          <li><a href="/cv/">Professional</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/blog/">Writing</a></li>
+        </ul>
+      </nav>
+      <nav class="site-footer__nav" aria-label="Connect">
+        <p class="site-footer__heading">Connect</p>
+        <ul>
+          <li><a href="mailto:skubisz.rafael@gmail.com">Email</a></li>
+          <li><a href="https://github.com/Jenovas" rel="noopener" target="_blank">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/rafael-skubisz-210993b0" rel="noopener" target="_blank">LinkedIn</a></li>
+          <li><a href="https://twitter.com/RafaTheDevGuy" rel="noopener" target="_blank">Twitter</a></li>
+          <li><a href="/feed.xml">RSS</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="site-footer__stamp">
+      <span>© 2026 RAFAEL SKUBISZ.</span>
+      <span class="site-footer__sep">·</span>
+      <span>v.2026.05</span>
+      <span class="site-footer__sep">·</span>
+      <span>BUILT WITH JEKYLL</span>
     </div>
   </div>
-</footer> 
+</footer>
+
   
   <!-- Bootstrap core JavaScript -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

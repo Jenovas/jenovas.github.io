@@ -17,7 +17,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400;9..144,600;9..144,900;9..144,400,100,0;9..144,600,100,0&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   
   <!-- Custom styles -->
   
@@ -26,247 +26,19 @@
     
   
   
-  <style>
-    /* Dark theme with blue accents */
-    :root {
-      --primary-color: #4f8cff;
-      --primary-hover: #3a7dff;
-      --dark-bg: #0d1117;
-      --dark-surface: #161b22;
-      --dark-border: #30363d;
-      --text-primary: #e6edf3;
-      --text-secondary: #8b949e;
-      --text-muted: #6e7681;
-    }
-    
-    body {
-      background-color: var(--dark-bg);
-      color: var(--text-primary);
-      font-family: 'Inter', sans-serif;
-      padding-top: 56px !important;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    main {
-      flex: 1 0 auto;
-    }
-    
-    a {
-      color: var(--primary-color);
-      transition: color 0.2s ease;
-    }
-    
-    a:hover {
-      color: var(--primary-hover);
-      text-decoration: none;
-    }
-    
-    /* Consistent Navigation */
-    .navbar {
-      background-color: var(--dark-surface) !important;
-      border-bottom: 1px solid var(--dark-border);
-    }
-    
-    .navbar-brand {
-      color: var(--primary-color) !important;
-      font-weight: 600;
-    }
-    
-    .navbar-light .navbar-nav .nav-link {
-      color: var(--text-secondary) !important;
-      padding: 0.5rem 1rem;
-      transition: all 0.2s ease;
-    }
-    
-    .navbar-light .navbar-nav .nav-link:hover,
-    .navbar-light .navbar-nav .nav-link:focus {
-      color: var(--primary-color) !important;
-      background-color: rgba(79, 140, 255, 0.1);
-      border-radius: 4px;
-    }
-    
-    .navbar-light .navbar-toggler {
-      border-color: var(--dark-border);
-    }
-    
-    .navbar-light .navbar-toggler-icon {
-      filter: invert(0.8);
-    }
-    
-    /* Consistent Buttons */
-    .btn-primary {
-      background-color: var(--primary-color);
-      border-color: var(--primary-color);
-      transition: all 0.2s ease;
-    }
-    
-    .btn-primary:hover {
-      background-color: var(--primary-hover);
-      border-color: var(--primary-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    
-    .btn-outline-primary {
-      color: var(--primary-color);
-      border-color: var(--primary-color);
-      transition: all 0.2s ease;
-    }
-    
-    .btn-outline-primary:hover {
-      background-color: var(--primary-color);
-      border-color: var(--primary-color);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    
-    /* Consistent Cards */
-    .card {
-      background-color: var(--dark-surface);
-      border: 1px solid var(--dark-border);
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      margin-bottom: 2rem;
-    }
-    
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    }
-    
-    .card-body {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-    
-    .card-title {
-      color: var(--text-primary);
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-    
-    /* Standardized Headers */
-    .header-section {
-      padding: 3rem 0;
-      margin-bottom: 3rem;
-      text-align: center;
-      background-color: var(--dark-surface);
-      border-bottom: 1px solid var(--dark-border);
-    }
-    
-    .page-title {
-      font-size: 2.5rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
-    }
-    
-    .page-subtitle {
-      font-size: 1.2rem;
-      color: var(--primary-color);
-      margin-bottom: 1rem;
-    }
-    
-    .divider {
-      width: 80px;
-      margin: 1rem auto;
-      border-top: 3px solid var(--primary-color);
-    }
-    
-    /* Consistent Footer */
-    footer {
-      background-color: var(--dark-surface);
-      color: var(--text-secondary);
-      padding: 2rem 0;
-      margin-top: 3rem;
-      border-top: 1px solid var(--dark-border);
-      flex-shrink: 0;
-    }
-    
-    footer .fa-stack-2x {
-      color: var(--dark-bg);
-    }
-    
-    footer .fa-stack-1x {
-      color: var(--text-primary);
-    }
-    
-    footer .fa-stack:hover .fa-stack-2x {
-      color: var(--primary-color);
-    }
-    
-    /* Consistent Container */
-    main.container {
-      margin-top: 2rem;
-      padding-right: 15px;
-      padding-left: 15px;
-      margin-right: auto;
-      margin-left: auto;
-    }
-    
-    /* Consistent Typography */
-    h1, h2, h3, h4, h5, h6 {
-      color: var(--text-primary);
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-    
-    h2 {
-      font-size: 1.8rem;
-      margin-top: 2rem;
-    }
-    
-    h3 {
-      font-size: 1.4rem;
-      color: var(--primary-color);
-    }
-    
-    p {
-      color: var(--text-primary);
-      margin-bottom: 1rem;
-    }
-    
-    .lead {
-      font-size: 1.2rem;
-      font-weight: 300;
-    }
-    
-    hr {
-      border-color: var(--dark-border);
-    }
-    
-    /* Consistent Section Styling */
-    .section-title {
-      text-align: center;
-      margin-bottom: 2rem;
-      color: var(--text-primary);
-    }
-    
-    .section-subtitle {
-      text-align: center;
-      color: var(--primary-color);
-      margin-bottom: 3rem;
-    }
-    
-    /* Consistent Tags */
-    .tag {
-      display: inline-block;
-      background-color: rgba(79, 140, 255, 0.1);
-      color: var(--primary-color);
-      border: 1px solid var(--primary-color);
-      border-radius: 4px;
-      padding: 0.3rem 0.6rem;
-      margin-right: 0.5rem;
-      margin-bottom: 0.5rem;
-      font-size: 0.8rem;
-    }
-  </style>
 </head>
 
 <body>
+  <a class="skip-to-content" href="#main">Skip to content</a>
+  <div class="build-stamp" aria-hidden="true">
+    <div class="build-stamp__inner">
+      <span>v.2026.05</span>
+      <span class="build-stamp__sep">·</span>
+      <span>KRAKÓW</span>
+      <span class="build-stamp__sep">·</span>
+      <span>RUNNING IN PROD</span>
+    </div>
+  </div>
   <!-- Navigation -->
   <!-- Modern dark theme navigation header -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
@@ -279,356 +51,185 @@
     
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about/">Personal</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/cv/">Professional</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/projects/">Projects</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/blog/">Blog</a>
-        </li>
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+               href="/"
+               >Home</a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+               href="/about/"
+               >Personal</a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+               href="/cv/"
+               >Professional</a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+               href="/projects/"
+               >Projects</a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link is-active"
+               href="/blog/"
+               aria-current="page">Blog</a>
+          </li>
+        
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- Standardized page header with title and subtitle -->
 
-<header class="header-section">
+
+<header class="page-hero">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h1 class="page-title">Blog</h1>
-        
-          <p class="page-subtitle">My thoughts and ideas</p>
-        
-        <hr class="divider">
-      </div>
+    <div class="page-hero__inner">
+      <span class="eyebrow page-hero__eyebrow">§ 00 &nbsp; § 00 &NBSP; WRITING</span>
+      <hr class="page-hero__rule">
+      <h1 class="page-hero__title">Blog.</h1>
+      
+        <p class="page-hero__subtitle">My thoughts and ideas</p>
+      
+      
     </div>
   </div>
 </header>
- 
-  
+
+
   <!-- Page Content -->
-  <main role="main" class="container">
+  <main id="main" role="main" class="container">
     <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <div class="container blog-container">
-  <div class="posts-list">
-    
-    <article class="card post-card mb-4">
-      <div class="card-body">
-        <a href="/2025-04-26-mvvm-vs-mvi/">
-          <h3 class="card-title">MVVM vs MVI in Android Development: Finding the Right Fit for Your Compose App</h3>
-          
-        </a>
-
-        <p class="post-meta text-muted">
-          Posted on April 26, 2025
-        </p>
-
-        <div class="post-entry-container">
-          
-          <div class="post-entry">
-            The battle between MVVM and MVI never ends! Can they not coexist? Like a quote I like “Make Lovecraft Not Warcraft” we’ll try today to do just that. If you’ve been using Jetpack Compose, you probably heard about MVVM and MVI. Both patterns help improve state management and testability, but...
-            
-            
-              <a href="/2025-04-26-mvvm-vs-mvi/" class="post-read-more">[Read&nbsp;More]</a>
-            
-          </div>
-        </div>
-
-        
-        <div class="post-tags mt-3">
-          Tags:
-          
-          <span class="post-tag badge">Android</span>
-          
-          <span class="post-tag badge">Kotlin</span>
-          
-          <span class="post-tag badge">Jetpack Compose</span>
-          
-          <span class="post-tag badge">State Management</span>
-          
-          <span class="post-tag badge">MVVM</span>
-          
-          <span class="post-tag badge">MVI</span>
-          
-        </div>
-        
-      </div>
-    </article>
-    
-    <article class="card post-card mb-4">
-      <div class="card-body">
-        <a href="/2025-04-22-clean-compose-setup/">
-          <h3 class="card-title">Jetpack Compose - Clean Architecture, How to manage state</h3>
-          
-        </a>
-
-        <p class="post-meta text-muted">
-          Posted on April 22, 2025
-        </p>
-
-        <div class="post-entry-container">
-          
-          <div class="post-entry">
-            State Management Best Practices in Jetpack Compose
-
-Managing state properly is one of the biggest challenges in any Android application, especially when using Jetpack Compose. In this post, we’ll explore a setup that keeps your Compose apps clean, manageable, and easy to maintain.
-
-
-            
-            
-              <a href="/2025-04-22-clean-compose-setup/" class="post-read-more">[Read&nbsp;More]</a>
-            
-          </div>
-        </div>
-
-        
-        <div class="post-tags mt-3">
-          Tags:
-          
-          <span class="post-tag badge">Android</span>
-          
-          <span class="post-tag badge">Kotlin</span>
-          
-          <span class="post-tag badge">Jetpack Compose</span>
-          
-          <span class="post-tag badge">Clean Architecture</span>
-          
-          <span class="post-tag badge">State Management</span>
-          
-          <span class="post-tag badge">MVI</span>
-          
-        </div>
-        
-      </div>
-    </article>
-    
-    <article class="card post-card mb-4">
-      <div class="card-body">
-        <a href="/2025-01-20-jetpack-compose-clean-architecture/">
-          <h3 class="card-title">Jetpack Compose - Clean Architecture, How to manage state</h3>
-          
-        </a>
-
-        <p class="post-meta text-muted">
-          Posted on January 20, 2025
-        </p>
-
-        <div class="post-entry-container">
-          
-          <div class="post-entry">
-            Jetpack Compose with Clean Architecture: A Practical Guide to State Management How do I manage state? How should I trigger navigation? How should I show a snackbar? State vs Single Events? How to keep it clean and scalable? What is the right way to do it? These are questions you...
-            
-            
-              <a href="/2025-01-20-jetpack-compose-clean-architecture/" class="post-read-more">[Read&nbsp;More]</a>
-            
-          </div>
-        </div>
-
-        
-        <div class="post-tags mt-3">
-          Tags:
-          
-          <span class="post-tag badge">Android</span>
-          
-          <span class="post-tag badge">Kotlin</span>
-          
-          <span class="post-tag badge">Jetpack Compose</span>
-          
-          <span class="post-tag badge">Clean Architecture</span>
-          
-          <span class="post-tag badge">State Management</span>
-          
-          <span class="post-tag badge">MVI</span>
-          
-        </div>
-        
-      </div>
-    </article>
-    
-  </div>
+      <section class="section-block container">
+  <span class="section-block__num">§ 01</span>
+  <h2 class="section-block__title">Posts</h2>
+  <hr class="section-block__rule" />
 
   
-  
-  <div class="card feature-card mb-5">
-    <div class="card-body text-center">
-      <h2 class="card-title"><i class="fas fa-envelope text-primary mr-2"></i> Connect With Me</h2>
-      <p>I'm always interested in connecting with fellow developers, potential collaborators, or anyone interested in mobile development and technology.</p>
-      <p>Check out my <a href="/projects/" class="link-highlight">projects</a> to see some of my work, or reach out directly if you'd like to chat!</p>
-      <div class="connect-buttons mt-4">
-        <a href="mailto:skubisz.rafael@gmail.com" class="btn btn-primary">
-          <i class="fas fa-envelope me-2"></i> Email Me
-        </a>
-        <a href="https://github.com/Jenovas" class="btn btn-outline-primary mx-2" target="_blank">
-          <i class="fab fa-github me-2"></i> GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/rafael-skubisz-210993b0/" class="btn btn-outline-primary" target="_blank">
-          <i class="fab fa-linkedin me-2"></i> LinkedIn
-        </a>
+  <a class="card card--linked post-card" href="/2025-04-26-mvvm-vs-mvi/">
+    <div class="card-body">
+      <p class="post-card__meta">APR 26 2025</p>
+      <h3 class="card-title">MVVM vs MVI in Android Development: Finding the Right Fit for Your Compose App</h3>
+      <p class="card-text">The battle between MVVM and MVI never ends! Can they not coexist? Like a quote I like “Make Lovecraft Not Warcraft” we’ll try today to do just that. If you’ve been using Jetpack Compose, you probably heard about MVVM and...</p>
+      
+      <div class="post-card__tags">
+        
+        <span class="tag tag--signal">Android</span>
+        
+        <span class="tag tag--signal">Kotlin</span>
+        
+        <span class="tag tag--signal">Jetpack Compose</span>
+        
+        <span class="tag tag--signal">State Management</span>
+        
+        <span class="tag tag--signal">MVVM</span>
+        
+        <span class="tag tag--signal">MVI</span>
+        
       </div>
+      
+      <span class="btn-link-arrow mt-auto">Read more <span class="arrow">→</span></span>
     </div>
-  </div>
-</div>
-
-<style>
-  .blog-container {
-    max-width: 960px;
-    margin: 0 auto;
-  }
+  </a>
   
-  .post-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid var(--dark-border);
-    background-color: var(--dark-surface);
-    cursor: pointer;
-  }
+  <a class="card card--linked post-card" href="/2025-04-22-clean-compose-setup/">
+    <div class="card-body">
+      <p class="post-card__meta">APR 22 2025</p>
+      <h3 class="card-title">Jetpack Compose - Clean Architecture, How to manage state</h3>
+      <p class="card-text">State Management Best Practices in Jetpack Compose Managing state properly is one of the biggest challenges in any Android application, especially when using Jetpack Compose. In this post, we’ll explore a setup that keeps your Compose apps clean, manageable, and...</p>
+      
+      <div class="post-card__tags">
+        
+        <span class="tag tag--signal">Android</span>
+        
+        <span class="tag tag--signal">Kotlin</span>
+        
+        <span class="tag tag--signal">Jetpack Compose</span>
+        
+        <span class="tag tag--signal">Clean Architecture</span>
+        
+        <span class="tag tag--signal">State Management</span>
+        
+        <span class="tag tag--signal">MVI</span>
+        
+      </div>
+      
+      <span class="btn-link-arrow mt-auto">Read more <span class="arrow">→</span></span>
+    </div>
+  </a>
   
-  .post-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    border-color: var(--primary-color);
-  }
+  <a class="card card--linked post-card" href="/2025-01-20-jetpack-compose-clean-architecture/">
+    <div class="card-body">
+      <p class="post-card__meta">JAN 20 2025</p>
+      <h3 class="card-title">Jetpack Compose - Clean Architecture, How to manage state</h3>
+      <p class="card-text">Jetpack Compose with Clean Architecture: A Practical Guide to State Management How do I manage state? How should I trigger navigation? How should I show a snackbar? State vs Single Events? How to keep it clean and scalable? What is...</p>
+      
+      <div class="post-card__tags">
+        
+        <span class="tag tag--signal">Android</span>
+        
+        <span class="tag tag--signal">Kotlin</span>
+        
+        <span class="tag tag--signal">Jetpack Compose</span>
+        
+        <span class="tag tag--signal">Clean Architecture</span>
+        
+        <span class="tag tag--signal">State Management</span>
+        
+        <span class="tag tag--signal">MVI</span>
+        
+      </div>
+      
+      <span class="btn-link-arrow mt-auto">Read more <span class="arrow">→</span></span>
+    </div>
+  </a>
   
-  .post-card .card-title {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    transition: color 0.2s ease;
-  }
-  
-  .post-card:hover .card-title {
-    color: var(--primary-color);
-  }
-  
-  .post-card a {
-    text-decoration: none;
-  }
-  
-  .card-subtitle {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .post-meta {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-  }
-  
-  .post-entry {
-    margin-bottom: 1rem;
-    line-height: 1.6;
-    color: var(--text-secondary);
-  }
-  
-  .post-read-more {
-    display: inline-block;
-    margin-top: 0.5rem;
-    color: var(--primary-color);
-    font-weight: 500;
-  }
-  
-  .post-read-more:hover {
-    color: var(--primary-hover);
-    text-decoration: underline;
-  }
-  
-  .post-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    align-items: center;
-  }
-  
-  .post-tag {
-    background-color: var(--dark-bg);
-    color: var(--primary-color);
-    border: 1px solid var(--primary-color);
-    padding: 0.4rem 0.7rem;
-    font-size: 0.8rem;
-    font-weight: 400;
-    border-radius: 4px;
-  }
-  
-  .page-link {
-    background-color: var(--dark-surface);
-    border-color: var(--dark-border);
-    color: var(--primary-color);
-  }
-  
-  .page-link:hover {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    color: var(--dark-surface);
-  }
-  
-  .feature-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid var(--dark-border);
-  }
-  
-  .feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    border-color: var(--primary-color);
-  }
-  
-  .card-title {
-    display: flex;
-    align-items: center;
-  }
-  
-  .feature-card .card-title {
-    display: flex;
-    align-items: center;
-  }
-  
-  .card-title i {
-    margin-right: 0.5rem;
-  }
-  
-  .link-highlight {
-    color: var(--primary-color);
-    font-weight: 500;
-    text-decoration: none;
-    border-bottom: 1px dotted var(--primary-color);
-    transition: all 0.2s ease;
-  }
-  
-  .link-highlight:hover {
-    color: var(--primary-hover);
-    border-bottom: 1px solid var(--primary-hover);
-  }
-  
-  .connect-buttons {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  
-  @media (max-width: 767px) {
-    .connect-buttons {
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .connect-buttons .btn {
-      margin: 0.5rem 0;
-      width: 100%;
-    }
-  }
-</style>
-
+</section>
 
     </div>
   </div>
@@ -636,64 +237,44 @@ Managing state properly is one of the biggest challenges in any Android applicat
   </main>
   
   <!-- Footer -->
-  <!-- Modern dark theme footer -->
-<footer>
+  <footer class="site-footer">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <ul class="list-inline text-center">
-          
-          <li class="list-inline-item">
-            <a href="mailto:skubisz.rafael@gmail.com" title="Email me">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-          
-          
-          <li class="list-inline-item">
-            <a href="https://github.com/Jenovas" title="GitHub">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-          
-          
-          <li class="list-inline-item">
-            <a href="https://linkedin.com/in/rafael-skubisz-210993b0" title="LinkedIn">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-          
-          
-          <li class="list-inline-item">
-            <a href="https://twitter.com/RafaTheDevGuy" title="Twitter">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-        
-        <p class="copyright text-center mt-4">
-          Rafael Skubisz &copy; 2026
-        </p>
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <p class="site-footer__brand-title">Rafael Skubisz.</p>
+        <p class="site-footer__brand-tagline">Software Engineering Manager.<br>Twelve years building mobile.</p>
       </div>
+      <nav class="site-footer__nav" aria-label="Footer">
+        <p class="site-footer__heading">Pages</p>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about/">Personal</a></li>
+          <li><a href="/cv/">Professional</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/blog/">Writing</a></li>
+        </ul>
+      </nav>
+      <nav class="site-footer__nav" aria-label="Connect">
+        <p class="site-footer__heading">Connect</p>
+        <ul>
+          <li><a href="mailto:skubisz.rafael@gmail.com">Email</a></li>
+          <li><a href="https://github.com/Jenovas" rel="noopener" target="_blank">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/rafael-skubisz-210993b0" rel="noopener" target="_blank">LinkedIn</a></li>
+          <li><a href="https://twitter.com/RafaTheDevGuy" rel="noopener" target="_blank">Twitter</a></li>
+          <li><a href="/feed.xml">RSS</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="site-footer__stamp">
+      <span>© 2026 RAFAEL SKUBISZ.</span>
+      <span class="site-footer__sep">·</span>
+      <span>v.2026.05</span>
+      <span class="site-footer__sep">·</span>
+      <span>BUILT WITH JEKYLL</span>
     </div>
   </div>
-</footer> 
+</footer>
+
   
   <!-- Bootstrap core JavaScript -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
