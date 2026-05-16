@@ -2065,3 +2065,10 @@ footer {
   gap: var(--space-2);
   margin: var(--space-3) 0;
 }
+
+.post-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-3) 0;
+}
