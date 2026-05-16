@@ -14,7 +14,7 @@ eyebrow: "§ 00 &nbsp; WORK"
 
   <div class="row">
     <div class="col-lg-4 col-md-6 mb-4">
-      <a class="card card--linked h-100" href="https://github.com/Jenovas" target="_blank">
+      <div class="card h-100">
         <div class="card-body">
           <p class="project-card__meta">PROJ. 01  ·  KOTLIN / SWIFT</p>
           <h3 class="card-title">Pulsate SDK</h3>
@@ -24,13 +24,12 @@ eyebrow: "§ 00 &nbsp; WORK"
             <span class="tag tag--ghost">iOS</span>
             <span class="tag tag--ghost">SDK</span>
           </div>
-          <span class="btn-link-arrow mt-auto">View on GitHub <span class="arrow">→</span></span>
         </div>
-      </a>
+      </div>
     </div>
 
     <div class="col-lg-4 col-md-6 mb-4">
-      <a class="card card--linked h-100" href="https://github.com/Jenovas" target="_blank">
+      <div class="card h-100">
         <div class="card-body">
           <p class="project-card__meta">PROJ. 02  ·  ANDROID / KOTLIN</p>
           <h3 class="card-title">Cryptonomy</h3>
@@ -40,13 +39,12 @@ eyebrow: "§ 00 &nbsp; WORK"
             <span class="tag tag--ghost">Kotlin</span>
             <span class="tag tag--ghost">MVVM</span>
           </div>
-          <span class="btn-link-arrow mt-auto">View on GitHub <span class="arrow">→</span></span>
         </div>
-      </a>
+      </div>
     </div>
 
     <div class="col-lg-4 col-md-6 mb-4">
-      <a class="card card--linked h-100" href="https://github.com/Jenovas" target="_blank">
+      <div class="card h-100">
         <div class="card-body">
           <p class="project-card__meta">PROJ. 03  ·  KMM / KOTLIN</p>
           <h3 class="card-title">KMM Financial Dashboard</h3>
@@ -56,13 +54,12 @@ eyebrow: "§ 00 &nbsp; WORK"
             <span class="tag tag--ghost">Kotlin</span>
             <span class="tag tag--ghost">Coroutines</span>
           </div>
-          <span class="btn-link-arrow mt-auto">View on GitHub <span class="arrow">→</span></span>
         </div>
-      </a>
+      </div>
     </div>
 
     <div class="col-lg-4 col-md-6 mb-4">
-      <a class="card card--linked h-100" href="https://github.com/Jenovas" target="_blank">
+      <div class="card h-100">
         <div class="card-body">
           <p class="project-card__meta">PROJ. 04  ·  ESPRESSO / JUNIT</p>
           <h3 class="card-title">Mobile QA Automation</h3>
@@ -72,9 +69,8 @@ eyebrow: "§ 00 &nbsp; WORK"
             <span class="tag tag--ghost">JUnit</span>
             <span class="tag tag--ghost">Bitrise</span>
           </div>
-          <span class="btn-link-arrow mt-auto">View on GitHub <span class="arrow">→</span></span>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 </section>
