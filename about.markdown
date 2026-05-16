@@ -2,7 +2,7 @@
 layout: page
 title: Personal
 subtitle: Father, Developer, Enthusiast
-eyebrow: "§ 00 &nbsp; PERSONAL"
+eyebrow: "PERSONAL"
 permalink: /about/
 ---
 

@@ -5,7 +5,7 @@
 layout: home
 title: Rafael Skubisz
 subtitle: Software Engineering Manager with 12+ years of experience
-eyebrow: "§ 00 &nbsp; PORTFOLIO"
+eyebrow: "PORTFOLIO"
 hero_cta:
   - label: "Read the CV →"
     href: "/cv/"

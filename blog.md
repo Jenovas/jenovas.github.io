@@ -2,7 +2,7 @@
 layout: page
 title: Blog
 subtitle: My thoughts and ideas
-eyebrow: "§ 00 &nbsp; WRITING"
+eyebrow: "WRITING"
 permalink: /blog/
 ---
 

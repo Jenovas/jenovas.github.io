@@ -3,7 +3,7 @@ layout: page
 title: Projects
 subtitle: My key projects and technical achievements
 permalink: /projects/
-eyebrow: "§ 00 &nbsp; WORK"
+eyebrow: "WORK"
 ---
 
 <section class="section-block container">

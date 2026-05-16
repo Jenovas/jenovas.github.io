@@ -2,7 +2,7 @@
 layout: page
 title: Professional
 subtitle: Software Engineering Manager
-eyebrow: "§ 00 &nbsp; CV / EXPERIENCE"
+eyebrow: "CV / EXPERIENCE"
 permalink: /cv/
 ---
 
@@ -225,7 +225,7 @@ permalink: /cv/
         <i class="fas fa-university"></i>
       </div>
       <div>
-        <h3 class="job-title">Informatyka</h3>
+        <h3 class="job-title">Computer Science</h3>
         <p class="company">AGH University of Krakow</p>
       </div>
     </div>
