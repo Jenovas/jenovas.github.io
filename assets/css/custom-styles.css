@@ -60,7 +60,6 @@
   /* Legacy aliases — kept temporarily so unrefactored selectors still resolve.
      Removed in T7 once all consumers move to the new tokens. */
   --primary-color: var(--primary);
-  --primary-hover-legacy: var(--primary-hover);
   --dark-bg: var(--surface-0);
   --dark-surface: var(--surface-1);
   --dark-surface-hover: var(--surface-2);
