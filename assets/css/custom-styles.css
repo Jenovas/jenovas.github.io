@@ -1114,44 +1114,6 @@ pre code {
   transform: scale(1.2);
 }
 
-@media (max-width: 767px) {
-  .professional-hero-section {
-    padding: 1.5rem 1rem;
-  }
-  
-  .professional-hero-section .container {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-  }
-  
-  .text-gradient {
-    font-size: 2.2rem;
-  }
-  
-  .professional-subtitle {
-    font-size: 1.1rem;
-  }
-  
-  .summary-text {
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-  
-  .professional-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .professional-actions .btn {
-    margin-bottom: 1rem;
-  }
-  
-  .social-links {
-    margin-top: 1rem;
-  }
-}
-
 /* Styles moved from index.md */
 .hero-section {
   animation: fadeInUp 0.8s ease forwards;
