@@ -2011,7 +2011,8 @@ body:has(.post) .header-section {
   color: var(--border-strong);
 }
 
-/* Push the navbar and content down by the build-stamp height. */
+/* Push the navbar and content down by the build-stamp height.
+   !important required: Bootstrap base + Beautiful Jekyll both set body padding-top. */
 .navbar.fixed-top { top: 28px; }
 body { padding-top: calc(28px + 56px) !important; }
 
