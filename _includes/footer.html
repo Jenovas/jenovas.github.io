@@ -1,58 +1,37 @@
-<!-- Modern dark theme footer -->
-<footer>
+<footer class="site-footer">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <ul class="list-inline text-center">
-          {% if site.social-network-links.email %}
-          <li class="list-inline-item">
-            <a href="mailto:{{ site.social-network-links.email }}" title="Email me">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          {% endif %}
-          
-          {% if site.social-network-links.github %}
-          <li class="list-inline-item">
-            <a href="https://github.com/{{ site.social-network-links.github }}" title="GitHub">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          {% endif %}
-          
-          {% if site.social-network-links.linkedin %}
-          <li class="list-inline-item">
-            <a href="https://linkedin.com/in/{{ site.social-network-links.linkedin }}" title="LinkedIn">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          {% endif %}
-          
-          {% if site.social-network-links.twitter %}
-          <li class="list-inline-item">
-            <a href="https://twitter.com/{{ site.social-network-links.twitter }}" title="Twitter">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-              </span>
-            </a>
-          </li>
-          {% endif %}
-        </ul>
-        
-        <p class="copyright text-center mt-4">
-          {{ site.author }} &copy; {{ site.time | date: '%Y' }}
-        </p>
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <p class="site-footer__brand-title">Rafael Skubisz.</p>
+        <p class="site-footer__brand-tagline">Software Engineering Manager.<br>Twelve years building mobile.</p>
       </div>
+      <nav class="site-footer__nav" aria-label="Footer">
+        <p class="site-footer__heading">Pages</p>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about/">Personal</a></li>
+          <li><a href="/cv/">Professional</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/blog/">Writing</a></li>
+        </ul>
+      </nav>
+      <nav class="site-footer__nav" aria-label="Connect">
+        <p class="site-footer__heading">Connect</p>
+        <ul>
+          {% if site.social-network-links.email %}<li><a href="mailto:{{ site.social-network-links.email }}">Email</a></li>{% endif %}
+          {% if site.social-network-links.github %}<li><a href="https://github.com/{{ site.social-network-links.github }}" rel="noopener" target="_blank">GitHub</a></li>{% endif %}
+          {% if site.social-network-links.linkedin %}<li><a href="https://linkedin.com/in/{{ site.social-network-links.linkedin }}" rel="noopener" target="_blank">LinkedIn</a></li>{% endif %}
+          {% if site.social-network-links.twitter %}<li><a href="https://twitter.com/{{ site.social-network-links.twitter }}" rel="noopener" target="_blank">Twitter</a></li>{% endif %}
+          <li><a href="/feed.xml">RSS</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="site-footer__stamp">
+      <span>© {{ site.time | date: '%Y' }} {{ site.author | upcase }}.</span>
+      <span class="site-footer__sep">·</span>
+      <span>v.{{ site.time | date: "%Y.%m" }}</span>
+      <span class="site-footer__sep">·</span>
+      <span>BUILT WITH JEKYLL</span>
     </div>
   </div>
-</footer> 
+</footer>

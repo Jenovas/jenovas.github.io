@@ -81,16 +81,16 @@ keywords: "portfolio, blog, cv, personal-website, developer, programmer, web-dev
 
 # Personalize the colours in your website. Colour values can be any valid CSS colour
 
-navbar-col: "#F8F9FA"
-navbar-text-col: "#343A40"
-navbar-border-col: "#E9ECEF"
-page-col: "#FFFFFF"
-text-col: "#343A40"
-link-col: "#007BFF"
-hover-col: "#0056B3"
-footer-col: "#F8F9FA"
-footer-text-col: "#6C757D"
-footer-link-col: "#007BFF"
+navbar-col: "#070A12"
+navbar-text-col: "#94A0B8"
+navbar-border-col: "#1E2536"
+page-col: "#070A12"
+text-col: "#ECEFF6"
+link-col: "#5E80F2"
+hover-col: "#7A98FF"
+footer-col: "#0F141F"
+footer-text-col: "#94A0B8"
+footer-link-col: "#5E80F2"
 
 # Alternatively, the navbar, footer, and page background can be set to an image
 # instead of colour
@@ -100,7 +100,7 @@ footer-link-col: "#007BFF"
 #page-img: "/assets/img/bgimage.png"
 
 # Suggest a colour for mobile browsers to use as the browser's theme. This is only supported by a few mobile browsers.
-mobile-theme-col: "#007BFF"
+mobile-theme-col: "#070A12"
 
 # For any extra visual customization, you can include additional CSS files in every page on your site.
 # List any custom CSS files here
