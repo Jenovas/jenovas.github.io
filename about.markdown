@@ -112,44 +112,32 @@ permalink: /about/
         <div class="card-body">
           <h3 class="card-title"><i class="fas fa-lightbulb text-primary mr-2"></i> What Drives Me</h3>
           <p>I'm passionate about:</p>
-          <div class="values-list">
-            <div class="value-item">
-              <div class="value-icon">
+          <ul class="personal-list">
+            <li>
+              <div class="icon-container">
                 <i class="fas fa-laptop-code"></i>
               </div>
-              <div class="value-content">
-                <h5>Elegant Solutions</h5>
-                <p>Finding the simplest, most effective way to solve complex problems.</p>
-              </div>
-            </div>
-            <div class="value-item">
-              <div class="value-icon">
+              <span>Finding the simplest, most effective way to solve complex problems</span>
+            </li>
+            <li>
+              <div class="icon-container">
                 <i class="fas fa-users"></i>
               </div>
-              <div class="value-content">
-                <h5>User-Centered Design</h5>
-                <p>Creating technology that feels intuitive and enhances people's lives.</p>
-              </div>
-            </div>
-            <div class="value-item">
-              <div class="value-icon">
+              <span>Creating technology that feels intuitive and enhances people's lives</span>
+            </li>
+            <li>
+              <div class="icon-container">
                 <i class="fas fa-lightbulb"></i>
               </div>
-              <div class="value-content">
-                <h5>Continuous Learning</h5>
-                <p>Always expanding my knowledge and exploring new technologies.</p>
-              </div>
-            </div>
-            <div class="value-item">
-              <div class="value-icon">
+              <span>Always expanding my knowledge and exploring new technologies</span>
+            </li>
+            <li>
+              <div class="icon-container">
                 <i class="fas fa-hands-helping"></i>
               </div>
-              <div class="value-content">
-                <h5>Mentorship</h5>
-                <p>Sharing knowledge and helping others grow in their technical careers.</p>
-              </div>
-            </div>
-          </div>
+              <span>Sharing knowledge and helping others grow in their technical careers</span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
