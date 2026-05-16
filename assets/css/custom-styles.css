@@ -2,15 +2,69 @@
 
 /* Standardized theme variables */
 :root {
-  --primary-color: #4f8cff;
-  --primary-hover: #3a7dff;
-  --dark-bg: #0d1117;
-  --dark-surface: #161b22;
-  --dark-surface-hover: #1e242c;
-  --dark-border: #30363d;
-  --text-primary: #e6edf3;
-  --text-secondary: #8b949e;
-  --text-muted: #6e7681;
+  /* Surfaces */
+  --surface-0: #070A12;
+  --surface-1: #0F141F;
+  --surface-2: #161C2A;
+  --surface-3: #1C2335;
+  --border-subtle: #1E2536;
+  --border-strong: #2A3247;
+
+  /* Text */
+  --text-primary: #ECEFF6;
+  --text-secondary: #94A0B8;
+  --text-muted: #5F6A85;
+  --text-on-primary: #070A12;
+
+  /* Primary blue */
+  --primary: #5E80F2;
+  --primary-hover: #7A98FF;
+  --primary-pressed: #4866D6;
+  --primary-soft: rgba(94, 128, 242, 0.10);
+  --primary-ring: rgba(94, 128, 242, 0.45);
+
+  /* Signal amber */
+  --signal: #F5B73B;
+  --signal-soft: rgba(245, 183, 59, 0.12);
+  --signal-ink: #FFD06E;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 0 rgba(255,255,255,0.04) inset, 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md: 0 1px 0 rgba(255,255,255,0.05) inset, 0 2px 4px rgba(0,0,0,0.4), 0 12px 32px -12px rgba(0,0,0,0.55);
+  --shadow-lg: 0 1px 0 rgba(255,255,255,0.06) inset, 0 8px 16px -4px rgba(0,0,0,0.5), 0 32px 64px -20px rgba(0,0,0,0.7);
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+
+  /* Spacing scale */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px;
+  --space-4: 16px; --space-5: 24px; --space-6: 32px;
+  --space-7: 48px; --space-8: 64px; --space-9: 96px;
+  --space-10: 128px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 120ms;
+  --duration-base: 220ms;
+  --duration-slow: 420ms;
+
+  /* Font stacks */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  /* Legacy aliases — kept temporarily so unrefactored selectors still resolve.
+     Removed in T7 once all consumers move to the new tokens. */
+  --primary-color: var(--primary);
+  --primary-hover-legacy: var(--primary-hover);
+  --dark-bg: var(--surface-0);
+  --dark-surface: var(--surface-1);
+  --dark-surface-hover: var(--surface-2);
+  --dark-border: var(--border-strong);
 }
 
 /* Consistent typography styling */

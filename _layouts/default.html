@@ -19,7 +19,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400;9..144,600;9..144,900;9..144,400,100,0;9..144,600,100,0&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   
   <!-- Custom styles -->
   {% if site.site-css %}
@@ -30,21 +30,10 @@
   
   <style>
     /* Dark theme with blue accents */
-    :root {
-      --primary-color: #4f8cff;
-      --primary-hover: #3a7dff;
-      --dark-bg: #0d1117;
-      --dark-surface: #161b22;
-      --dark-border: #30363d;
-      --text-primary: #e6edf3;
-      --text-secondary: #8b949e;
-      --text-muted: #6e7681;
-    }
-    
     body {
-      background-color: var(--dark-bg);
+      background-color: var(--surface-0);
       color: var(--text-primary);
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-body);
       padding-top: 56px !important;
       min-height: 100vh;
       display: flex;
