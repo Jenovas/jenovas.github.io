@@ -6,7 +6,7 @@ layout: default
 
 {% if site.paginate %}
 {% for post in paginator.posts %}
-<div class="post-preview card mb-4">
+<div class="card mb-4">
   <div class="card-body">
     <a href="{{ post.url | prepend: site.baseurl }}">
       <h2 class="post-title">{{ post.title }}</h2>
