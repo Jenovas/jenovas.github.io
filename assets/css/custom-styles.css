@@ -2053,3 +2053,63 @@ footer {
   position: relative;
   z-index: 2;
 }
+
+/* Section block — every named section uses this wrapper.
+   The section number sits in the left margin on desktop, inline on mobile. */
+.section-block {
+  position: relative;
+  margin-bottom: var(--space-10);
+}
+.section-block__num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: var(--space-2);
+}
+@media (min-width: 1200px) {
+  .section-block__num {
+    position: absolute;
+    top: 0.4em;
+    left: -3.5rem;
+    margin-bottom: 0;
+  }
+}
+
+.section-block__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-h2, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-3);
+}
+.section-block__lede {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-5);
+  max-width: 60ch;
+}
+.section-block__rule {
+  border: 0;
+  border-top: 1px solid var(--border-subtle);
+  margin: 0 0 var(--space-6);
+}
+
+/* Generic eyebrow label — used in heroes too. */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: inline-block;
+  margin-bottom: var(--space-3);
+}
