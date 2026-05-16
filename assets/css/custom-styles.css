@@ -780,8 +780,6 @@ pre code {
   overflow: hidden;
   margin-bottom: 2.5rem;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  animation: fadeInUp 0.8s ease forwards;
-  opacity: 0;
 }
 
 .professional-hero-section .container {
@@ -820,7 +818,6 @@ pre code {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
-  animation: gradientText 5s ease infinite;
   background-size: 200% auto;
 }
 
@@ -869,9 +866,6 @@ pre code {
 
 .professional-actions {
   margin-top: 2rem;
-  animation: fadeInUp 0.8s ease forwards;
-  animation-delay: 0.25s;
-  opacity: 0;
 }
 
 .professional-actions .btn {
@@ -901,9 +895,6 @@ pre code {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-left: 4px solid var(--primary);
-  animation: fadeInUp 0.8s ease forwards;
-  animation-delay: 0.1s;
-  opacity: 0;
   border-radius: 10px;
   background-color: var(--surface-1);
   overflow: hidden;
@@ -938,7 +929,6 @@ pre code {
   font-size: 1.5rem;
   border: 1px solid rgba(79, 140, 255, 0.2);
   transition: all 0.3s ease;
-  animation: pulseGlow 2s infinite ease-in-out;
   box-shadow: 0 0 15px rgba(79, 140, 255, 0.1);
 }
 
@@ -952,9 +942,6 @@ pre code {
   font-size: 1.1rem;
   line-height: 1.7;
   margin-bottom: 0;
-  animation: fadeInUp 0.8s ease forwards;
-  animation-delay: 0.3s;
-  opacity: 0;
 }
 
 /* Professional contact section styling */
@@ -1043,9 +1030,6 @@ pre code {
 .contact-section {
   margin-top: 1rem;
   line-height: 1.75;
-  animation: fadeInUp 0.8s ease forwards;
-  animation-delay: 0.2s;
-  opacity: 0;
 }
 
 .contact-section > div {
@@ -1084,7 +1068,6 @@ pre code {
 
 /* Styles moved from index.md */
 .hero-section {
-  animation: fadeInUp 0.8s ease forwards;
   background-color: var(--surface-1);
   border-radius: 8px;
   margin-bottom: 3rem;
@@ -1103,9 +1086,6 @@ pre code {
 }
 
 .cta-section {
-  animation: fadeInUp 0.8s ease forwards;
-  animation-delay: 0.5s;
-  opacity: 0;
   background-color: var(--surface-2);
   border-radius: 8px;
   margin-top: 3rem;
@@ -1156,31 +1136,6 @@ pre code {
   }
 }
 
-.welcome-message {
-  animation: gradientText 5s ease infinite;
-  background: linear-gradient(90deg, var(--primary), #8aabff, #70a2ff);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: var(--primary);
-  font-weight: 600;
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  position: relative;
-  display: inline-block;
-}
-
-.welcome-message:after {
-  content: "";
-  position: absolute;
-  bottom: -0.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background-color: var(--primary);
-  border-radius: 3px;
-}
 
 /* Media query for hero-section and cta-section padding */
 @media (max-width: 767px) {
@@ -1193,14 +1148,6 @@ pre code {
     margin-right: 1rem;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .welcome-message {
-    font-size: 1.75rem;
-  }
-  
-  .welcome-message:after {
-    width: 50px;
   }
   
   .col-md-6.col-lg-3 {
@@ -1245,9 +1192,6 @@ pre code {
 }
 
 #blog-section .card {
-  animation: fadeInUp 0.8s ease forwards;
-  animation-delay: 0.4s;
-  opacity: 0;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   background-color: var(--surface-1);
   border: 1px solid var(--border-strong);
@@ -1352,20 +1296,7 @@ pre code {
   }
 }
 
-@keyframes pulseGlow {
-  0% {
-    box-shadow: 0 2px 10px rgba(79, 140, 255, 0.2);
-  }
-  50% {
-    box-shadow: 0 4px 15px rgba(79, 140, 255, 0.4);
-  }
-  100% {
-    box-shadow: 0 2px 10px rgba(79, 140, 255, 0.2);
-  }
-}
-
 .personal-header {
-  animation: fadeInUp 0.8s ease forwards;
   background-color: var(--surface-1);
   border-radius: 8px;
   padding: 2rem;
@@ -1376,7 +1307,6 @@ pre code {
 }
 
 .profile-image-container {
-  animation: pulseGlow 3s infinite;
   position: relative;
   width: 200px;
   height: 200px;
@@ -1393,33 +1323,7 @@ pre code {
   object-fit: cover;
 }
 
-.greeting {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  background: linear-gradient(90deg, var(--primary), #8aabff, #70a2ff);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-  animation: gradientText 5s ease infinite;
-}
-
-@keyframes gradientText {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 .feature-card {
-  animation: fadeInUp 0.8s ease forwards;
-  animation-delay: 0.15s;
-  opacity: 0;
   background-color: var(--surface-1);
   border: 1px solid var(--border-strong);
   border-radius: 10px;
@@ -1577,9 +1481,6 @@ pre code {
   justify-content: center;
   gap: 0.75rem;
   margin-top: 1.5rem;
-  animation: fadeInUp 0.8s ease forwards;
-  animation-delay: 0.3s;
-  opacity: 0;
   flex-wrap: wrap;
 }
 
@@ -1622,16 +1523,8 @@ pre code {
   margin-bottom: 2.5rem;
   padding-bottom: 2.5rem;
   border-bottom: 1px solid var(--border-strong);
-  animation: fadeInUp 0.8s ease forwards;
-  opacity: 0;
   transition: all 0.3s ease;
 }
-
-.job-item:nth-child(1) { animation-delay: 0.2s; }
-.job-item:nth-child(2) { animation-delay: 0.3s; }
-.job-item:nth-child(3) { animation-delay: 0.4s; }
-.job-item:nth-child(4) { animation-delay: 0.5s; }
-.job-item:nth-child(5) { animation-delay: 0.6s; }
 
 .job-item:hover, .education-item:hover {
   background-color: rgba(22, 27, 34, 0.5);
@@ -1702,9 +1595,6 @@ pre code {
 .additional-skills {
   border-top: 1px solid var(--border-strong);
   padding-top: 1.5rem;
-  animation: fadeInUp 0.8s ease forwards;
-  animation-delay: 0.3s;
-  opacity: 0;
 }
 
 .tag-cloud {
@@ -2196,4 +2086,33 @@ footer {
 /* Override the legacy `pre` rule that defaults to #1e1e2e. */
 pre {
   background-color: var(--surface-2);
+}
+
+/* Page-entrance choreography. Runs once on load.
+   Sequenced via animation-delay; total length ~620ms. */
+.page-hero__eyebrow,
+.page-hero__rule,
+.page-hero__title,
+.page-hero__subtitle,
+.page-hero__cta {
+  opacity: 0;
+  animation: fadeInUp var(--duration-slow) var(--ease-out) forwards;
+}
+.page-hero__eyebrow { animation-delay: 80ms; }
+.page-hero__rule    { animation-delay: 120ms; }
+.page-hero__title   { animation-delay: 160ms; }
+.page-hero__subtitle { animation-delay: 220ms; }
+.page-hero__cta     { animation-delay: 260ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .page-hero__eyebrow,
+  .page-hero__rule,
+  .page-hero__title,
+  .page-hero__subtitle,
+  .page-hero__cta { opacity: 1; transform: none; }
 }
