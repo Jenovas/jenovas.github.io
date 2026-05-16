@@ -33,7 +33,7 @@
   </div>
 </nav>
 
-{% if page.title and layout.layout != 'post' %}
+{% if page.title and page.layout != 'post' %}
 {% assign hero_eyebrow = page.eyebrow | default: page.title | upcase %}
 <header class="page-hero">
   <div class="container">
