@@ -172,13 +172,13 @@ permalink: /projects/
   
   .feature-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid var(--dark-border);
+    border: 1px solid var(--border-strong);
   }
   
   .feature-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    border-color: var(--primary-color);
+    border-color: var(--primary);
   }
   
   .card-title {
@@ -191,10 +191,10 @@ permalink: /projects/
   }
   
   .link-highlight {
-    color: var(--primary-color);
+    color: var(--primary);
     font-weight: 500;
     text-decoration: none;
-    border-bottom: 1px dotted var(--primary-color);
+    border-bottom: 1px dotted var(--primary);
     transition: all 0.2s ease;
   }
   

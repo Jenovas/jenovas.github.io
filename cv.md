@@ -378,7 +378,7 @@ permalink: /cv/
   }
   
   .cv-header {
-    background-color: var(--dark-surface);
+    background-color: var(--surface-1);
     border-radius: 8px;
     padding: 3rem 1rem;
     text-align: center;
@@ -387,7 +387,7 @@ permalink: /cv/
   }
   
   .cv-name {
-    color: var(--primary-color);
+    color: var(--primary);
     font-weight: 700;
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
@@ -405,9 +405,9 @@ permalink: /cv/
     border-radius: 20px;
     padding: 0.3rem 0.8rem;
     margin-left: 0.8rem;
-    color: var(--primary-color);
+    color: var(--primary);
     font-size: 0.9rem;
-    border: 1px solid var(--dark-border);
+    border: 1px solid var(--border-strong);
   }
   
   .cv-actions {
@@ -418,18 +418,18 @@ permalink: /cv/
   
   .feature-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid var(--dark-border);
+    border: 1px solid var(--border-strong);
     margin-bottom: 2rem;
   }
   
   .feature-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    border-color: var(--primary-color);
+    border-color: var(--primary);
   }
   
   .card-title {
-    border-bottom: 1px solid var(--dark-border);
+    border-bottom: 1px solid var(--border-strong);
     padding-bottom: 1rem;
     margin-bottom: 1.5rem;
     display: flex;
@@ -467,14 +467,14 @@ permalink: /cv/
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--primary-color);
+    color: var(--primary);
     flex-shrink: 0;
   }
   
   /* Compact Skills styling */
   .compact-skill-card {
-    background-color: var(--dark-surface);
-    border: 1px solid var(--dark-border);
+    background-color: var(--surface-1);
+    border: 1px solid var(--border-strong);
     border-radius: 8px;
     padding: 0.75rem;
     height: 100%;
@@ -487,7 +487,7 @@ permalink: /cv/
   }
   
   .compact-skill-card:hover {
-    border-color: var(--primary-color);
+    border-color: var(--primary);
     transform: translateY(-3px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   }
@@ -501,7 +501,7 @@ permalink: /cv/
     align-items: center;
     justify-content: center;
     margin-bottom: 0.75rem;
-    color: var(--primary-color);
+    color: var(--primary);
     font-size: 1.2rem;
     transition: all 0.3s ease;
   }
@@ -518,7 +518,7 @@ permalink: /cv/
   }
   
   .additional-skills {
-    border-top: 1px solid var(--dark-border);
+    border-top: 1px solid var(--border-strong);
     padding-top: 1.5rem;
   }
   
@@ -530,8 +530,8 @@ permalink: /cv/
   
   .skill-tag {
     background-color: rgba(79, 140, 255, 0.1);
-    color: var(--primary-color);
-    border: 1px solid var(--dark-border);
+    color: var(--primary);
+    border: 1px solid var(--border-strong);
     border-radius: 20px;
     padding: 0.4rem 0.8rem;
     font-size: 0.8rem;
@@ -540,14 +540,14 @@ permalink: /cv/
   
   .skill-tag:hover {
     background-color: rgba(79, 140, 255, 0.2);
-    border-color: var(--primary-color);
+    border-color: var(--primary);
   }
   
   /* Job and education styling */
   .job-item, .education-item {
     margin-bottom: 2.5rem;
     padding-bottom: 2.5rem;
-    border-bottom: 1px solid var(--dark-border);
+    border-bottom: 1px solid var(--border-strong);
   }
   
   .job-item:last-child, .education-item:last-child {
@@ -579,7 +579,7 @@ permalink: /cv/
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--primary-color);
+    color: var(--primary);
     font-size: 1.25rem;
     flex-shrink: 0;
   }
@@ -597,7 +597,7 @@ permalink: /cv/
   }
   
   .company {
-    color: var(--primary-color);
+    color: var(--primary);
     font-weight: 500;
     font-size: 1.1rem;
   }
@@ -621,10 +621,10 @@ permalink: /cv/
   
   /* Connect With Me section */
   .link-highlight {
-    color: var(--primary-color);
+    color: var(--primary);
     font-weight: 500;
     text-decoration: none;
-    border-bottom: 1px dotted var(--primary-color);
+    border-bottom: 1px dotted var(--primary);
     transition: all 0.2s ease;
   }
   

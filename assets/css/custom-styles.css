@@ -314,11 +314,6 @@ li {
   color: var(--primary) !important;
 }
 
-.text-muted, 
-.text-secondary {
-  color: var(--text-secondary) !important;
-}
-
 .bg-primary {
   background-color: var(--primary) !important;
 }
@@ -672,11 +667,11 @@ pre {
 }
 
 code {
-  font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
-  color: #f8f8f2;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
   padding: 0.2rem 0.4rem;
   border-radius: 3px;
-  background-color: #2d2d3a;
+  background-color: var(--surface-2);
   font-size: 0.9rem;
 }
 

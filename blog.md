@@ -96,15 +96,15 @@ permalink: /blog/
   
   .post-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid var(--dark-border);
-    background-color: var(--dark-surface);
+    border: 1px solid var(--border-strong);
+    background-color: var(--surface-1);
     cursor: pointer;
   }
   
   .post-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    border-color: var(--primary-color);
+    border-color: var(--primary);
   }
   
   .post-card .card-title {
@@ -114,7 +114,7 @@ permalink: /blog/
   }
   
   .post-card:hover .card-title {
-    color: var(--primary-color);
+    color: var(--primary);
   }
   
   .post-card a {
@@ -140,7 +140,7 @@ permalink: /blog/
   .post-read-more {
     display: inline-block;
     margin-top: 0.5rem;
-    color: var(--primary-color);
+    color: var(--primary);
     font-weight: 500;
   }
   
@@ -157,9 +157,9 @@ permalink: /blog/
   }
   
   .post-tag {
-    background-color: var(--dark-bg);
-    color: var(--primary-color);
-    border: 1px solid var(--primary-color);
+    background-color: var(--surface-0);
+    color: var(--primary);
+    border: 1px solid var(--primary);
     padding: 0.4rem 0.7rem;
     font-size: 0.8rem;
     font-weight: 400;
@@ -167,26 +167,26 @@ permalink: /blog/
   }
   
   .page-link {
-    background-color: var(--dark-surface);
-    border-color: var(--dark-border);
-    color: var(--primary-color);
+    background-color: var(--surface-1);
+    border-color: var(--border-strong);
+    color: var(--primary);
   }
   
   .page-link:hover {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    color: var(--dark-surface);
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--surface-1);
   }
   
   .feature-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid var(--dark-border);
+    border: 1px solid var(--border-strong);
   }
   
   .feature-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    border-color: var(--primary-color);
+    border-color: var(--primary);
   }
   
   .card-title {
@@ -204,10 +204,10 @@ permalink: /blog/
   }
   
   .link-highlight {
-    color: var(--primary-color);
+    color: var(--primary);
     font-weight: 500;
     text-decoration: none;
-    border-bottom: 1px dotted var(--primary-color);
+    border-bottom: 1px dotted var(--primary);
     transition: all 0.2s ease;
   }
   
